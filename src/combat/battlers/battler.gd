@@ -24,7 +24,7 @@ signal ready_to_act
 ## Emitted when modifying `is_selected`. The user interface will react to this for
 ## player-controlled battlers.
 signal selection_toggled(value: bool)
-
+signal health_updated(value: int)  # For updating the HP bar
 @export var stats: BattlerStats = null
 # Each action's data stored in this array represents an action the battler can perform.
 # These can be anything: attacks, healing spells, etc.
@@ -33,7 +33,7 @@ signal selection_toggled(value: bool)
 # If not, the player controls this battler. The system should allow for ally AIs.
 @export var ai_scene: PackedScene
 @export var is_player: = false
-
+#@export var hp_bar: TextureProgressBar
 ## If `false`, the battler will not be able to act.
 var is_active: bool = true:
 	set(value):
@@ -84,8 +84,6 @@ func _ready() -> void:
 		is_selectable = false
 		health_depleted.emit()
 	)
-
-
 func _process(delta: float) -> void:
 	readiness += stats.speed * delta * time_scale
 
@@ -102,11 +100,12 @@ func act(action: BattlerAction, targets: Array[Battler] = []) -> void:
 		set_process(true)
 
 	action_finished.emit()
-
+	
 
 func take_hit(hit: BattlerHit) -> void:
 	if hit.is_successful():
 		hit_received.emit(hit.damage)
-		stats.health -= hit.damage
+		stats.health -= hit.damage 
+		health_updated.emit(stats.health)
 	else:
 		hit_missed.emit()

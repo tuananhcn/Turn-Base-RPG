@@ -1,6 +1,6 @@
 [gd_scene load_steps=15 format=3 uid="uid://bq6b26pctmol4"]
 
-[ext_resource type="PackedScene" uid="uid://b3ciqydkjnkkx" path="res://src/combat/combat_arena.tscn" id="1_tqh6v"]
+[ext_resource type="PackedScene" uid="uid://c6uxju87r2dck" path="res://src/combat/combat_arena.tscn" id="1_tqh6v"]
 [ext_resource type="Texture2D" uid="uid://w55nt3s833tb" path="res://assets/arenas/steppes1.png" id="2_5pnp5"]
 [ext_resource type="AudioStream" uid="uid://dj7yf3u7fdxdu" path="res://assets/music/the_fun_run.mp3" id="2_gvpi1"]
 [ext_resource type="PackedScene" uid="uid://8f7e4yxs3poj" path="res://assets/battlers/wolf_anim.tscn" id="5_2jmm4"]

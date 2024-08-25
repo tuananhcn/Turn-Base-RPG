@@ -43,14 +43,10 @@ var _queued_player_battlers: Array[Battler] = []
 var _battlers: Array[Battler] = []
 var _party_members: Array[Battler] = []
 var _enemies: Array[Battler] = []
-
-
-
 func _ready() -> void:
 	# This is required in Godot 4.3 to strongly type the array.
 	_battlers.assign(get_children())
 	set_process(false)
-
 	player_turn_finished.connect(func _on_player_turn_finished() -> void:
 		if _queued_player_battlers.is_empty():
 			_is_player_playing = false
@@ -170,7 +166,6 @@ func _deactivate_if_side_downed(checked_battlers: Array[Battler],
 	# 'clean up' animations have finished.
 	set_process(true)
 	_has_player_won = is_player_victory
-
 	# Don't allow anyone else to act.
 	is_active = false
 	return true

@@ -1,16 +1,19 @@
-[gd_scene load_steps=3 format=3 uid="uid://c6uxju87r2dck"]
+[gd_scene load_steps=5 format=3 uid="uid://c6uxju87r2dck"]
 
 [ext_resource type="Script" path="res://src/combat/combat_arena.gd" id="1_iqdn5"]
 [ext_resource type="Script" path="res://src/combat/active_turn_queue.gd" id="2_ll0ok"]
+[ext_resource type="PackedScene" uid="uid://bo1ekbs2isbn4" path="res://assets/gui/01_Flat_Theme/HpScene.tscn" id="3_77xtk"]
+[ext_resource type="PackedScene" uid="uid://cqle6yih3nfm5" path="res://assets/gui/01_Flat_Theme/SelectSkill.tscn" id="4_km2lf"]
 
 [node name="CombatArena" type="Control"]
 custom_minimum_size = Vector2(1920, 1080)
 layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
+anchors_preset = 2
+anchor_top = 1.0
 anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+offset_top = -1080.0
+offset_right = 1920.0
+grow_vertical = 0
 script = ExtResource("1_iqdn5")
 
 [node name="Background" type="TextureRect" parent="."]
@@ -26,3 +29,39 @@ script = ExtResource("2_ll0ok")
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+
+[node name="PlayerBars" parent="." instance=ExtResource("3_77xtk")]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_right = 0.0
+offset_left = 0.0
+offset_top = -250.0
+offset_right = 0.0
+offset_bottom = -250.0
+grow_horizontal = 1
+grow_vertical = 0
+
+[node name="EnemyBars" parent="." instance=ExtResource("3_77xtk")]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = -234.0
+offset_top = 290.0
+offset_right = -234.0
+offset_bottom = 290.0
+grow_horizontal = 0
+
+[node name="SelectSkillPanel" parent="." instance=ExtResource("4_km2lf")]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_right = 0.0
+offset_left = 235.0
+offset_top = -250.0
+offset_right = 235.0
+offset_bottom = -250.0
+grow_horizontal = 1
+grow_vertical = 0

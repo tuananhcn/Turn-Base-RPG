@@ -46,6 +46,7 @@ size = Vector2(16, 16)
 [node name="GhostGFX" instance=ExtResource("1_iqw7y")]
 
 [node name="AnimationPlayer" parent="." index="0"]
+active = false
 libraries = {
 "": SubResource("AnimationLibrary_6yooh")
 }

@@ -1,0 +1,55 @@
+[gd_scene load_steps=4 format=3 uid="uid://cqle6yih3nfm5"]
+
+[ext_resource type="Texture2D" uid="uid://buowwyog0qmty" path="res://assets/gui/01_Flat_Theme/Sprites/UI_Flat_Frame_01_Vertical.png" id="1_2jwvv"]
+[ext_resource type="StyleBox" path="res://addons/dialogic/Editor/Events/styles/SimpleButtonHover.tres" id="2_c1ndg"]
+[ext_resource type="StyleBox" path="res://addons/dialogic/Editor/Events/styles/SimpleButtonNormal.tres" id="3_w340x"]
+
+[node name="SelectSkillPanel" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1720.0
+offset_bottom = -830.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+layout_mode = 0
+offset_right = 200.0
+offset_bottom = 250.0
+texture = ExtResource("1_2jwvv")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="NinePatchRect"]
+layout_mode = 0
+offset_right = 200.0
+offset_bottom = 250.0
+
+[node name="AttackButton" type="Button" parent="NinePatchRect/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 65
+theme_override_styles/hover = ExtResource("2_c1ndg")
+theme_override_styles/normal = ExtResource("3_w340x")
+text = "Attack"
+
+[node name="SkillButton" type="Button" parent="NinePatchRect/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 65
+theme_override_styles/hover = ExtResource("2_c1ndg")
+theme_override_styles/normal = ExtResource("3_w340x")
+text = "Skill"
+
+[node name="SummonButton" type="Button" parent="NinePatchRect/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 65
+theme_override_styles/hover = ExtResource("2_c1ndg")
+theme_override_styles/normal = ExtResource("3_w340x")
+text = "Summon"
+
+[node name="ItemButton" type="Button" parent="NinePatchRect/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 65
+theme_override_styles/hover = ExtResource("2_c1ndg")
+theme_override_styles/normal = ExtResource("3_w340x")
+text = "Item
+"
