@@ -8,6 +8,7 @@ class_name CombatArena extends Control
 var template_bar: TextureProgressBar = null
 @onready var player_bars: VBoxContainer = $PlayerBars/NinePatchRect/VBoxContainer
 @onready var enemy_bars: VBoxContainer = $EnemyBars/NinePatchRect/VBoxContainer
+
 func _ready():
 	# If using a preloaded UI scene, ensure it's instanced and added to the tree
 	# Access player_bars and enemy_bars after instancing UI

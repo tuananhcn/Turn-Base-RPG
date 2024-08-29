@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://bi15v5shcfc26"]
+
+[ext_resource type="Script" path="res://assets/gui/01_Flat_Theme/target_indicator.gd" id="1_eque5"]
+[ext_resource type="Texture2D" uid="uid://b71dt8n01lhd0" path="res://assets/gui/path_destination_marker.tres" id="1_hbkmf"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -16.0
+offset_right = 15.0
+grow_vertical = 0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_default_cursor_shape = 2
+script = ExtResource("1_eque5")
+
+[node name="Node2D" type="Node2D" parent="."]
+position = Vector2(7, 8)
+
+[node name="Sprite2D" type="Sprite2D" parent="Node2D"]
+texture = ExtResource("1_hbkmf")
