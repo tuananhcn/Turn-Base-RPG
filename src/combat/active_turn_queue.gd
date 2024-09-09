@@ -69,6 +69,10 @@ func _ready() -> void:
 				_play_turn(battler)
 		)
 		battler.health_depleted.connect(func on_battler_health_depleted() -> void:
+		# Remove the indicator for this enemy
+			if indicators.has(battler):
+				indicators[battler].queue_free()  # Free the indicator node
+				indicators.erase(battler)  # Remove it from the indicators dictionary
 			if not _deactivate_if_side_downed(_party_members, false):
 				_deactivate_if_side_downed(_enemies, true)
 		)
@@ -129,14 +133,14 @@ func _play_turn(battler: Battler) -> void:
 			if action.targets_self:
 				targets = [battler]
 			else:
-				targets = await _player_select_targets_async(potential_targets,opponents)
+				targets = await _player_select_targets_async(potential_targets)
 			print(targets)
 			# If the player selected a correct action and target, break out of the loop. Otherwise,
 			# the player may reselect an action/targets.
 			is_selection_complete = action != null and targets != []
 		battler.is_selected = false
-		await battler.act(action, targets)
 		hide_all_indicators()
+		await battler.act(action, targets)
 	else:
 		# Allow the AI to take a turn.
 		if battler.actions.size():
@@ -179,14 +183,13 @@ func _deactivate_if_side_downed(checked_battlers: Array[Battler],
 	# Don't allow anyone else to act.
 	is_active = false
 	return true
-func _player_select_targets_async(potential_targets: Array[Battler],opponents: Array[Battler]) -> Array[Battler]:
+func _player_select_targets_async(potential_targets: Array[Battler]) -> Array[Battler]:
 	await get_tree().process_frame
 	var selected_targets: Array[Battler] = await target_selected as Array[Battler]
 	if selected_targets.size() > 0:
-		var index = get_opponent_index(selected_targets[0])
-		print(selected_targets[0])
+		var index = get_opponent_index(selected_targets[0],potential_targets)
 		if index != -1:
-			return [opponents[index]]  # Return the selected target from the opponents array
+			return [potential_targets[index]]  # Return the selected target from the opponents array
 	return []  
 	#func _player_select_targets_async(_action: BattlerAction, opponents: Array[Battler]) -> Array[Battler]:
 	#await get_tree().process_frame
@@ -226,11 +229,9 @@ func show_indicator_for_target(target: Battler):
 func hide_all_indicators():
 	for indicator in indicators.values():
 		indicator.visible = false
-func get_opponent_index(battler: Battler) -> int:
-	var opponents = _enemies if battler.is_player else _party_members
-	print(opponents)
-	for i in range(opponents.size()):
-		if opponents[i] == battler:
+func get_opponent_index(battler: Battler,potential_targets) -> int:
+	for i in range(potential_targets.size()):
+		if potential_targets[i] == battler:  # Compare by name or another unique identifier
 			return i
 	return -1  # Return -1 if the battler is not found
 func _on_skill_selected(action_index: int):

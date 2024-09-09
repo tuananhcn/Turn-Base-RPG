@@ -11,5 +11,5 @@ description = "A combat action."
 energy_cost = 0
 element = 0
 targets_self = false
-targets_all = false
+targets_all = true
 readiness_saved = 0.0

@@ -20,6 +20,5 @@ func _ready():
 func _on_indicator_clicked(event: InputEvent):
 	var active_turn_queue = find_parent("Battlers")
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
-		print("Indicator clicked for battler: ", battler.name)
 		active_turn_queue.emit_signal("target_selected", [battler] as Array[Battler])
 		get_node("Node2D/Sprite2D").modulate = clicked_color

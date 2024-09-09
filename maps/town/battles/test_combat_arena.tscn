@@ -5,12 +5,12 @@
 [ext_resource type="Texture2D" uid="uid://247edqngmrqp" path="res://assets/arenas/arena1.jpg" id="3_dwmm3"]
 [ext_resource type="Script" path="res://src/combat/battlers/battler.gd" id="4_6ngh4"]
 [ext_resource type="Resource" uid="uid://chuarvle06xxf" path="res://battlers/bugcat_stats.tres" id="5_1st0g"]
-[ext_resource type="Resource" uid="uid://bn4nqbuhq4ih8" path="res://battlers/bear/bear_stats.tres" id="5_id2tu"]
 [ext_resource type="Script" path="res://src/combat/actions/battler_action.gd" id="6_b04cs"]
 [ext_resource type="PackedScene" uid="uid://ugsq7u4cue4w" path="res://assets/battlers/bugcat_anim.tscn" id="6_r8rpm"]
 [ext_resource type="Resource" uid="uid://bs4g81qa8u57q" path="res://battlers/actions/ranged_action.tres" id="9_273jv"]
-[ext_resource type="PackedScene" uid="uid://bl8bmbt7v3lrj" path="res://assets/battlers/bear_anim.tscn" id="10_ajkh0"]
-[ext_resource type="Resource" uid="uid://dp7wo0l4es3w4" path="res://battlers/bear/player_melee_action.tres" id="10_uukpg"]
+[ext_resource type="PackedScene" uid="uid://cviid0h6ehcsu" path="res://assets/battlers/knight_anim.tscn" id="9_m5d7v"]
+[ext_resource type="Resource" uid="uid://ci2upqpdbr5p7" path="res://battlers/bear/knight_stats.tres" id="9_md7tn"]
+[ext_resource type="Resource" uid="uid://752xsau3xyx0" path="res://battlers/actions/melee_action.tres" id="10_d4pov"]
 
 [node name="TestCombatArena" instance=ExtResource("1_etpkf")]
 music = ExtResource("2_vo8mp")
@@ -42,12 +42,11 @@ metadata/_edit_group_ = true
 scale = Vector2(-1, 1)
 direction = 0
 
-[node name="PlayerBattler" type="Node2D" parent="Battlers" index="2"]
-position = Vector2(409, 705)
+[node name="Battler3" type="Node2D" parent="Battlers" index="2"]
 script = ExtResource("4_6ngh4")
-stats = ExtResource("5_id2tu")
-actions = Array[ExtResource("6_b04cs")]([ExtResource("10_uukpg")])
+stats = ExtResource("9_md7tn")
+actions = Array[ExtResource("6_b04cs")]([ExtResource("10_d4pov")])
 is_player = true
-metadata/_edit_group_ = true
 
-[node name="BearAnim" parent="Battlers/PlayerBattler" index="0" instance=ExtResource("10_ajkh0")]
+[node name="KnightAnim" parent="Battlers/Battler3" index="0" instance=ExtResource("9_m5d7v")]
+position = Vector2(381, 510)

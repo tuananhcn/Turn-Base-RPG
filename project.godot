@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="OpenRPG"
-run/main_scene="res://src/main.tscn"
+run/main_scene="res://src/GUI/mainmenu/MainMenu.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
 config/icon="res://icon.svg"
 
@@ -22,6 +22,7 @@ CombatEvents="*res://src/common/combat_events.gd"
 FieldEvents="*res://src/common/field_events.gd"
 Music="*res://src/common/music/music_player.tscn"
 Transition="*res://src/common/screen_transitions/ScreenTransition.tscn"
+AppConfig="*res://addons/maaacks_options_menus/base/scenes/autoloads/app_config.tscn"
 Dialogic="*res://addons/dialogic/Core/DialogicGameHandler.gd"
 
 [dialogic]
@@ -109,16 +110,13 @@ layout/style_list=[]
 
 [display]
 
-window/size/viewport_width=1920
-window/size/viewport_height=1080
 window/size/window_width_override=960
 window/size/window_height_override=540
 window/stretch/mode="canvas_items"
-window/stretch/aspect="expand"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/dialogic/plugin.cfg")
+enabled=PackedStringArray("res://addons/dialogic/plugin.cfg", "res://addons/maaacks_options_menus/plugin.cfg")
 
 [filesystem]
 
@@ -156,6 +154,15 @@ back={
 ]
 }
 
+[internationalization]
+
+rendering/size/viewport_height=1080
+rendering/size/mode=0
+rendering/size/viewport_width=1920
+rendering/stretch/mode="canvas_items"
+rendering/size/resizable=true
+rendering/stretch/aspect="expand"
+
 [layer_names]
 
 2d_physics/layer_1="Terrain"
@@ -164,6 +171,11 @@ back={
 2d_physics/layer_4="PlayerInteractionRange"
 2d_physics/layer_5="Interactions"
 2d_physics/layer_6="Triggers"
+
+[maaacks_options_menus]
+
+disable_plugin_dialogues=true
+copy_path="res://addons/maaacks_options_menus"
 
 [rendering]
 

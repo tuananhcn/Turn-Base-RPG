@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://cviid0h6ehcsu"]
+
+[ext_resource type="Script" path="res://src/combat/battlers/battler_anim.gd" id="1_rsjrm"]
+[ext_resource type="AnimationLibrary" uid="uid://o2ktahx2nkki" path="res://assets/battlers/default_battler_animations.res" id="2_xmxqv"]
+[ext_resource type="Texture2D" uid="uid://qhaw0xup54oa" path="res://assets/battlers/Knight Pack/char_blue_1.png" id="3_cwwgy"]
+
+[node name="KnightAnim" type="Marker2D"]
+script = ExtResource("1_rsjrm")
+
+[node name="Pivot" type="Marker2D" parent="."]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Pivot"]
+libraries = {
+"": ExtResource("2_xmxqv")
+}
+autoplay = "idle"
+
+[node name="Sprite2D" type="Sprite2D" parent="Pivot"]
+position = Vector2(6, -197)
+scale = Vector2(7, 7)
+texture = ExtResource("3_cwwgy")
+hframes = 8
+vframes = 11

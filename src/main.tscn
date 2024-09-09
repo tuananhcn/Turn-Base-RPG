@@ -74,7 +74,7 @@
 [ext_resource type="Resource" path="res://maps/opening_cutscene.dtl" id="68_jcriq"]
 [ext_resource type="Script" path="res://src/combat/combat.gd" id="69_meyff"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_orie5"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_oktsl"]
 resource_name = "Overlay"
 texture = ExtResource("9_woa3f")
 separation = Vector2i(1, 1)
@@ -82,7 +82,7 @@ separation = Vector2i(1, 1)
 0:5/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_uvju2"]
-sources/0 = SubResource("TileSetAtlasSource_orie5")
+sources/0 = SubResource("TileSetAtlasSource_oktsl")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0ughy"]
 size = Vector2(15, 15)
@@ -147,7 +147,7 @@ _data = {
 "disappear": SubResource("Animation_0kxfj")
 }
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_s5jqb"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_nfi1n"]
 texture = ExtResource("33_ofo2l")
 separation = Vector2i(1, 1)
 8:0/0 = 0
@@ -161,7 +161,7 @@ separation = Vector2i(1, 1)
 8:2/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_tinid"]
-sources/0 = SubResource("TileSetAtlasSource_s5jqb")
+sources/0 = SubResource("TileSetAtlasSource_nfi1n")
 
 [sub_resource type="Animation" id="Animation_bwvqs"]
 length = 0.001
