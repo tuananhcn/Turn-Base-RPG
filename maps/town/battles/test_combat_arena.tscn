@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://wivtmf75ic3f"]
+[gd_scene load_steps=13 format=3 uid="uid://wivtmf75ic3f"]
 
 [ext_resource type="PackedScene" uid="uid://c6uxju87r2dck" path="res://src/combat/combat_arena.tscn" id="1_etpkf"]
 [ext_resource type="AudioStream" uid="uid://dagiejnj8dwqb" path="res://assets/music/squashin_bugs_fixed.mp3" id="2_vo8mp"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://cviid0h6ehcsu" path="res://assets/battlers/knight_anim.tscn" id="9_m5d7v"]
 [ext_resource type="Resource" uid="uid://ci2upqpdbr5p7" path="res://battlers/bear/knight_stats.tres" id="9_md7tn"]
 [ext_resource type="Resource" uid="uid://752xsau3xyx0" path="res://battlers/actions/melee_action.tres" id="10_d4pov"]
+[ext_resource type="PackedScene" uid="uid://cuqqcvkl0d8bw" path="res://assets/battlers/Wizard Pack/mage_anim.tscn" id="12_rxi00"]
 
 [node name="TestCombatArena" instance=ExtResource("1_etpkf")]
 music = ExtResource("2_vo8mp")
@@ -50,3 +51,12 @@ is_player = true
 
 [node name="KnightAnim" parent="Battlers/Battler3" index="0" instance=ExtResource("9_m5d7v")]
 position = Vector2(381, 510)
+
+[node name="Battler4" type="Node2D" parent="Battlers" index="3"]
+script = ExtResource("4_6ngh4")
+stats = ExtResource("9_md7tn")
+actions = Array[ExtResource("6_b04cs")]([ExtResource("10_d4pov")])
+is_player = true
+
+[node name="MageAnim" parent="Battlers/Battler4" index="0" instance=ExtResource("12_rxi00")]
+position = Vector2(345, 980)

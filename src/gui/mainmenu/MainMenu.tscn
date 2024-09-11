@@ -1,6 +1,6 @@
 [gd_scene load_steps=18 format=3 uid="uid://d1jxyfrwc67n7"]
 
-[ext_resource type="Script" path="res://src/GUI/mainmenu/main_menu.gd" id="1_j6o5n"]
+[ext_resource type="Script" path="res://src/gui/mainmenu/main_menu.gd" id="1_j6o5n"]
 [ext_resource type="Texture2D" uid="uid://cyum24lqx283v" path="res://assets/gui/icons/UI_stone_buttons_2.png" id="1_lvlox"]
 [ext_resource type="Texture2D" uid="uid://bb3jen432uku" path="res://assets/gui/MainMenuBg.jpg" id="1_yf72p"]
 [ext_resource type="Texture2D" uid="uid://dr1j0khsp8vlp" path="res://assets/gui/icons/UI_stone_buttons_pressed_2.png" id="2_f2sfw"]
@@ -59,10 +59,10 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -576.0
-offset_top = -324.0
-offset_right = -576.0
-offset_bottom = -324.0
+offset_left = -960.0
+offset_top = -540.0
+offset_right = -960.0
+offset_bottom = -540.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4

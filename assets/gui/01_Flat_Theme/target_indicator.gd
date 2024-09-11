@@ -1,7 +1,7 @@
 extends Control
 
 # Signal that will be emitted when the indicator is clicked
-signal indicator_clicked(battler)
+#signal indicator_clicked(battler)
 @export var normal_color: Color = Color(1, 1, 1, 1) # White
 @export var hover_color: Color = Color(1, 0.8, 0.5, 1) # Light Orange
 @export var clicked_color: Color = Color(1, 0.5, 0.5, 1) # Light Red

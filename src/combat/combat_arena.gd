@@ -18,13 +18,13 @@ func _ready():
 		print("PlayerBars or EnemyBars not found.")
 	for i in range(turn_queue._party_members.size()):
 		var battler = turn_queue._party_members[i]
-		battler.health_updated.connect(func(value: int) -> void:
+		battler.health_updated.connect(func(_value: int) -> void:
 			update_hp_bar(battler, true, i)
 		)
 
 	for i in range(turn_queue._enemies.size()):
 		var battler = turn_queue._enemies[i]
-		battler.health_updated.connect(func(value: int) -> void:
+		battler.health_updated.connect(func(_value: int) -> void:
 			update_hp_bar(battler, false, i)
 		)
 func generate_hp_bars(players: int, enemies: int):
