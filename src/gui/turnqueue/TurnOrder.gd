@@ -1,55 +1,52 @@
-extends Control
+class_name TurnOrder extends Control
 
-onready var last_active_battler : Battler
+@export var max_visible_turns: int = 5  # Max number of battlers visible in the queue
+var turn_queue: Array = []
+@onready var active_turn_queue = get_parent().get_node("Battlers") as ActiveTurnQueue
+@onready var turn_queue_ui = $TurnBar as VBoxContainer  # Assuming you have a node named UITurnBar for the UI
+func _ready():
+	update_turn_queue()
+func update_turn_queue():
+	# Clear all previous turn indicators from the UI
+	print("Updating turn queue...")
+	clear_queue_ui()
+	# Display battlers up to the limit set by max_visible_turns
+	for i in range(min(max_visible_turns, active_turn_queue._combined_turn_queue.size())):
+		var battler = active_turn_queue._combined_turn_queue[i]
+		var turn_display = create_turn_display(battler)
+		turn_queue_ui.add_child(turn_display)  # Assuming `turn_queue_ui` is the parent node for turn indicators
+# Create a display node for each battler's turn in the queue
+func create_turn_display(battler: Battler) -> Control:
+	# Create a container for each battler's turn display
+	print("create_turn_display")
+	var turn_container = HBoxContainer.new()
+	turn_container.name = "TurnDisplay_" + str(battler.name)  # Optional for debugging
 
-onready var portraits = $CombatPortraits
-var CombatPortrait = preload("res://combat/interface/turn_order/CombatPortrait.tscn")
+	# Battler portrait (using TextureRect)
+	var portrait = TextureRect.new()
+	#if battler.portrait_texture:
+		#print("Found portrait for", battler.name)
+		#portrait.texture = battler.portrait_texture  # Assuming battler has a portrait_texture property
+	#else:
+	print("Warning: No portrait texture found for", battler.name)
+	portrait.texture = preload("res://icon.svg")  # A fallback texture
+	portrait.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT
+	turn_container.add_child(portrait)
 
-func initialize(combat_arena : CombatArena, turn_queue : TurnQueue):
-	combat_arena.connect('battle_ends', self, '_on_battle_ends')
-	turn_queue.connect('queue_changed', self, '_on_queue_changed')
+	# Turn number label (if showing multiple turns)
+	var turn_label = Label.new()
+	turn_label.text = str(battler.turns)  # Assuming battler has a turns property
+	turn_container.add_child(turn_label)
 
-func rebuild(battlers : Array, active_battler : Battler) -> void:
-	"""Creates the turn order interface.
-	
-	For each battler, both PC and NPC, create its interactive portrait and add 
-	it to the portraits list.
-	"""
-	for portrait in portraits.get_children():
-		portrait.queue_free()
+	return turn_container  # Return the completed display element
+# Call this function with _queued_player_battlers
+func clear_queue_ui():
+	# Clears previous turn display in the UI node
+	for child in turn_queue_ui.get_children():
+		turn_queue_ui.remove_child(child)
+		child.queue_free()
 
-	for battler in battlers:
-		var new_portrait : CombatPortrait = CombatPortrait.instance()
-		var play_animation = false if battler == active_battler else true
-		portraits.add_child(new_portrait)
-		new_portrait.initialize(battler, play_animation)
-
-func next(playing_battler : Battler) -> void:
-	"""Switch to the next battler.
-	
-	Deactivate the previous portrait and highlight the next one.
-	"""
-	for portrait in portraits.get_children():
-		if portrait.battler == playing_battler:
-			portrait.highlight()
-
-		elif portrait.battler == last_active_battler:
-			portrait.wait()
-
-	last_active_battler = playing_battler
-
-func _on_queue_changed(battlers : Array, active_battler : Battler) -> void:
-	"""Update the turn order interface according to the battlers state."""
-
-	# Only rebuild the interface if the number of battler has changed.
-	if battlers.size() != portraits.get_child_count():
-		rebuild(battlers, active_battler)
-
-	# Do not update the interface if the turn queue is currently searching for
-	# the next battler able to play.
-	if active_battler.is_able_to_play():
-		next(active_battler)
-
-func _on_battle_ends():
-	"""When the battle is starting to end, free the turn order interface."""
-	queue_free()
+# Call this function when the queue changes
+func set_turn_queue(new_turn_queue: Array[Battler]):
+	active_turn_queue._combined_turn_queue = new_turn_queue
+	update_turn_queue()

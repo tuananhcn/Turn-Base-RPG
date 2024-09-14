@@ -148,7 +148,12 @@ func _on_battler_selection_toggled(value: bool) -> void:
 func _on_battler_hit_received(value: int) -> void:
 	if value > 0:
 		_anim.play("hurt")
+		_anim.animation_finished.connect(_on_animation_finished)
 
 
 func _on_battler_health_depleted() -> void:
 	_anim.play("die")
+func _on_animation_finished(anim_name: String) -> void:
+	# After "hurt" animation is finished, switch to "idle" animation if it exists
+	if anim_name == "hurt" and _anim.has_animation("idle"):
+		_anim.play("idle")

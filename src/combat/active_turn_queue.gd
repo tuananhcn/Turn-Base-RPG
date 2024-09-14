@@ -15,7 +15,6 @@ signal combat_finished(is_player_victory: bool)
 ## Emitted when a player-controlled battler finished playing a turn. That is, when the _play_turn()
 ## method returns.
 signal player_turn_finished
-@onready var select_panel: Control = $SelectSkillPanel
 signal skill_selected(action: BattlerAction)
 signal target_selected(targets: Array[Battler])
 @onready var target_indicator_scene = preload("res://assets/gui/01_Flat_Theme/TargetIndicator.tscn")
@@ -44,7 +43,8 @@ var _has_player_won: = false
 
 ## A stack of player-controlled battlers that have to take turns.
 var _queued_player_battlers: Array[Battler] = []
-
+## Combined Queue for Both Players and Enemies
+var _combined_turn_queue: Array[Battler] = []  # Combined queue for turn order
 var _battlers: Array[Battler] = []
 var _party_members: Array[Battler] = []
 var _enemies: Array[Battler] = []
@@ -63,8 +63,10 @@ func _ready() -> void:
 
 	for battler: Battler in _battlers:
 		battler.ready_to_act.connect(func on_battler_ready_to_act() -> void:
+			_combined_turn_queue.append(battler)
 			if battler.is_player and _is_player_playing:
 				_queued_player_battlers.append(battler)
+				refresh_turn_queue()
 			else:
 				_play_turn(battler)
 		)
@@ -81,7 +83,6 @@ func _ready() -> void:
 			_party_members.append(battler)
 		else:
 			_enemies.append(battler)
-
 	# Don't begin combat until the state has been setup. I.e. intro animations, UI is ready, etc.
 	is_active = false
 	#select_skill_panel.connect("skill_selected", Callable(self,"_on_skill_selected"))
@@ -149,7 +150,7 @@ func _play_turn(battler: Battler) -> void:
 			time_scale = 0
 			await battler.act(action, targets)
 			time_scale = 1.0
-
+	_combined_turn_queue.append(battler)
 	if battler.is_player:
 		select_skill_panel.hide()
 		player_turn_finished.emit()
@@ -236,3 +237,7 @@ func get_opponent_index(battler: Battler,potential_targets) -> int:
 	return -1  # Return -1 if the battler is not found
 func _on_skill_selected(action_index: int):
 	emit_signal("skill_selected", action_index)
+func refresh_turn_queue() -> void:
+	var turn_order = get_parent().get_node("TurnOrder")
+	if turn_order:
+		turn_order.update_turn_queue()

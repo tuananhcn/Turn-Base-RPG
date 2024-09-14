@@ -7,7 +7,7 @@ class_name RangedBattlerAction extends BattlerAction
 ## A to-hit modifier for this attack that will be influenced by the target Battler's
 ## [member BattlerStats.evasion].
 @export var hit_chance: = 100.0
-@export var base_damage: = 50
+@export var base_damage: = 100
 
 
 func execute(source: Battler, targets: Array[Battler] = []) -> void:
