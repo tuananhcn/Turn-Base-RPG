@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource("1_oh0gs")
 hit_chance = 100.0
-base_damage = 60
+base_damage = 100
 label = "Base combat action"
 description = "A combat action."
 energy_cost = 0

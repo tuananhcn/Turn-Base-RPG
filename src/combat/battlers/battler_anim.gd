@@ -148,7 +148,8 @@ func _on_battler_selection_toggled(value: bool) -> void:
 func _on_battler_hit_received(value: int) -> void:
 	if value > 0:
 		_anim.play("hurt")
-		_anim.animation_finished.connect(_on_animation_finished)
+		#if not _anim.is_connected("animation_finished", Callable(self, "_on_animation_finished")):
+			#_anim.animation_finished.connect(Callable(self, "_on_animation_finished"))
 
 
 func _on_battler_health_depleted() -> void:

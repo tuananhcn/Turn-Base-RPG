@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://w55nt3s833tb" path="res://assets/arenas/steppes1.png" id="2_5pnp5"]
 [ext_resource type="AudioStream" uid="uid://dj7yf3u7fdxdu" path="res://assets/music/the_fun_run.mp3" id="2_gvpi1"]
 [ext_resource type="PackedScene" uid="uid://8f7e4yxs3poj" path="res://assets/battlers/wolf_anim.tscn" id="5_2jmm4"]
-[ext_resource type="Resource" uid="uid://bn4nqbuhq4ih8" path="res://battlers/bear/bear_stats.tres" id="5_dbmw8"]
+[ext_resource type="Resource" uid="uid://bn4nqbuhq4ih8" path="res://battlers/bear/mage_stats.tres" id="5_dbmw8"]
 [ext_resource type="Resource" uid="uid://bka1pe2l3gbv" path="res://battlers/squirrel_stats.tres" id="5_ejdro"]
 [ext_resource type="PackedScene" uid="uid://cch8nxgex1edr" path="res://assets/battlers/squirrel_anim.tscn" id="6_758fa"]
 [ext_resource type="Script" path="res://src/combat/battlers/battler.gd" id="6_q0bkx"]

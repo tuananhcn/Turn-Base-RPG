@@ -92,7 +92,7 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	for child: BattlerAnim in find_children("*", "BattlerAnim"):
 		# If there are still playing BattlerAnims, don't finish the battle yet.
-		if child.is_playing():
+		if child.is_playing() and child._anim.current_animation != "idle":
 			return
 
 	# There are no animations being played. Combat can now finish.
@@ -128,14 +128,12 @@ func _play_turn(battler: Battler) -> void:
 		while not is_selection_complete:
 			# First of all, the player must select an action.
 			action = await _player_select_action_async(battler)
-			print(action)
 			# Secondly, the player must select targets for the action.
 			# If the target may be selected automatically, do so.
 			if action.targets_self:
 				targets = [battler]
 			else:
 				targets = await _player_select_targets_async(potential_targets)
-			print(targets)
 			# If the player selected a correct action and target, break out of the loop. Otherwise,
 			# the player may reselect an action/targets.
 			is_selection_complete = action != null and targets != []

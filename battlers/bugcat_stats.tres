@@ -5,9 +5,9 @@
 [resource]
 script = ExtResource("1_dv0tm")
 affinity = 0
-base_max_health = 50
+base_max_health = 30
 base_max_energy = 6
-base_attack = 80
+base_attack = 10
 base_defense = 10
 base_speed = 100
 base_hit_chance = 100
