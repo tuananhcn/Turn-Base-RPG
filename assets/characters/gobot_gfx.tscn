@@ -1,24 +1,217 @@
-[gd_scene load_steps=5 format=3 uid="uid://qxua6ekob7fa"]
+[gd_scene load_steps=16 format=3 uid="uid://qxua6ekob7fa"]
 
 [ext_resource type="PackedScene" uid="uid://caxhff6by5nqu" path="res://src/field/gamepieces/animation/gamepiece_animation.tscn" id="1_ggnk7"]
-[ext_resource type="AnimationLibrary" uid="uid://dmmjb8ambpwar" path="res://assets/characters/default_animations/standard_animations.res" id="2_mw4lc"]
-[ext_resource type="Texture2D" uid="uid://4ua1ohn2tllf" path="res://assets/characters/gobot_field.png" id="3_rnaav"]
+[ext_resource type="Texture2D" uid="uid://bvcyhegtqcilt" path="res://assets/characters/gobot.atlastex" id="3_s188q"]
+
+[sub_resource type="Animation" id="Animation_02l28"]
+resource_name = "RESET"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GFX/Sprite:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(410, 2, 12, 14)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("GFX/Sprite:frame_coords")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2i(3, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_ywxiw"]
+resource_name = "idle"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GFX/Sprite:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2i(1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_jr674"]
+resource_name = "idle_e"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GFX/Sprite:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2i(3, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_4ym4p"]
+resource_name = "idle_n"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GFX/Sprite:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2i(2, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_447v6"]
+resource_name = "idle_w"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GFX/Sprite:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2i(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_bp88g"]
+resource_name = "idle_s"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GFX/Sprite:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2i(1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_gpq2e"]
+resource_name = "run_e"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GFX/Sprite:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [Vector2i(3, 0), Vector2i(3, 1), Vector2i(3, 2)]
+}
+
+[sub_resource type="Animation" id="Animation_4a4t1"]
+resource_name = "run_n"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GFX/Sprite:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Vector2i(2, 1), Vector2i(2, 2)]
+}
+
+[sub_resource type="Animation" id="Animation_7rfw4"]
+resource_name = "run_w"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GFX/Sprite:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [Vector2i(0, 0), Vector2i(0, 1), Vector2i(0, 2)]
+}
+
+[sub_resource type="Animation" id="Animation_evlex"]
+resource_name = "run_s"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GFX/Sprite:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Vector2i(1, 1), Vector2i(1, 2)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_uyphg"]
+_data = {
+"RESET": SubResource("Animation_02l28"),
+"idle": SubResource("Animation_ywxiw"),
+"idle_e": SubResource("Animation_jr674"),
+"idle_n": SubResource("Animation_4ym4p"),
+"idle_s": SubResource("Animation_bp88g"),
+"idle_w": SubResource("Animation_447v6"),
+"run_e": SubResource("Animation_gpq2e"),
+"run_n": SubResource("Animation_4a4t1"),
+"run_s": SubResource("Animation_evlex"),
+"run_w": SubResource("Animation_7rfw4")
+}
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xkmti"]
 size = Vector2(16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ebewj"]
+atlas = ExtResource("3_s188q")
+region = Rect2(0, 0, 63, 50)
 
 [node name="GoBotGFX" instance=ExtResource("1_ggnk7")]
 
 [node name="AnimationPlayer" parent="." index="0"]
 libraries = {
-"": ExtResource("2_mw4lc")
+"": SubResource("AnimationLibrary_uyphg")
 }
+autoplay = "custom_character_animations/idle"
 
 [node name="CollisionShape2D" parent="Area2D" index="0"]
 shape = SubResource("RectangleShape2D_xkmti")
 
 [node name="Sprite" parent="GFX" index="0"]
-texture = ExtResource("3_rnaav")
+scale = Vector2(1.2, 1.2)
+texture = SubResource("AtlasTexture_ebewj")
 offset = Vector2(0, -6)
-region_enabled = true
-region_rect = Rect2(1, 1, 16, 16)
+hframes = 4
+vframes = 3
+frame = 7
+region_rect = Rect2(410, 2, 12, 14)

@@ -17,6 +17,7 @@ signal combat_finished(is_player_victory: bool)
 signal player_turn_finished
 signal skill_selected(action: BattlerAction)
 signal target_selected(targets: Array[Battler])
+signal turn_queue_ready
 @onready var target_indicator_scene = preload("res://assets/gui/01_Flat_Theme/TargetIndicator.tscn")
 # Dictionary to keep track of indicators for each battler
 var indicators = {}
@@ -62,11 +63,10 @@ func _ready() -> void:
 		)
 
 	for battler: Battler in _battlers:
+		_combined_turn_queue.append(battler)
 		battler.ready_to_act.connect(func on_battler_ready_to_act() -> void:
-			_combined_turn_queue.append(battler)
 			if battler.is_player and _is_player_playing:
 				_queued_player_battlers.append(battler)
-				refresh_turn_queue()
 			else:
 				_play_turn(battler)
 		)
@@ -86,7 +86,9 @@ func _ready() -> void:
 	# Don't begin combat until the state has been setup. I.e. intro animations, UI is ready, etc.
 	is_active = false
 	#select_skill_panel.connect("skill_selected", Callable(self,"_on_skill_selected"))
-
+	#refresh_turn_queue()
+	#turn_queue_ready.emit()
+	call_deferred("emit_turn_queue_ready")
 # The active turn queue waits until all battlers have finished their animations before emitting the
 # finished signal.
 func _process(_delta: float) -> void:
@@ -103,7 +105,8 @@ func _process(_delta: float) -> void:
 func _play_turn(battler: Battler) -> void:
 	var action: BattlerAction
 	var targets: Array[Battler] = []
-
+	#_combined_turn_queue.append(battler)
+	#refresh_turn_queue()
 	# The battler is getting a new turn, so increment its energy count.
 	battler.stats.energy += 1
 
@@ -148,12 +151,11 @@ func _play_turn(battler: Battler) -> void:
 			time_scale = 0
 			await battler.act(action, targets)
 			time_scale = 1.0
-	_combined_turn_queue.append(battler)
 	if battler.is_player:
 		select_skill_panel.hide()
 		player_turn_finished.emit()
 		time_scale = 1.0
-
+	refresh_turn_queue()
 #func _player_select_action_async(battler: Battler) -> BattlerAction:
 	#await get_tree().process_frame
 	#return battler.actions[0]
@@ -239,3 +241,6 @@ func refresh_turn_queue() -> void:
 	var turn_order = get_parent().get_node("TurnOrder")
 	if turn_order:
 		turn_order.update_turn_queue()
+func emit_turn_queue_ready() -> void:
+	print("Emitting turn_queue_ready signal")
+	turn_queue_ready.emit()

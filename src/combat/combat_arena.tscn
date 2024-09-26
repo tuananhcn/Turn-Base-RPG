@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://c6uxju87r2dck"]
+[gd_scene load_steps=7 format=3 uid="uid://c6uxju87r2dck"]
 
 [ext_resource type="Script" path="res://src/combat/combat_arena.gd" id="1_iqdn5"]
 [ext_resource type="Script" path="res://src/combat/active_turn_queue.gd" id="2_ll0ok"]
 [ext_resource type="PackedScene" uid="uid://bo1ekbs2isbn4" path="res://assets/gui/01_Flat_Theme/HpScene.tscn" id="3_77xtk"]
 [ext_resource type="PackedScene" uid="uid://cqle6yih3nfm5" path="res://assets/gui/01_Flat_Theme/SelectSkill.tscn" id="4_km2lf"]
 [ext_resource type="PackedScene" uid="uid://cpbx3es5oxmcq" path="res://assets/gui/01_Flat_Theme/SelectedOption.tscn" id="5_buisq"]
+[ext_resource type="PackedScene" uid="uid://c5w17hum6hdkk" path="res://src/gui/turnqueue/TurnOrder.tscn" id="6_f5gg2"]
 
 [node name="CombatArena" type="Control"]
 custom_minimum_size = Vector2(1920, 1080)
@@ -68,3 +69,9 @@ offset_right = 235.0
 offset_bottom = -248.0
 grow_horizontal = 1
 grow_vertical = 0
+
+[node name="TurnOrder" parent="." instance=ExtResource("6_f5gg2")]
+layout_mode = 1
+anchors_preset = 0
+anchor_right = 0.0
+grow_horizontal = 1

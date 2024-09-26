@@ -33,6 +33,7 @@ signal health_updated(value: int)  # For updating the HP bar
 # If not, the player controls this battler. The system should allow for ally AIs.
 @export var ai_scene: PackedScene
 @export var is_player: = false
+@export var icon: Texture = null  # Property to assign the battler's icon/portrait
 #@export var hp_bar: TextureProgressBar
 ## If `false`, the battler will not be able to act.
 var is_active: bool = true:
