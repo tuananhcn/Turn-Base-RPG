@@ -13,8 +13,9 @@ layout_mode = 3
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
+offset_left = -1.0
 offset_top = -1080.0
-offset_right = 1920.0
+offset_right = 1919.0
 grow_vertical = 0
 script = ExtResource("1_iqdn5")
 
@@ -40,32 +41,28 @@ layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -234.0
-offset_right = -234.0
+offset_left = -392.0
+offset_right = -392.0
 grow_horizontal = 0
 
 [node name="SelectSkillOption" parent="." instance=ExtResource("5_buisq")]
-visible = false
 layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_right = 0.0
-offset_left = 428.0
-offset_top = -204.0
-offset_right = 428.0
-offset_bottom = -204.0
-grow_horizontal = 1
-grow_vertical = 0
+anchors_preset = 7
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -373.0
+offset_top = 0.0
+offset_right = -373.0
+grow_horizontal = 2
 
 [node name="SelectSkillPanel" parent="." instance=ExtResource("4_km2lf")]
-visible = false
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_right = 0.0
-offset_left = 235.0
+offset_left = 389.0
 offset_top = -248.0
-offset_right = 235.0
+offset_right = 389.0
 offset_bottom = -248.0
 grow_horizontal = 1
 grow_vertical = 0

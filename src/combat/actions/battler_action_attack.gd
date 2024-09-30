@@ -2,7 +2,6 @@
 class_name AttackBattlerAction extends BattlerAction
 
 const ATTACK_DISTANCE: = 350.0
-
 ## A to-hit modifier for this attack that will be influenced by the target Battler's
 ## [member BattlerStats.evasion].
 @export var hit_chance: = 100.0

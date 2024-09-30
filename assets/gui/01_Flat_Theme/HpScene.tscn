@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://bo1ekbs2isbn4"]
+[gd_scene load_steps=6 format=3 uid="uid://bo1ekbs2isbn4"]
 
 [ext_resource type="Texture2D" uid="uid://b60gi1112ndc1" path="res://assets/gui/01_Flat_Theme/Sprites/UI_Flat_Frame_01_Horizontal.png" id="1_pkdtc"]
 [ext_resource type="Texture2D" uid="uid://b0s3ox8vgwdqd" path="res://assets/gui/01_Flat_Theme/Sprites/UI_Flat_Fillbar_02_Hollow.png" id="2_magfp"]
 [ext_resource type="Texture2D" uid="uid://bshpokqd3jvhr" path="res://assets/gui/01_Flat_Theme/Sprites/UI_Flat_Filler_02.png" id="3_mtlye"]
+[ext_resource type="Texture2D" uid="uid://cne2113s04xwd" path="res://assets/gui/01_Flat_Theme/Sprites/UI_Flat_Fillbar_01_Hollow.png" id="4_sajfl"]
+[ext_resource type="Texture2D" uid="uid://bf0mm14m0qibc" path="res://assets/gui/01_Flat_Theme/Sprites/UI_Flat_Filler_01.png" id="5_k4sg7"]
 
 [node name="UI" type="Control"]
 layout_mode = 3
@@ -16,8 +18,8 @@ layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_top = -250.0
-offset_right = 234.0
+offset_top = -537.0
+offset_right = 391.0
 grow_vertical = 0
 texture = ExtResource("1_pkdtc")
 region_rect = Rect2(0, 0, 96, 32)
@@ -29,21 +31,65 @@ axis_stretch_horizontal = 2
 axis_stretch_vertical = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="NinePatchRect"]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -102.5
-offset_right = 102.5
-offset_bottom = 90.0
-grow_horizontal = 2
+layout_mode = 0
+offset_left = 7.0
+offset_right = 388.0
+offset_bottom = 123.0
 
-[node name="TextureProgressBar" type="TextureProgressBar" parent="NinePatchRect/VBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="NinePatchRect/VBoxContainer"]
 visible = false
-custom_minimum_size = Vector2(0, 90)
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="BattlerName" type="Label" parent="NinePatchRect/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Battler"
+
+[node name="Hp" type="HBoxContainer" parent="NinePatchRect/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="HpProgressBar" type="TextureProgressBar" parent="NinePatchRect/VBoxContainer/VBoxContainer/Hp"]
+custom_minimum_size = Vector2(180, 80)
 layout_mode = 2
 size_flags_stretch_ratio = 0.0
 value = 100.0
 nine_patch_stretch = true
 texture_over = ExtResource("2_magfp")
 texture_progress = ExtResource("3_mtlye")
+
+[node name="HpLabel" type="Label" parent="NinePatchRect/VBoxContainer/VBoxContainer/Hp"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Hp:
+"
+
+[node name="HpNum" type="Label" parent="NinePatchRect/VBoxContainer/VBoxContainer/Hp"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "100/100
+"
+
+[node name="Mana" type="HBoxContainer" parent="NinePatchRect/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="ManaProgressBar" type="TextureProgressBar" parent="NinePatchRect/VBoxContainer/VBoxContainer/Mana"]
+custom_minimum_size = Vector2(180, 80)
+layout_mode = 2
+size_flags_stretch_ratio = 0.0
+value = 100.0
+nine_patch_stretch = true
+texture_over = ExtResource("4_sajfl")
+texture_progress = ExtResource("5_k4sg7")
+
+[node name="ManaLabel" type="Label" parent="NinePatchRect/VBoxContainer/VBoxContainer/Mana"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "MN:
+"
+
+[node name="ManaNum" type="Label" parent="NinePatchRect/VBoxContainer/VBoxContainer/Mana"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "100/100
+"

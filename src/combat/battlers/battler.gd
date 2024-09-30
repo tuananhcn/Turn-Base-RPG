@@ -25,6 +25,7 @@ signal ready_to_act
 ## player-controlled battlers.
 signal selection_toggled(value: bool)
 signal health_updated(value: int)  # For updating the HP bar
+signal energy_updated(value: int)  # For updating the Mana/Energy bar
 @export var stats: BattlerStats = null
 # Each action's data stored in this array represents an action the battler can perform.
 # These can be anything: attacks, healing spells, etc.
@@ -80,6 +81,7 @@ func _ready() -> void:
 	# That is, copy what it is now and use the copy, so that the original remains unaltered.
 	stats = stats.duplicate()
 	stats.initialize()
+	set_process(true)
 	stats.health_depleted.connect(func on_stats_health_depleted() -> void:
 		is_active = false
 		is_selectable = false
@@ -91,7 +93,8 @@ func _process(delta: float) -> void:
 
 func act(action: BattlerAction, targets: Array[Battler] = []) -> void:
 	stats.energy -= action.energy_cost
-
+	# Emit the energy_updated signal after energy has been changed
+	energy_updated.emit(stats.energy)
 	# action.execute() almost certainly is a coroutine.
 	@warning_ignore("redundant_await")
 	await action.execute(self, targets)

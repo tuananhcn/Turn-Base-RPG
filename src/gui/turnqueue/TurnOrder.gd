@@ -1,6 +1,6 @@
 class_name TurnOrder extends Control
 
-@export var max_visible_turns: int = 5  # Max number of battlers visible in the queue
+@export var max_visible_turns: int = 3  # Max number of battlers visible in the queue
 var turn_queue: Array = []
 @onready var turn_queue_ui = $TurnBar as VBoxContainer  # Assuming you have a node named UITurnBar for the UI
 @onready var active_turn_queue = get_parent().get_node("Battlers") as ActiveTurnQueue
@@ -41,7 +41,7 @@ func create_turn_display(battler: Battler) -> Control:
 
 	# Turn number label (optional)
 	var turn_label = Label.new()
-	turn_label.text = str(battler.readiness) # Assuming battler has a 'turns' property
+	turn_label.text = str(round(battler.readiness)) # Assuming battler has a 'turns' property
 	turn_container.add_child(turn_label)
 
 	return turn_container

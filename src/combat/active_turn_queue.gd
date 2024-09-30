@@ -18,6 +18,8 @@ signal player_turn_finished
 signal skill_selected(action: BattlerAction)
 signal target_selected(targets: Array[Battler])
 signal turn_queue_ready
+var current_battler: Battler = null  # Biến toàn cục để lưu trữ nhân vật hiện tại
+
 @onready var target_indicator_scene = preload("res://assets/gui/01_Flat_Theme/TargetIndicator.tscn")
 # Dictionary to keep track of indicators for each battler
 var indicators = {}
@@ -64,6 +66,7 @@ func _ready() -> void:
 
 	for battler: Battler in _battlers:
 		_combined_turn_queue.append(battler)
+		#battler.readiness = calculate_initial_readiness(battler)
 		battler.ready_to_act.connect(func on_battler_ready_to_act() -> void:
 			if battler.is_player and _is_player_playing:
 				_queued_player_battlers.append(battler)
@@ -75,6 +78,7 @@ func _ready() -> void:
 			if indicators.has(battler):
 				indicators[battler].queue_free()  # Free the indicator node
 				indicators.erase(battler)  # Remove it from the indicators dictionary
+			remove_battler_from_queue(battler)
 			if not _deactivate_if_side_downed(_party_members, false):
 				_deactivate_if_side_downed(_enemies, true)
 		)
@@ -109,7 +113,8 @@ func _play_turn(battler: Battler) -> void:
 	#refresh_turn_queue()
 	# The battler is getting a new turn, so increment its energy count.
 	battler.stats.energy += 1
-
+	battler.energy_updated.emit(battler.stats.energy)
+	current_battler = battler	
 	# The code below makes a list of selectable targets using Battler.is_selectable
 	var potential_targets: Array[Battler] = []
 	var opponents: = _enemies if battler.is_player else _party_members
@@ -146,8 +151,10 @@ func _play_turn(battler: Battler) -> void:
 	else:
 		# Allow the AI to take a turn.
 		if battler.actions.size():
-			action = battler.actions[0]
-			targets = [potential_targets[0]]
+			randomize()
+			action = battler.actions[randi() % battler.actions.size()]
+			var target_index = randi() % potential_targets.size()
+			targets = [potential_targets[target_index]]
 			time_scale = 0
 			await battler.act(action, targets)
 			time_scale = 1.0
@@ -244,3 +251,7 @@ func refresh_turn_queue() -> void:
 func emit_turn_queue_ready() -> void:
 	print("Emitting turn_queue_ready signal")
 	turn_queue_ready.emit()
+func remove_battler_from_queue(battler: Battler) -> void:
+	if _combined_turn_queue.has(battler):
+		_combined_turn_queue.erase(battler)
+		print("Battler", battler.name, "removed from turn queue.")
