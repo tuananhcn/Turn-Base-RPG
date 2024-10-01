@@ -24,6 +24,7 @@ Music="*res://src/common/music/music_player.tscn"
 Transition="*res://src/common/screen_transitions/ScreenTransition.tscn"
 AppConfig="*res://addons/maaacks_options_menus/base/scenes/autoloads/app_config.tscn"
 Dialogic="*res://addons/dialogic/Core/DialogicGameHandler.gd"
+GlobalData="*res://src/GlobalData.gd"
 
 [dialogic]
 

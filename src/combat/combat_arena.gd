@@ -39,8 +39,8 @@ func generate_hp_bars(players: int, enemies: int):
 	 #Clear existing bars for players
 	for bar in player_bars.get_children():
 		bar.queue_free()
-
-	# Clear existing bars for enemies
+#
+	## Clear existing bars for enemies
 	for bar in enemy_bars.get_children():
 		bar.queue_free()
 
@@ -62,9 +62,9 @@ func generate_hp_bars(players: int, enemies: int):
 func update_hp_bar(battler: Battler, is_player: bool, index: int):
 	var hp_percent: float = float(battler.stats.health) / float(battler.stats.max_health) * 100.0
 	if is_player:
-		if index + 1 < player_bars.get_child_count():
-			var player_battler_container = player_bars.get_child(index + 1)
-			
+		if index  < player_bars.get_child_count():
+			var player_battler_container = player_bars.get_child(index )
+			print(player_bars.get_child(index))
 			# Access HP bar and label
 			var hp_bar = player_battler_container.get_node("Hp/HpProgressBar")
 			var hp_label = player_battler_container.get_node("Hp/HpNum")
@@ -73,8 +73,9 @@ func update_hp_bar(battler: Battler, is_player: bool, index: int):
 			hp_bar.value = hp_percent
 			hp_label.text = "%d/%d" % [battler.stats.health, battler.stats.max_health]
 	else:
-		var enemy_battler_container = enemy_bars.get_child(index + 1)
+		var enemy_battler_container = enemy_bars.get_child(index)
 		# Access HP bar and label
+		print(enemy_battler_container)
 		var hp_bar = enemy_battler_container.get_node("Hp/HpProgressBar")
 		var hp_label = enemy_battler_container.get_node("Hp/HpNum")
 		# Update HP
@@ -83,8 +84,8 @@ func update_hp_bar(battler: Battler, is_player: bool, index: int):
 func update_mana_bar(battler: Battler, is_player: bool, index: int):
 	var mana_percent: float = float(battler.stats.energy) / float(battler.stats.base_max_energy) * 100.0
 	if is_player:
-		if index + 1 < player_bars.get_child_count():
-			var player_battler_container = player_bars.get_child(index + 1)
+		if index < player_bars.get_child_count():
+			var player_battler_container = player_bars.get_child(index)
 		# Access Mana bar and label
 			var mana_bar = player_battler_container.get_node("Mana/ManaProgressBar")
 			var mana_label = player_battler_container.get_node("Mana/ManaNum")
@@ -93,7 +94,7 @@ func update_mana_bar(battler: Battler, is_player: bool, index: int):
 			mana_label.text = "%d/%d" % [battler.stats.energy, battler.stats.base_max_energy]
 	else:
 		if index + 1 < enemy_bars.get_child_count():
-			var enemy_battler_container = enemy_bars.get_child(index + 1)
+			var enemy_battler_container = enemy_bars.get_child(index)
 		# Access Mana bar and label
 			var mana_bar = enemy_battler_container.get_node("Mana/ManaProgressBar")
 			var mana_label = enemy_battler_container.get_node("Mana/ManaNum")

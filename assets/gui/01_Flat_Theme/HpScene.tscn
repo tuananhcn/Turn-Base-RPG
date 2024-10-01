@@ -77,7 +77,7 @@ layout_mode = 2
 custom_minimum_size = Vector2(180, 80)
 layout_mode = 2
 size_flags_stretch_ratio = 0.0
-value = 100.0
+max_value = 6.0
 nine_patch_stretch = true
 texture_over = ExtResource("4_sajfl")
 texture_progress = ExtResource("5_k4sg7")
@@ -91,5 +91,5 @@ text = "MN:
 [node name="ManaNum" type="Label" parent="NinePatchRect/VBoxContainer/VBoxContainer/Mana"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 50
-text = "100/100
+text = "0/6
 "

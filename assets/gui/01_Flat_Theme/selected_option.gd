@@ -25,6 +25,3 @@ func show_skills_for_battler(battler: Battler):
 func _on_skill_selected(skill: BattlerAction):
 	print("Selected skill: ", skill.label)
 	hide()
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass

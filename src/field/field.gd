@@ -13,7 +13,6 @@ const PLAYER_CONTROLLER: = preload("res://src/field/gamepieces/controllers/playe
 func _ready() -> void:
 	assert(gameboard)
 	randomize()
-	
 	# The field state must pause/unpause with combat accordingly.
 	# Note that pausing/unpausing input is already wrapped up in triggers, which are what will
 	# initiate combat.

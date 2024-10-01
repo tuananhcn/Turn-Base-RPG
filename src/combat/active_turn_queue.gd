@@ -85,6 +85,30 @@ func _ready() -> void:
 
 		if battler.is_player:
 			_party_members.append(battler)
+			if battler.name == "Knight":
+				var knight_stats = GlobalData.get_player_stats("Knight")
+				battler.stats.max_health = knight_stats.max_health
+				battler.stats.max_energy = knight_stats.max_energy
+				battler.stats.attack = knight_stats.attack
+				battler.stats.defense = knight_stats.defense
+				battler.stats.speed = knight_stats.speed
+				battler.stats.hit_chance = knight_stats.hit_chance
+				battler.stats.evasion = knight_stats.evasion
+				battler.stats.health = knight_stats.max_health  # Fully heal
+				battler.stats.health = knight_stats.current_health  # Use current health
+				battler.stats.energy = knight_stats.current_energy
+			elif battler.name == "Mage":
+				var mage_stats = GlobalData.get_player_stats("Mage")
+				battler.stats.max_health = mage_stats.max_health
+				battler.stats.max_energy = mage_stats.max_energy
+				battler.stats.attack = mage_stats.attack
+				battler.stats.defense = mage_stats.defense
+				battler.stats.speed = mage_stats.speed
+				battler.stats.hit_chance = mage_stats.hit_chance
+				battler.stats.evasion = mage_stats.evasion
+				battler.stats.health = mage_stats.max_health  # Fully heal
+				battler.stats.health = mage_stats.current_health  # Use current health
+				battler.stats.energy = mage_stats.current_energy
 		else:
 			_enemies.append(battler)
 	# Don't begin combat until the state has been setup. I.e. intro animations, UI is ready, etc.
@@ -104,13 +128,21 @@ func _process(_delta: float) -> void:
 	# There are no animations being played. Combat can now finish.
 	set_process(false)
 	combat_finished.emit(_has_player_won)
-
+	if _has_player_won:
+		give_player_exp()
+		for battler in _party_members:
+			if battler.name == "Knight":
+				GlobalData.update_player_health_and_energy("Knight", battler.stats.health, battler.stats.energy)
+			elif battler.name == "Mage":
+				GlobalData.update_player_health_and_energy("Mage", battler.stats.health, battler.stats.energy)    
+		print("Player stats updated in GlobalData after combat.")
 
 func _play_turn(battler: Battler) -> void:
 	var action: BattlerAction
 	var targets: Array[Battler] = []
 	#_combined_turn_queue.append(battler)
 	#refresh_turn_queue()
+	_has_player_won = true
 	# The battler is getting a new turn, so increment its energy count.
 	battler.stats.energy += 1
 	battler.energy_updated.emit(battler.stats.energy)
@@ -255,3 +287,15 @@ func remove_battler_from_queue(battler: Battler) -> void:
 	if _combined_turn_queue.has(battler):
 		_combined_turn_queue.erase(battler)
 		print("Battler", battler.name, "removed from turn queue.")
+func give_player_exp():
+	# Randomize the EXP between 200 and 300
+	randomize()
+	var exp_gained = randi_range(200, 300)
+	
+	# Award EXP to each player-controlled battler
+	for battler in _party_members:
+		GlobalData.add_exp_to_player(battler.name, exp_gained)
+		print(battler.name, "gained", exp_gained, "EXP!")
+
+	# Print a message to indicate EXP gain
+	print("Players gained random EXP after victory:", exp_gained)
