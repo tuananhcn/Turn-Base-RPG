@@ -1,9 +1,9 @@
 [gd_resource type="Resource" script_class="BattlerStats" load_steps=2 format=3 uid="uid://chuarvle06xxf"]
 
-[ext_resource type="Script" path="res://src/combat/battlers/battler_stats.gd" id="1_dv0tm"]
+[ext_resource type="Script" path="res://src/combat/battlers/battler_stats.gd" id="1_7hdq2"]
 
 [resource]
-script = ExtResource("1_dv0tm")
+script = ExtResource("1_7hdq2")
 affinity = 0
 base_max_health = 30
 base_max_energy = 6

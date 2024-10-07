@@ -1,0 +1,134 @@
+[gd_scene load_steps=14 format=3 uid="uid://4s62mhbkiktj"]
+
+[ext_resource type="Script" path="res://src/gui/shop.gd" id="1_5ofyu"]
+[ext_resource type="Texture2D" uid="uid://dprmddovtkxjw" path="res://assets/gui/01_Flat_Theme/Sprites/UI_Flat_Frame_01_Standard.png" id="2_44mmx"]
+[ext_resource type="Texture2D" uid="uid://b2mrqmlay46xb" path="res://assets/gui/01_Flat_Theme/Sprites/UI_Flat_Frame_02_Standard.png" id="3_54teo"]
+[ext_resource type="Texture2D" uid="uid://d4ek77k4fjn3p" path="res://assets/gui/01_Flat_Theme/Sprites/UI_Flat_Cross_Large.png" id="3_sbs1j"]
+[ext_resource type="Texture2D" uid="uid://cdfl8mlx4lur1" path="res://assets/gui/01_Flat_Theme/Sprites/UI_Flat_Slot_02_Available.png" id="4_ku8xh"]
+
+[sub_resource type="Animation" id="Animation_tdwf8"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Panel:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(174, -1100)]
+}
+
+[sub_resource type="Animation" id="Animation_wbcfu"]
+resource_name = "TransIn"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Panel:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(174, -1000), Vector2(174, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_wqeaw"]
+resource_name = "TransOut"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Panel:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(174, 0), Vector2(174, 998)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1en24"]
+_data = {
+"RESET": SubResource("Animation_tdwf8"),
+"TransIn": SubResource("Animation_wbcfu"),
+"TransOut": SubResource("Animation_wqeaw")
+}
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_oks5p"]
+texture = ExtResource("2_44mmx")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_jqh2p"]
+texture = ExtResource("3_54teo")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_o5n8k"]
+texture = ExtResource("3_54teo")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_eab2f"]
+texture = ExtResource("4_ku8xh")
+
+[node name="CanvasLayer" type="CanvasLayer"]
+script = ExtResource("1_5ofyu")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_1en24")
+}
+
+[node name="Panel" type="Panel" parent="."]
+offset_left = 174.0
+offset_top = -1100.0
+offset_right = 1746.0
+offset_bottom = -178.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_oks5p")
+
+[node name="MessageLabel" type="Label" parent="Panel"]
+offset_left = 563.0
+offset_top = 68.0
+offset_right = 779.0
+offset_bottom = 140.0
+text = "Shop"
+horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="Panel"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -174.0
+offset_top = 25.0
+offset_right = -142.0
+offset_bottom = 57.0
+grow_horizontal = 0
+scale = Vector2(4, 4)
+theme_override_font_sizes/font_size = 45
+theme_override_styles/hover = SubResource("StyleBoxTexture_jqh2p")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_o5n8k")
+theme_override_styles/normal = SubResource("StyleBoxTexture_eab2f")
+icon = ExtResource("3_sbs1j")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Panel"]
+layout_mode = 0
+offset_left = 68.0
+offset_top = 196.0
+offset_right = 1496.0
+offset_bottom = 860.0
+
+[node name="GridContainer" type="GridContainer" parent="Panel/ScrollContainer"]
+layout_mode = 2
+columns = 3
+
+[node name="PlayerGold" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 59.0
+offset_top = 71.0
+offset_right = 191.0
+offset_bottom = 143.0
+text = "test"
+
+[connection signal="pressed" from="Panel/Button" to="." method="_on_button_pressed"]

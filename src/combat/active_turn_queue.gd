@@ -136,7 +136,8 @@ func _process(_delta: float) -> void:
 			elif battler.name == "Mage":
 				GlobalData.update_player_health_and_energy("Mage", battler.stats.health, battler.stats.energy)    
 		print("Player stats updated in GlobalData after combat.")
-
+		var inventory = ResourceLoader.load("user://inventory.tres") as Inventory
+		inventory.add(Inventory.ItemTypes.COIN, 1)
 func _play_turn(battler: Battler) -> void:
 	var action: BattlerAction
 	var targets: Array[Battler] = []
@@ -290,12 +291,9 @@ func remove_battler_from_queue(battler: Battler) -> void:
 func give_player_exp():
 	# Randomize the EXP between 200 and 300
 	randomize()
-	var exp_gained = randi_range(200, 300)
 	
 	# Award EXP to each player-controlled battler
 	for battler in _party_members:
+		var exp_gained = randi_range(200, 300)
 		GlobalData.add_exp_to_player(battler.name, exp_gained)
 		print(battler.name, "gained", exp_gained, "EXP!")
-
-	# Print a message to indicate EXP gain
-	print("Players gained random EXP after victory:", exp_gained)

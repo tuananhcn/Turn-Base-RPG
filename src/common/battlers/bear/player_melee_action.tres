@@ -1,13 +1,13 @@
 [gd_resource type="Resource" script_class="AttackBattlerAction" load_steps=3 format=3 uid="uid://dp7wo0l4es3w4"]
 
-[ext_resource type="Texture2D" uid="uid://b8ojjrmvxaf43" path="res://icon.svg" id="1_c4j7k"]
-[ext_resource type="Script" path="res://src/combat/actions/battler_action_attack.gd" id="1_oh0gs"]
+[ext_resource type="Texture2D" uid="uid://b8ojjrmvxaf43" path="res://icon.svg" id="1_nktgp"]
+[ext_resource type="Script" path="res://src/combat/actions/battler_action_attack.gd" id="2_eicvg"]
 
 [resource]
-script = ExtResource("1_oh0gs")
+script = ExtResource("2_eicvg")
 hit_chance = 100.0
 base_damage = 100
-icon = ExtResource("1_c4j7k")
+icon = ExtResource("1_nktgp")
 label = "Base combat action"
 description = "A combat action."
 energy_cost = 0

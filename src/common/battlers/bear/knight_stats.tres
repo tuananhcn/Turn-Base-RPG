@@ -1,9 +1,9 @@
 [gd_resource type="Resource" script_class="BattlerStats" load_steps=2 format=3 uid="uid://ci2upqpdbr5p7"]
 
-[ext_resource type="Script" path="res://src/combat/battlers/battler_stats.gd" id="1_fxl2g"]
+[ext_resource type="Script" path="res://src/combat/battlers/battler_stats.gd" id="1_kx6r6"]
 
 [resource]
-script = ExtResource("1_fxl2g")
+script = ExtResource("1_kx6r6")
 affinity = 0
 base_max_health = 100
 base_max_energy = 6

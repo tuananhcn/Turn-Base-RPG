@@ -1,4 +1,4 @@
-[gd_scene load_steps=91 format=3 uid="uid://p01fb6nvi144"]
+[gd_scene load_steps=90 format=3 uid="uid://p01fb6nvi144"]
 
 [ext_resource type="Script" path="res://src/field/field.gd" id="2_bkxev"]
 [ext_resource type="Script" path="res://src/field/field_cursor.gd" id="5_3guor"]
@@ -73,7 +73,6 @@
 [ext_resource type="AudioStream" uid="uid://dwcre3fjf3cj8" path="res://addons/dialogic/Example Assets/sound-effects/typing5.wav" id="58_br2ni"]
 [ext_resource type="Resource" path="res://maps/opening_cutscene.dtl" id="68_jcriq"]
 [ext_resource type="Script" path="res://src/combat/combat.gd" id="69_meyff"]
-[ext_resource type="PackedScene" uid="uid://4s62mhbkiktj" path="res://src/gui/shop.tscn" id="71_n12l7"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_oktsl"]
 resource_name = "Overlay"
@@ -974,9 +973,5 @@ metadata/_edit_lock_ = true
 [node name="TransitionDelay" type="Timer" parent="Combat/CenterContainer"]
 wait_time = 0.5
 one_shot = true
-
-[node name="Shop" parent="." instance=ExtResource("71_n12l7")]
-offset = Vector2(0, 100)
-transform = Transform2D(1, 0, 0, 1, 0, 100)
 
 [connection signal="area_entered" from="Field/Terrain/Gamepieces/Grove/GameEndTrigger/Area2D2" to="Field/Terrain/Gamepieces/Grove/GameEndTrigger" method="_on_area_entered"]
