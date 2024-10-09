@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://wivtmf75ic3f"]
+[gd_scene load_steps=15 format=3 uid="uid://wivtmf75ic3f"]
 
 [ext_resource type="PackedScene" uid="uid://c6uxju87r2dck" path="res://src/combat/combat_arena.tscn" id="1_etpkf"]
 [ext_resource type="AudioStream" uid="uid://dagiejnj8dwqb" path="res://assets/music/squashin_bugs_fixed.mp3" id="2_vo8mp"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://cviid0h6ehcsu" path="res://assets/battlers/knight_anim.tscn" id="9_m5d7v"]
 [ext_resource type="Resource" uid="uid://ci2upqpdbr5p7" path="res://src/common/battlers/bear/knight_stats.tres" id="9_md7tn"]
 [ext_resource type="Resource" uid="uid://dp7wo0l4es3w4" path="res://src/common/battlers/bear/player_melee_action.tres" id="11_82xso"]
+[ext_resource type="Texture2D" uid="uid://e4b6flk7roy3" path="res://assets/battlers/bugcat.png" id="11_svuca"]
 [ext_resource type="Resource" uid="uid://bn4nqbuhq4ih8" path="res://src/common/battlers/bear/mage_stats.tres" id="12_j58rm"]
 [ext_resource type="PackedScene" uid="uid://cuqqcvkl0d8bw" path="res://assets/battlers/Wizard Pack/mage_anim.tscn" id="12_rxi00"]
 
@@ -50,6 +51,7 @@ script = ExtResource("4_6ngh4")
 stats = ExtResource("9_md7tn")
 actions = Array[ExtResource("6_b04cs")]([ExtResource("11_82xso")])
 is_player = true
+icon = ExtResource("11_svuca")
 metadata/_edit_group_ = true
 
 [node name="KnightAnim" parent="Battlers/Knight" index="0" instance=ExtResource("9_m5d7v")]

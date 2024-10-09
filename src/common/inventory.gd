@@ -3,7 +3,7 @@
 class_name Inventory extends Resource
 
 ## All item types available to add or remove from the inventory.
-enum ItemTypes { KEY, COIN, BOMB, RED_WAND, BLUE_WAND, GREEN_WAND }
+enum ItemTypes { KEY, COIN, BOMB, RED_WAND, BLUE_WAND, GREEN_WAND, CONSUMABLE, EQUIPABLE }
 
 #TODO: I expect we'll want to have a proper inventory definition somewhere. Some folks advocate for
 # spreadsheets, but whatever it is should probably integrate with the editor so that level designers

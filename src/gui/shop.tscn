@@ -88,10 +88,11 @@ offset_bottom = -178.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_oks5p")
 
 [node name="MessageLabel" type="Label" parent="Panel"]
-offset_left = 563.0
-offset_top = 68.0
-offset_right = 779.0
-offset_bottom = 140.0
+layout_mode = 0
+offset_left = 317.0
+offset_top = 71.0
+offset_right = 533.0
+offset_bottom = 143.0
 text = "Shop"
 horizontal_alignment = 1
 

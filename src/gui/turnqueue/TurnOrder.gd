@@ -25,18 +25,22 @@ func create_turn_display(battler: Battler) -> Control:
 	print("create_turn_display")
 	var turn_container = HBoxContainer.new()
 	turn_container.name = "TurnDisplay_" + str(battler.name)  # Optional for debugging
-	turn_container.custom_minimum_size = Vector2(16, 16)  # Fixed size container
+	turn_container.custom_minimum_size = Vector2(128, 128)  # Fixed size container
 
 	# Battler portrait (using TextureRect)
 	var portrait = TextureRect.new()
-	#portrait.custom_minimum_size = Vector2(16, 16)  # Example size (32x32)
-	portrait.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED  # Keeps aspect centered
-
+	portrait.custom_minimum_size = Vector2(128, 128)  # Example size (32x32)
+	portrait.stretch_mode  = TextureRect.STRETCH_KEEP_ASPECT     # Keeps aspect centered
+	portrait.expand_mode  = TextureRect.EXPAND_IGNORE_SIZE     # Keeps aspect centered
 	if battler.icon:
 		portrait.texture = battler.icon  # Use the battler's texture
 	else:
 		portrait.texture = preload("res://icon.svg")  # A fallback texture
 
+	#var portrait_container = Control.new()
+	#portrait_container.rect_min_size  = Vector2(32, 32)  # Set fixed size (32x32 pixels)
+	#portrait_container.add_child(portrait)
+	
 	turn_container.add_child(portrait)
 
 	# Turn number label (optional)

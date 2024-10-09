@@ -1,0 +1,203 @@
+[gd_scene load_steps=6 format=3 uid="uid://c8bg71377pejj"]
+
+[ext_resource type="Texture2D" uid="uid://b45k3aqtn67ud" path="res://assets/equipment/main panel.png" id="1_4dwpx"]
+[ext_resource type="Texture2D" uid="uid://by1n78s0jsimd" path="res://assets/gui/01_Flat_Theme/Sprites/UI_Flat_Banner_01_Downward.png" id="2_isnhp"]
+[ext_resource type="Texture2D" uid="uid://cjeaipi7p6y1k" path="res://assets/equipment/item_slot.png" id="3_o1tyh"]
+[ext_resource type="Texture2D" path="res://assets/battlers/Knight Pack/ghost.atlastex" id="4_g5nd5"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xdy1r"]
+atlas = ExtResource("4_g5nd5")
+
+[node name="Equipment" type="CanvasLayer"]
+
+[node name="NinePatchRect2" type="NinePatchRect" parent="."]
+offset_left = 483.0
+offset_top = 91.0
+offset_right = 712.0
+offset_bottom = 277.0
+scale = Vector2(4, 4)
+texture = ExtResource("1_4dwpx")
+region_rect = Rect2(0, 0, 32, 32)
+patch_margin_left = 7
+patch_margin_top = 7
+patch_margin_right = 7
+patch_margin_bottom = 7
+
+[node name="NinePatchRect" type="NinePatchRect" parent="NinePatchRect2"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = -24.75
+offset_right = 228.0
+offset_bottom = 8.25
+texture = ExtResource("2_isnhp")
+region_rect = Rect2(0, 3, 96, 22)
+
+[node name="Label" type="Label" parent="NinePatchRect2/NinePatchRect"]
+layout_mode = 0
+offset_left = 49.5
+offset_top = 2.25
+offset_right = 177.5
+offset_bottom = 32.25
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+text = "Inventory"
+
+[node name="GridContainer" type="GridContainer" parent="NinePatchRect2"]
+offset_left = 145.75
+offset_top = 29.75
+offset_right = 168.75
+offset_bottom = 50.75
+scale = Vector2(3, 3)
+theme_override_constants/h_separation = 1
+theme_override_constants/v_separation = 1
+columns = 2
+
+[node name="NinePatchRect" type="NinePatchRect" parent="NinePatchRect2/GridContainer"]
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 2
+size_flags_horizontal = 0
+texture = ExtResource("3_o1tyh")
+
+[node name="NinePatchRect2" type="NinePatchRect" parent="NinePatchRect2/GridContainer"]
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 2
+size_flags_horizontal = 0
+texture = ExtResource("3_o1tyh")
+
+[node name="NinePatchRect3" type="NinePatchRect" parent="NinePatchRect2/GridContainer"]
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 2
+size_flags_horizontal = 0
+texture = ExtResource("3_o1tyh")
+
+[node name="NinePatchRect4" type="NinePatchRect" parent="NinePatchRect2/GridContainer"]
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 2
+size_flags_horizontal = 0
+texture = ExtResource("3_o1tyh")
+
+[node name="GridContainer2" type="GridContainer" parent="NinePatchRect2"]
+offset_left = 83.5
+offset_top = 100.75
+offset_right = 125.5
+offset_bottom = 130.75
+scale = Vector2(3, 3)
+theme_override_constants/h_separation = 0
+theme_override_constants/v_separation = 0
+columns = 4
+
+[node name="NinePatchRect" type="NinePatchRect" parent="NinePatchRect2/GridContainer2"]
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 2
+size_flags_horizontal = 0
+texture = ExtResource("3_o1tyh")
+
+[node name="NinePatchRect7" type="NinePatchRect" parent="NinePatchRect2/GridContainer2"]
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 2
+size_flags_horizontal = 0
+texture = ExtResource("3_o1tyh")
+
+[node name="NinePatchRect8" type="NinePatchRect" parent="NinePatchRect2/GridContainer2"]
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 2
+size_flags_horizontal = 0
+texture = ExtResource("3_o1tyh")
+
+[node name="NinePatchRect9" type="NinePatchRect" parent="NinePatchRect2/GridContainer2"]
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 2
+size_flags_horizontal = 0
+texture = ExtResource("3_o1tyh")
+
+[node name="NinePatchRect10" type="NinePatchRect" parent="NinePatchRect2/GridContainer2"]
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 2
+size_flags_horizontal = 0
+texture = ExtResource("3_o1tyh")
+
+[node name="NinePatchRect5" type="NinePatchRect" parent="NinePatchRect2/GridContainer2"]
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 2
+size_flags_horizontal = 0
+texture = ExtResource("3_o1tyh")
+
+[node name="NinePatchRect6" type="NinePatchRect" parent="NinePatchRect2/GridContainer2"]
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 2
+size_flags_horizontal = 0
+texture = ExtResource("3_o1tyh")
+
+[node name="NinePatchRect2" type="NinePatchRect" parent="NinePatchRect2/GridContainer2"]
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 2
+size_flags_horizontal = 0
+texture = ExtResource("3_o1tyh")
+
+[node name="TextureRect" type="TextureRect" parent="NinePatchRect2"]
+layout_mode = 0
+offset_left = 80.25
+offset_top = 32.25
+offset_right = 96.25
+offset_bottom = 48.25
+scale = Vector2(4, 4)
+texture = SubResource("AtlasTexture_xdy1r")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="NinePatchRect2"]
+layout_mode = 0
+offset_left = 120.0
+offset_top = 7.0
+offset_right = 209.0
+offset_bottom = 31.0
+theme_override_constants/separation = 1
+
+[node name="Button" type="Button" parent="NinePatchRect2/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Knight"
+
+[node name="Button2" type="Button" parent="NinePatchRect2/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Mage"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="NinePatchRect2"]
+offset_left = 19.0
+offset_top = 26.0
+offset_right = 70.0
+offset_bottom = 169.0
+
+[node name="Label" type="Label" parent="NinePatchRect2/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 15
+text = "Attack"
+
+[node name="Label6" type="Label" parent="NinePatchRect2/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 15
+text = "Attack"
+
+[node name="Label7" type="Label" parent="NinePatchRect2/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 15
+text = "Attack"
+
+[node name="Label2" type="Label" parent="NinePatchRect2/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 15
+text = "Attack"
+
+[node name="Label3" type="Label" parent="NinePatchRect2/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 15
+text = "Attack"
+
+[node name="Label4" type="Label" parent="NinePatchRect2/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 15
+text = "Attack"
+
+[node name="Label5" type="Label" parent="NinePatchRect2/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 15
+text = "Attack"

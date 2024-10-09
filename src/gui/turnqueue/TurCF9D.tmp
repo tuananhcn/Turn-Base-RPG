@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://c5w17hum6hdkk"]
+
+[ext_resource type="Script" path="res://src/gui/turnqueue/TurnOrder.gd" id="1"]
+
+[node name="TurnOrder" type="Control"]
+layout_mode = 3
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+script = ExtResource("1")
+
+[node name="TurnBar" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 300.0
+offset_bottom = 500.0
