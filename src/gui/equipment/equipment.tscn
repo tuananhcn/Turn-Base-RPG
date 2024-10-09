@@ -1,11 +1,14 @@
-[gd_scene load_steps=8 format=3 uid="uid://c8bg71377pejj"]
+[gd_scene load_steps=11 format=3 uid="uid://c8bg71377pejj"]
 
 [ext_resource type="Texture2D" uid="uid://b45k3aqtn67ud" path="res://assets/equipment/main panel.png" id="1_4dwpx"]
 [ext_resource type="Script" path="res://src/gui/equipment/equipment.gd" id="1_xqqv8"]
 [ext_resource type="Texture2D" uid="uid://by1n78s0jsimd" path="res://assets/gui/01_Flat_Theme/Sprites/UI_Flat_Banner_01_Downward.png" id="2_isnhp"]
 [ext_resource type="Texture2D" uid="uid://cjeaipi7p6y1k" path="res://assets/equipment/item_slot.png" id="3_o1tyh"]
-[ext_resource type="Texture2D" path="res://assets/battlers/Knight Pack/ghost.atlastex" id="4_g5nd5"]
+[ext_resource type="Texture2D" uid="uid://dopua6orsf0bs" path="res://assets/characters/ ghost.atlastex" id="4_g5nd5"]
 [ext_resource type="Texture2D" uid="uid://b14ao4liw6hs" path="res://assets/equipment/placeholder_chest.png" id="5_7r310"]
+[ext_resource type="Texture2D" uid="uid://8edyvvqffver" path="res://assets/equipment/placeholder_head.png" id="6_nhvwm"]
+[ext_resource type="Texture2D" uid="uid://o88phap7sd8s" path="res://assets/equipment/placeholder_main_hand.png" id="7_jk11a"]
+[ext_resource type="Texture2D" uid="uid://ces7p8qchxe7c" path="res://assets/equipment/placeholder_offhand.png" id="8_jly4e"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xdy1r"]
 atlas = ExtResource("4_g5nd5")
@@ -15,9 +18,9 @@ script = ExtResource("1_xqqv8")
 
 [node name="NinePatchRect2" type="NinePatchRect" parent="."]
 offset_left = 483.0
-offset_top = 91.0
+offset_top = 181.0
 offset_right = 712.0
-offset_bottom = 277.0
+offset_bottom = 367.0
 scale = Vector2(4, 4)
 texture = ExtResource("1_4dwpx")
 region_rect = Rect2(0, 0, 32, 32)
@@ -29,23 +32,14 @@ patch_margin_bottom = 7
 [node name="NinePatchRect" type="NinePatchRect" parent="NinePatchRect2"]
 layout_mode = 0
 offset_left = 2.0
-offset_top = -24.75
+offset_top = -25.0
 offset_right = 228.0
-offset_bottom = 8.25
+offset_bottom = 8.0
 texture = ExtResource("2_isnhp")
 region_rect = Rect2(0, 3, 96, 22)
 
-[node name="Label" type="Label" parent="NinePatchRect2/NinePatchRect"]
-layout_mode = 0
-offset_left = 49.5
-offset_top = 2.25
-offset_right = 177.5
-offset_bottom = 32.25
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 40
-text = "Inventory"
-
 [node name="GridContainer" type="GridContainer" parent="NinePatchRect2"]
+layout_mode = 0
 offset_left = 145.75
 offset_top = 29.75
 offset_right = 168.75
@@ -58,7 +52,8 @@ columns = 2
 [node name="WeaponSlot" type="NinePatchRect" parent="NinePatchRect2/GridContainer"]
 custom_minimum_size = Vector2(10, 10)
 layout_mode = 2
-size_flags_horizontal = 0
+size_flags_horizontal = 8
+size_flags_vertical = 4
 texture = ExtResource("3_o1tyh")
 
 [node name="TextureRect" type="TextureRect" parent="NinePatchRect2/GridContainer/WeaponSlot"]
@@ -66,12 +61,13 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -5.0
-offset_top = -5.0
-offset_right = 5.0
-offset_bottom = 5.0
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 12.0
+offset_bottom = 11.0
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(0.4, 0.4)
 texture = ExtResource("5_7r310")
 
 [node name="ArmorSlot" type="NinePatchRect" parent="NinePatchRect2/GridContainer"]
@@ -80,11 +76,39 @@ layout_mode = 2
 size_flags_horizontal = 0
 texture = ExtResource("3_o1tyh")
 
+[node name="TextureRect" type="TextureRect" parent="NinePatchRect2/GridContainer/ArmorSlot"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 12.0
+offset_bottom = 11.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("6_nhvwm")
+
 [node name="HeadSlot" type="NinePatchRect" parent="NinePatchRect2/GridContainer"]
 custom_minimum_size = Vector2(10, 10)
 layout_mode = 2
 size_flags_horizontal = 0
 texture = ExtResource("3_o1tyh")
+
+[node name="TextureRect" type="TextureRect" parent="NinePatchRect2/GridContainer/HeadSlot"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 12.0
+offset_bottom = 11.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("7_jk11a")
 
 [node name="AccessorySlot" type="NinePatchRect" parent="NinePatchRect2/GridContainer"]
 custom_minimum_size = Vector2(10, 10)
@@ -92,7 +116,22 @@ layout_mode = 2
 size_flags_horizontal = 0
 texture = ExtResource("3_o1tyh")
 
+[node name="TextureRect" type="TextureRect" parent="NinePatchRect2/GridContainer/AccessorySlot"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 12.0
+offset_bottom = 11.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("8_jly4e")
+
 [node name="GridContainer2" type="GridContainer" parent="NinePatchRect2"]
+layout_mode = 0
 offset_left = 83.5
 offset_top = 100.75
 offset_right = 125.5
@@ -159,61 +198,80 @@ offset_bottom = 48.25
 scale = Vector2(4, 4)
 texture = SubResource("AtlasTexture_xdy1r")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="NinePatchRect2"]
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 383.0
+offset_top = -25.0
+offset_right = 423.0
+offset_bottom = 15.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control"]
 layout_mode = 0
-offset_left = 120.0
-offset_top = 7.0
-offset_right = 209.0
-offset_bottom = 31.0
+offset_left = 176.0
+offset_top = 310.0
+offset_right = 421.0
+offset_bottom = 845.0
+theme_override_constants/separation = 53
+
+[node name="Label" type="Label" parent="Control/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Attack"
+
+[node name="Label6" type="Label" parent="Control/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Attack"
+
+[node name="Label7" type="Label" parent="Control/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Attack"
+
+[node name="Label2" type="Label" parent="Control/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Attack"
+
+[node name="Label3" type="Label" parent="Control/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Attack"
+
+[node name="Label4" type="Label" parent="Control/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Attack"
+
+[node name="Label5" type="Label" parent="Control/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Attack"
+
+[node name="Label" type="Label" parent="Control"]
+offset_left = 321.0
+offset_top = 126.0
+offset_right = 799.0
+offset_bottom = 239.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 150
+text = "Inventory"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control"]
+layout_mode = 0
+offset_left = 567.0
+offset_top = 234.0
+offset_right = 941.0
+offset_bottom = 318.0
 theme_override_constants/separation = 1
 
-[node name="Button" type="Button" parent="NinePatchRect2/HBoxContainer"]
+[node name="Button" type="Button" parent="Control/HBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 100
 text = "Knight"
 
-[node name="Button2" type="Button" parent="NinePatchRect2/HBoxContainer"]
+[node name="Button2" type="Button" parent="Control/HBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 100
 text = "Mage"
-
-[node name="VBoxContainer" type="VBoxContainer" parent="NinePatchRect2"]
-offset_left = 19.0
-offset_top = 26.0
-offset_right = 70.0
-offset_bottom = 169.0
-
-[node name="Label" type="Label" parent="NinePatchRect2/VBoxContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 15
-text = "Attack"
-
-[node name="Label6" type="Label" parent="NinePatchRect2/VBoxContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 15
-text = "Attack"
-
-[node name="Label7" type="Label" parent="NinePatchRect2/VBoxContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 15
-text = "Attack"
-
-[node name="Label2" type="Label" parent="NinePatchRect2/VBoxContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 15
-text = "Attack"
-
-[node name="Label3" type="Label" parent="NinePatchRect2/VBoxContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 15
-text = "Attack"
-
-[node name="Label4" type="Label" parent="NinePatchRect2/VBoxContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 15
-text = "Attack"
-
-[node name="Label5" type="Label" parent="NinePatchRect2/VBoxContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 15
-text = "Attack"
