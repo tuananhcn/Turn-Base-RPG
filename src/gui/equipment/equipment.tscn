@@ -1,14 +1,17 @@
-[gd_scene load_steps=6 format=3 uid="uid://c8bg71377pejj"]
+[gd_scene load_steps=8 format=3 uid="uid://c8bg71377pejj"]
 
 [ext_resource type="Texture2D" uid="uid://b45k3aqtn67ud" path="res://assets/equipment/main panel.png" id="1_4dwpx"]
+[ext_resource type="Script" path="res://src/gui/equipment/equipment.gd" id="1_xqqv8"]
 [ext_resource type="Texture2D" uid="uid://by1n78s0jsimd" path="res://assets/gui/01_Flat_Theme/Sprites/UI_Flat_Banner_01_Downward.png" id="2_isnhp"]
 [ext_resource type="Texture2D" uid="uid://cjeaipi7p6y1k" path="res://assets/equipment/item_slot.png" id="3_o1tyh"]
 [ext_resource type="Texture2D" path="res://assets/battlers/Knight Pack/ghost.atlastex" id="4_g5nd5"]
+[ext_resource type="Texture2D" uid="uid://b14ao4liw6hs" path="res://assets/equipment/placeholder_chest.png" id="5_7r310"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xdy1r"]
 atlas = ExtResource("4_g5nd5")
 
 [node name="Equipment" type="CanvasLayer"]
+script = ExtResource("1_xqqv8")
 
 [node name="NinePatchRect2" type="NinePatchRect" parent="."]
 offset_left = 483.0
@@ -52,25 +55,38 @@ theme_override_constants/h_separation = 1
 theme_override_constants/v_separation = 1
 columns = 2
 
-[node name="NinePatchRect" type="NinePatchRect" parent="NinePatchRect2/GridContainer"]
+[node name="WeaponSlot" type="NinePatchRect" parent="NinePatchRect2/GridContainer"]
 custom_minimum_size = Vector2(10, 10)
 layout_mode = 2
 size_flags_horizontal = 0
 texture = ExtResource("3_o1tyh")
 
-[node name="NinePatchRect2" type="NinePatchRect" parent="NinePatchRect2/GridContainer"]
+[node name="TextureRect" type="TextureRect" parent="NinePatchRect2/GridContainer/WeaponSlot"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -5.0
+offset_top = -5.0
+offset_right = 5.0
+offset_bottom = 5.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_7r310")
+
+[node name="ArmorSlot" type="NinePatchRect" parent="NinePatchRect2/GridContainer"]
 custom_minimum_size = Vector2(10, 10)
 layout_mode = 2
 size_flags_horizontal = 0
 texture = ExtResource("3_o1tyh")
 
-[node name="NinePatchRect3" type="NinePatchRect" parent="NinePatchRect2/GridContainer"]
+[node name="HeadSlot" type="NinePatchRect" parent="NinePatchRect2/GridContainer"]
 custom_minimum_size = Vector2(10, 10)
 layout_mode = 2
 size_flags_horizontal = 0
 texture = ExtResource("3_o1tyh")
 
-[node name="NinePatchRect4" type="NinePatchRect" parent="NinePatchRect2/GridContainer"]
+[node name="AccessorySlot" type="NinePatchRect" parent="NinePatchRect2/GridContainer"]
 custom_minimum_size = Vector2(10, 10)
 layout_mode = 2
 size_flags_horizontal = 0
