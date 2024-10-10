@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Equipable" load_steps=2 format=3 uid="uid://b2s5smacgd8b0"]
+
+[ext_resource type="Script" path="res://src/combat/equipable/Equipable.gd" id="1_ojrog"]
+
+[resource]
+script = ExtResource("1_ojrog")
+name = ""
+attack_bonus = 0
+defense_bonus = 0
+max_health_bonus = 0
+max_energy_bonus = 0
+speed_bonus = 0
+hit_chance_bonus = 0
+evasion_bonus = 0
+equipped = false

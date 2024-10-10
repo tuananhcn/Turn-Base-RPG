@@ -3,7 +3,7 @@
 class_name Inventory extends Resource
 
 ## All item types available to add or remove from the inventory.
-enum ItemTypes { KEY, COIN, BOMB, RED_WAND, BLUE_WAND, GREEN_WAND, CONSUMABLE, EQUIPABLE }
+enum ItemTypes { KEY, COIN, BOMB, RED_WAND, BLUE_WAND, GREEN_WAND, HP, EP, SWORD1, SWORD2, SWORD3 }
 
 #TODO: I expect we'll want to have a proper inventory definition somewhere. Some folks advocate for
 # spreadsheets, but whatever it is should probably integrate with the editor so that level designers
@@ -16,6 +16,10 @@ const ICONS: = {
 	ItemTypes.RED_WAND: preload("res://assets/items/wand_red.atlastex"),
 	ItemTypes.BLUE_WAND: preload("res://assets/items/wand_blue.atlastex"),
 	ItemTypes.GREEN_WAND: preload("res://assets/items/wand_green.atlastex"),
+	ItemTypes.HP: preload("res://assets/items/HpPotion.atlastex"),
+	ItemTypes.SWORD1: preload("res://assets/items/sword1.atlastex"),
+	ItemTypes.SWORD2: preload("res://assets/items/sword2.atlastex"),
+	ItemTypes.SWORD3: preload("res://assets/items/sword3.atlastex"),
 }
 
 const INVENTORY_PATH: = "user://inventory.tres"
@@ -80,3 +84,4 @@ static func get_item_icon(item_type: ItemTypes) -> Texture:
 ## Write the inventory contents to the disk.
 func save() -> void:
 	ResourceSaver.save(self, INVENTORY_PATH)
+# Load the Equipable weapon from the .tres file and add it to the inventory for debugging

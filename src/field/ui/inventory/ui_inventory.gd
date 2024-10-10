@@ -12,10 +12,12 @@ var _ITEM_SCENE: = preload("res://src/field/ui/inventory/ui_inventory_item.tscn"
 
 func _ready() -> void:
 	var inventory: = Inventory.restore()
-	
 	for item_name in Inventory.ItemTypes:
 		_update_item(Inventory.ItemTypes[item_name], inventory)
 	inventory.item_changed.connect(_on_inventory_item_changed.bind(inventory))
+	inventory.add(inventory.ItemTypes.SWORD1, 1)
+	inventory.add(inventory.ItemTypes.SWORD2, 1)
+	inventory.add(inventory.ItemTypes.SWORD3, 1)
 
 
 func get_ui_item(item_id: Inventory.ItemTypes) -> UIInventoryItem:
