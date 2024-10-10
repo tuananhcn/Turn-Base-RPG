@@ -325,42 +325,47 @@ offset_left = 176.0
 offset_top = 310.0
 offset_right = 421.0
 offset_bottom = 845.0
-theme_override_constants/separation = 53
+theme_override_constants/separation = 42
 
-[node name="Label" type="Label" parent="Label&Button/Stats"]
+[node name="Level" type="Label" parent="Label&Button/Stats"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 40
-text = "Attack"
+text = "Level: "
 
-[node name="Label6" type="Label" parent="Label&Button/Stats"]
+[node name="Hp" type="Label" parent="Label&Button/Stats"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 40
-text = "Attack"
+text = "Hp:"
 
-[node name="Label7" type="Label" parent="Label&Button/Stats"]
+[node name="Energy" type="Label" parent="Label&Button/Stats"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 40
-text = "Attack"
+text = "Energy:"
 
-[node name="Label2" type="Label" parent="Label&Button/Stats"]
+[node name="Atk" type="Label" parent="Label&Button/Stats"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 40
-text = "Attack"
+text = "Attack:"
 
-[node name="Label3" type="Label" parent="Label&Button/Stats"]
+[node name="Defend" type="Label" parent="Label&Button/Stats"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 40
-text = "Attack"
+text = "Defend:"
 
-[node name="Label4" type="Label" parent="Label&Button/Stats"]
+[node name="Speed" type="Label" parent="Label&Button/Stats"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 40
-text = "Attack"
+text = "Speed:"
 
-[node name="Label5" type="Label" parent="Label&Button/Stats"]
+[node name="Hitchance" type="Label" parent="Label&Button/Stats"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 40
-text = "Attack"
+text = "Hitchance:"
+
+[node name="Evasion" type="Label" parent="Label&Button/Stats"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Evasion:"
 
 [node name="Label" type="Label" parent="Label&Button"]
 layout_mode = 0
@@ -390,9 +395,5 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 100
 text = "Mage"
 
-[node name="NinePatchRect" type="NinePatchRect" parent="Label&Button"]
-layout_mode = 0
-offset_left = 367.0
-offset_top = 490.0
-offset_right = 407.0
-offset_bottom = 530.0
+[connection signal="pressed" from="Label&Button/PlayerButton/Button" to="." method="switch_to_knight"]
+[connection signal="pressed" from="Label&Button/PlayerButton/Button2" to="." method="switch_to_mage"]

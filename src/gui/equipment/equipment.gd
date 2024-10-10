@@ -5,13 +5,40 @@ extends CanvasLayer
 @onready var head_slot = $Panel/GridContainer/HeadSlot
 @onready var accessory_slot = $Panel/GridContainer/AccessorySlot
 @onready var equipment_inventory_ui = $Panel/GridContainer2
+@onready var level_label = get_node("Label&Button/Stats/Level")
+@onready var hp_label = get_node("Label&Button/Stats/Hp")
+@onready var energy_label = get_node("Label&Button/Stats/Energy")
+@onready var attack_label = get_node("Label&Button/Stats/Atk")
+@onready var defense_label = get_node("Label&Button/Stats/Defend")
+@onready var speed_label = get_node("Label&Button/Stats/Speed")
+@onready var hit_chance_label = get_node("Label&Button/Stats/Hitchance")
+@onready var evasion_label = get_node("Label&Button/Stats/Evasion")
 @onready var inventory = Inventory.restore()
+# Load the knight stats from the .tres file
+#var knight_stats = load("res://src/common/battlers/bear/knight_stats.tres") as Resource
+
+# Load the mage stats if available (example path)
+#var mage_stats = load("res://src/common/battlers/mage/mage_stats.tres") as Resource
+
 # Called when the node enters the scene tree for the first time.
+# Set default battler to Knight
+var current_battler = "Knight"  # Default
+var current_stats   # Default stats are Knight's stats
+
 func _ready():
 	weapon_slot.get_child(0).pressed.connect(_on_slot_pressed.bind("Weapon"))
 	armor_slot.get_child(0).pressed.connect(_on_slot_pressed.bind("Armor"))
 	head_slot.get_child(0).pressed.connect(_on_slot_pressed.bind("Head"))
 	accessory_slot.get_child(0).pressed.connect(_on_slot_pressed.bind("Accessory"))
+	assert(level_label is Label, "level_label is not a valid Label node!")
+	assert(hp_label is Label, "hp_label is not a valid Label node!")
+	assert(energy_label is Label, "energy_label is not a valid Label node!")
+	assert(attack_label is Label, "attack_label is not a valid Label node!")
+	assert(defense_label is Label, "defense_label is not a valid Label node!")
+	assert(speed_label is Label, "speed_label is not a valid Label node!")
+	assert(hit_chance_label is Label, "hit_chance_label is not a valid Label node!")
+	assert(evasion_label is Label, "evasion_label is not a valid Label node!")
+	update_stats_for_battler()
 func _on_slot_pressed(slot_type: String) -> void:
 	show_equipment_inventory(slot_type)
 
@@ -60,3 +87,25 @@ func equipable_type_matches_slot(equipable_type: Equipable.EquipableType, slot_t
 		"Accessory":
 			return equipable_type == Equipable.EquipableType.ACCESSORY
 	return false
+func update_stats_for_battler():
+	var player_stats = GlobalData.get_player_stats(current_battler)
+	
+	# Update stat labels
+	level_label.text = "Level: " + str(player_stats.get("level", 1))  # Default to 1 if level is missing
+	hp_label.text = "HP: " + str(player_stats.get("current_health", 0)) + "/" + str(player_stats.get("max_health", 100))
+	energy_label.text = "Energy: " + str(player_stats.get("current_energy", 0)) + "/" + str(player_stats.get("max_energy", 100))
+	attack_label.text = "Attack: " + str(player_stats.get("attack", 0))
+	defense_label.text = "Defense: " + str(player_stats.get("defense", 0))
+	speed_label.text = "Speed: " + str(player_stats.get("speed", 0))
+	hit_chance_label.text = "Hit Chance: " + str(player_stats.get("hit_chance", 0)) + "%"
+	evasion_label.text = "Evasion: " + str(player_stats.get("evasion", 0)) + "%"
+
+
+func switch_to_knight() -> void:
+	current_battler = "Knight"
+	update_stats_for_battler()  # Refresh stats for Knight
+
+
+func switch_to_mage() -> void:
+	current_battler = "Mage"
+	update_stats_for_battler()  # Refresh stats for Mage
