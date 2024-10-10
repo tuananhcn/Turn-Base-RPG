@@ -14,6 +14,12 @@ extends CanvasLayer
 @onready var hit_chance_label = get_node("Label&Button/Stats/Hitchance")
 @onready var evasion_label = get_node("Label&Button/Stats/Evasion")
 @onready var inventory = Inventory.restore()
+var equipped_items = {
+	"Weapon": null,
+	"Armor": null,
+	"Head": null,
+	"Accessory": null
+}
 # Load the knight stats from the .tres file
 #var knight_stats = load("res://src/common/battlers/bear/knight_stats.tres") as Resource
 
@@ -76,6 +82,9 @@ func show_equipment_inventory(slot_type: String) -> void:
 			var texture_button = child.get_child(0) if child.get_child_count() > 0 else null
 			if texture_button and texture_button is TextureButton:
 				texture_button.texture_normal = Inventory.get_item_icon(items_to_display[i])  # Set the item icon
+				if texture_button.is_connected("pressed",_on_item_pressed):
+					texture_button.disconnect("pressed", _on_item_pressed)
+				texture_button.pressed.connect(_on_item_pressed.bind(items_to_display[i]))  # Connect the click event
 func equipable_type_matches_slot(equipable_type: Equipable.EquipableType, slot_type: String) -> bool:
 	match slot_type:
 		"Weapon":
@@ -89,7 +98,7 @@ func equipable_type_matches_slot(equipable_type: Equipable.EquipableType, slot_t
 	return false
 func update_stats_for_battler():
 	var player_stats = GlobalData.get_player_stats(current_battler)
-	
+	current_stats = player_stats
 	# Update stat labels
 	level_label.text = "Level: " + str(player_stats.get("level", 1))  # Default to 1 if level is missing
 	hp_label.text = "HP: " + str(player_stats.get("current_health", 0)) + "/" + str(player_stats.get("max_health", 100))
@@ -99,7 +108,7 @@ func update_stats_for_battler():
 	speed_label.text = "Speed: " + str(player_stats.get("speed", 0))
 	hit_chance_label.text = "Hit Chance: " + str(player_stats.get("hit_chance", 0)) + "%"
 	evasion_label.text = "Evasion: " + str(player_stats.get("evasion", 0)) + "%"
-
+	update_equipped_item_icons()
 
 func switch_to_knight() -> void:
 	current_battler = "Knight"
@@ -109,3 +118,100 @@ func switch_to_knight() -> void:
 func switch_to_mage() -> void:
 	current_battler = "Mage"
 	update_stats_for_battler()  # Refresh stats for Mage
+func update_equipped_item_icons():
+	for slot in equipped_items.keys():
+		var item = equipped_items[slot]
+		var slot_button = get_slot_button_for_type(slot)  # Helper function to get the button for the slot
+		if item:
+			slot_button.texture_normal = item.icon  # Show the equipped item icon
+		else:
+			match slot:
+				"Weapon":
+					slot_button.texture_normal = load("res://assets/equipment/placeholder_main_hand.png")
+				"Armor":
+					slot_button.texture_normal = load("res://assets/equipment/placeholder_chest.png")
+				"Head":
+					slot_button.texture_normal = load("res://assets/equipment/placeholder_head.png")
+				"Accessory":
+					slot_button.texture_normal = load("res://assets/equipment/placeholder_offhand.png")
+
+# Helper function to get the button for a specific slot type (Weapon, Armor, etc.)
+func get_slot_button_for_type(slot_type: String) -> TextureButton:
+	match slot_type:
+		"Weapon":
+			return weapon_slot.get_child(0)
+		"Armor":
+			return armor_slot.get_child(0)
+		"Head":
+			return head_slot.get_child(0)
+		"Accessory":
+			return accessory_slot.get_child(0)
+	return null
+func _on_item_pressed(item_type: Inventory.ItemTypes) -> void:
+	var item_name = inventory.ItemTypes.keys()[item_type]  # Get the enum name from the type value
+	print("Item pressed: ", item_name)
+
+	# Load the clicked item
+	var file_path = "res://src/combat/equipable/" + item_name.to_lower() + ".tres"
+	if FileAccess.file_exists(file_path):
+		var clicked_item = load(file_path) as Equipable
+		
+		if clicked_item:
+			# Check if the item is already equipped
+			var player_data = GlobalData.get_player_data(current_battler)  # Get dictionary-based stats
+			var player_stats = dictionary_to_battler_stats(player_data)  # Convert to BattlerStats
+			clicked_item.init_equipable(player_stats)
+			var slot_type = get_slot_type_for_item(clicked_item.equipable_type)
+			if equipped_items[slot_type] == clicked_item:
+				# Unequip if the item is already equipped
+				unequip_item(slot_type)
+			else:
+				# Equip the item if not already equipped
+				unequip_item(slot_type)  # Unequip the currently equipped item in the slot
+				equip_item(clicked_item, slot_type)
+			
+			# Update the stats and the UI
+			update_stats_for_battler()
+func equip_item(item: Equipable, slot_type: String) -> void:
+	equipped_items[slot_type] = item  # Track the equipped item
+	item.equip()  # Apply the bonuses from this item
+	print("Equipped: ", item.name)
+
+# Unequip the currently equipped item in the specified slot
+func unequip_item(slot_type: String) -> void:
+	var item = equipped_items[slot_type]
+	if item:
+		item.unequip()  # Remove the bonuses from this item
+		equipped_items[slot_type] = null  # Clear the slot
+		print("Unequipped: ", item.name)
+func get_slot_type_for_item(equipable_type: Equipable.EquipableType) -> String:
+	match equipable_type:
+		Equipable.EquipableType.WEAPON:
+			return "Weapon"
+		Equipable.EquipableType.ARMOR:
+			return "Armor"
+		Equipable.EquipableType.HEAD:
+			return "Head"
+		Equipable.EquipableType.ACCESSORY:
+			return "Accessory"
+	return ""
+func dictionary_to_battler_stats(player_data: Dictionary) -> BattlerStats:
+	var stats = BattlerStats.new()
+	
+	# Assign base stats
+	stats.base_max_health = player_data.get("max_health", 100)
+	stats.max_health = stats.base_max_health
+	stats.health = player_data.get("current_health", stats.max_health)
+	stats.base_max_energy = player_data.get("max_energy", 6)
+	stats.max_energy = stats.base_max_energy
+	stats.energy = player_data.get("current_energy", stats.max_energy)
+	stats.base_attack = player_data.get("attack", 10)
+	stats.base_defense = player_data.get("defense", 10)
+	stats.base_speed = player_data.get("speed", 70)
+	stats.base_hit_chance = player_data.get("hit_chance", 100)
+	stats.base_evasion = player_data.get("evasion", 0)
+	
+	# Initialize the stats
+	stats.initialize()
+	
+	return stats

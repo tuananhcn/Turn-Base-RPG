@@ -1,5 +1,4 @@
 extends CanvasLayer
-signal open_shop
 
 @export var items = [
 	{
@@ -32,7 +31,7 @@ func _ready() -> void:
 	Dialogic.signal_event.connect(DialogicSignal)
 var is_shop_open = false
 
-func _input(event):
+func _input(_event):
 	if not is_shop_open:
 		return 
 func play_trans_in():

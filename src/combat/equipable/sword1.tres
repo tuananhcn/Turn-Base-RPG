@@ -15,3 +15,5 @@ speed_bonus = 1
 hit_chance_bonus = 1
 evasion_bonus = 1
 equipped = false
+description = "Test"
+equipable_type = 0

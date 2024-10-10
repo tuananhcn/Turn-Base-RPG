@@ -89,12 +89,20 @@ func add_modifier(stat_name: String, value: int) -> int:
 	assert(stat_name in MODIFIABLE_STATS, "Trying to add a modifier to a nonexistent stat.")
 
 	var id := _generate_unique_id(stat_name, true)
+	print("Generated ID for", stat_name, ":", id)
+	print("Adding modifier for", stat_name, "with value:", value)
+
 	_modifiers[stat_name][id] = value
+	print("Modifier added for", stat_name, ": ", _modifiers[stat_name][id])
+
+	# Check that the dictionary is correctly updated
+	print("Modifiers for", stat_name, ": ", _modifiers[stat_name])
+
+	# Recalculate stats after adding the modifier
 	_recalculate_and_update(stat_name)
 
-	# Returning the id allows the caller to bind it to a signal. For instance
-	# with equpment, to call `remove_modifier()` upon removing the equipment.
 	return id
+
 
 
 ## Adds a multiplier that affects the stat with the given `stat_name` and returns its unique id.
@@ -112,7 +120,7 @@ func add_multiplier(stat_name: String, value: float) -> int:
 func remove_modifier(stat_name: String, id: int) -> void:
 	assert(id in _modifiers[stat_name], "Stat %s does not have a modifier with ID '%s'." % [id,
 		_modifiers[stat_name]])
-
+	print("Removing modifier for stat: ", stat_name, " with ID: ", id)  # Debug output
 	_modifiers[stat_name].erase(id)
 	_recalculate_and_update(stat_name)
 
@@ -171,8 +179,8 @@ func _generate_unique_id(stat_name: String, is_modifier := true) -> int:
 	if not is_modifier:
 		dictionary = _multipliers
 
-	# If there are no keys, we return `0`, which is our first valid unique id. Without existing
-	# keys, calling methods like `Array.back()` will trigger an error.
+	# If there are no keys, we return 0, which is our first valid unique id. Without existing
+	# keys, calling methods like Array.back() will trigger an error.
 	var keys: Array = dictionary[stat_name].keys()
 	if keys.is_empty():
 		return 0
@@ -180,3 +188,12 @@ func _generate_unique_id(stat_name: String, is_modifier := true) -> int:
 		# We always start from the last key, which will always be the highest number, even if we
 		# remove modifiers.
 		return keys.back() + 1
+func remove_modifier_if_exists(stat_name: String) -> void:
+	var id = _modifiers[stat_name]
+	if id != null and id in _modifiers[stat_name]:
+		_modifiers[stat_name].erase(id)
+		_modifiers[stat_name] = null  # Clear the ID after removal
+		_recalculate_and_update(stat_name)
+		print("Removed modifier for", stat_name, "with ID", id)
+	else:
+		print("No modifier to remove for stat:", stat_name)

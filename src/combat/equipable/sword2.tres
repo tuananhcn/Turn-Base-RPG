@@ -1,15 +1,19 @@
-[gd_resource type="Resource" script_class="Equipable" load_steps=2 format=3 uid="uid://b2s5smacgd8b0"]
+[gd_resource type="Resource" script_class="Equipable" load_steps=3 format=3 uid="uid://b2s5smacgd8b0"]
 
 [ext_resource type="Script" path="res://src/combat/equipable/Equipable.gd" id="1_ojrog"]
+[ext_resource type="Texture2D" uid="uid://drwceqhr71oet" path="res://assets/items/sword2.atlastex" id="1_tdepd"]
 
 [resource]
 script = ExtResource("1_ojrog")
-name = ""
-attack_bonus = 0
-defense_bonus = 0
-max_health_bonus = 0
-max_energy_bonus = 0
-speed_bonus = 0
-hit_chance_bonus = 0
-evasion_bonus = 0
+name = "sword2"
+icon = ExtResource("1_tdepd")
+attack_bonus = 1
+defense_bonus = 1
+max_health_bonus = 1
+max_energy_bonus = 1
+speed_bonus = 1
+hit_chance_bonus = 1
+evasion_bonus = 1
 equipped = false
+description = "Tst"
+equipable_type = 0
