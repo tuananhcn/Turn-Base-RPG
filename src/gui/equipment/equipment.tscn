@@ -17,10 +17,10 @@ atlas = ExtResource("4_g5nd5")
 script = ExtResource("1_xqqv8")
 
 [node name="Panel" type="NinePatchRect" parent="."]
-offset_left = 483.0
-offset_top = 181.0
-offset_right = 712.0
-offset_bottom = 367.0
+offset_left = 395.0
+offset_top = 123.0
+offset_right = 672.0
+offset_bottom = 350.0
 scale = Vector2(4, 4)
 texture = ExtResource("1_4dwpx")
 region_rect = Rect2(0, 0, 32, 32)
@@ -33,17 +33,17 @@ patch_margin_bottom = 7
 layout_mode = 0
 offset_left = 2.0
 offset_top = -25.0
-offset_right = 228.0
+offset_right = 274.0
 offset_bottom = 8.0
 texture = ExtResource("2_isnhp")
 region_rect = Rect2(0, 3, 96, 22)
 
 [node name="GridContainer" type="GridContainer" parent="Panel"]
 layout_mode = 0
-offset_left = 146.0
-offset_top = 30.0
-offset_right = 167.0
-offset_bottom = 51.0
+offset_left = 185.75
+offset_top = 43.25
+offset_right = 212.75
+offset_bottom = 64.25
 scale = Vector2(3, 3)
 theme_override_constants/h_separation = 1
 theme_override_constants/v_separation = 1
@@ -133,10 +133,10 @@ texture_normal = ExtResource("8_jly4e")
 
 [node name="GridContainer2" type="GridContainer" parent="Panel"]
 layout_mode = 0
-offset_left = 83.5
-offset_top = 100.75
-offset_right = 125.5
-offset_bottom = 130.75
+offset_left = 120.0
+offset_top = 139.75
+offset_right = 167.0
+offset_bottom = 159.75
 scale = Vector2(3, 3)
 theme_override_constants/h_separation = 0
 theme_override_constants/v_separation = 0
@@ -304,74 +304,114 @@ stretch_mode = 3
 
 [node name="TextureRect" type="TextureRect" parent="Panel"]
 layout_mode = 0
-offset_left = 80.25
-offset_top = 32.25
-offset_right = 96.25
-offset_bottom = 48.25
+offset_left = 119.5
+offset_top = 66.75
+offset_right = 135.5
+offset_bottom = 82.75
 scale = Vector2(4, 4)
 texture = SubResource("AtlasTexture_xdy1r")
 
 [node name="Label&Button" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
-offset_left = 383.0
-offset_top = -25.0
-offset_right = 423.0
-offset_bottom = 15.0
+offset_left = 295.0
+offset_top = -83.0
+offset_right = 335.0
+offset_bottom = -43.0
 
 [node name="Stats" type="VBoxContainer" parent="Label&Button"]
 layout_mode = 0
-offset_left = 176.0
-offset_top = 310.0
-offset_right = 421.0
-offset_bottom = 845.0
-theme_override_constants/separation = 42
+offset_left = 189.0
+offset_top = 327.0
+offset_right = 317.0
+offset_bottom = 862.0
+theme_override_constants/separation = 51
 
 [node name="Level" type="Label" parent="Label&Button/Stats"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 40
+theme_override_font_sizes/font_size = 50
 text = "Level: "
 
 [node name="Hp" type="Label" parent="Label&Button/Stats"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 40
+theme_override_font_sizes/font_size = 50
 text = "Hp:"
 
 [node name="Energy" type="Label" parent="Label&Button/Stats"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 40
+theme_override_font_sizes/font_size = 50
 text = "Energy:"
 
 [node name="Atk" type="Label" parent="Label&Button/Stats"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 40
+theme_override_font_sizes/font_size = 50
 text = "Attack:"
 
 [node name="Defend" type="Label" parent="Label&Button/Stats"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 40
+theme_override_font_sizes/font_size = 50
 text = "Defend:"
 
 [node name="Speed" type="Label" parent="Label&Button/Stats"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 40
+theme_override_font_sizes/font_size = 50
 text = "Speed:"
 
 [node name="Hitchance" type="Label" parent="Label&Button/Stats"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 40
+theme_override_font_sizes/font_size = 50
 text = "Hitchance:"
 
 [node name="Evasion" type="Label" parent="Label&Button/Stats"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 40
+theme_override_font_sizes/font_size = 50
 text = "Evasion:"
+
+[node name="StatsCompare" type="VBoxContainer" parent="Label&Button"]
+layout_mode = 0
+offset_left = 485.0
+offset_top = 328.0
+offset_right = 580.0
+offset_bottom = 997.0
+theme_override_constants/separation = 51
+
+[node name="Level" type="Label" parent="Label&Button/StatsCompare"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+
+[node name="Hp" type="Label" parent="Label&Button/StatsCompare"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+
+[node name="Energy" type="Label" parent="Label&Button/StatsCompare"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+
+[node name="Atk" type="Label" parent="Label&Button/StatsCompare"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+
+[node name="Defend" type="Label" parent="Label&Button/StatsCompare"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+
+[node name="Speed" type="Label" parent="Label&Button/StatsCompare"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+
+[node name="Hitchance" type="Label" parent="Label&Button/StatsCompare"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+
+[node name="Evasion" type="Label" parent="Label&Button/StatsCompare"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
 
 [node name="Label" type="Label" parent="Label&Button"]
 layout_mode = 0
-offset_left = 321.0
+offset_left = 417.0
 offset_top = 126.0
-offset_right = 799.0
+offset_right = 895.0
 offset_bottom = 239.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 150
@@ -379,9 +419,9 @@ text = "Inventory"
 
 [node name="PlayerButton" type="HBoxContainer" parent="Label&Button"]
 layout_mode = 0
-offset_left = 567.0
+offset_left = 750.0
 offset_top = 234.0
-offset_right = 941.0
+offset_right = 1167.0
 offset_bottom = 318.0
 theme_override_constants/separation = 1
 

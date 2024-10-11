@@ -7,7 +7,7 @@
 script = ExtResource("1_ojrog")
 name = "sword2"
 icon = ExtResource("1_tdepd")
-attack_bonus = 1
+attack_bonus = 2
 defense_bonus = 1
 max_health_bonus = 1
 max_energy_bonus = 1

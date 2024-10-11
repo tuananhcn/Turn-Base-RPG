@@ -89,14 +89,14 @@ func add_modifier(stat_name: String, value: int) -> int:
 	assert(stat_name in MODIFIABLE_STATS, "Trying to add a modifier to a nonexistent stat.")
 
 	var id := _generate_unique_id(stat_name, true)
-	print("Generated ID for", stat_name, ":", id)
-	print("Adding modifier for", stat_name, "with value:", value)
+	#print("Generated ID for", stat_name, ":", id)
+	#print("Adding modifier for", stat_name, "with value:", value)
 
 	_modifiers[stat_name][id] = value
-	print("Modifier added for", stat_name, ": ", _modifiers[stat_name][id])
+	#print("Modifier added for", stat_name, ": ", _modifiers[stat_name][id])
 
 	# Check that the dictionary is correctly updated
-	print("Modifiers for", stat_name, ": ", _modifiers[stat_name])
+	#print("Modifiers for", stat_name, ": ", _modifiers[stat_name])
 
 	# Recalculate stats after adding the modifier
 	_recalculate_and_update(stat_name)
@@ -120,7 +120,7 @@ func add_multiplier(stat_name: String, value: float) -> int:
 func remove_modifier(stat_name: String, id: int) -> void:
 	assert(id in _modifiers[stat_name], "Stat %s does not have a modifier with ID '%s'." % [id,
 		_modifiers[stat_name]])
-	print("Removing modifier for stat: ", stat_name, " with ID: ", id)  # Debug output
+	#print("Removing modifier for stat: ", stat_name, " with ID: ", id)  # Debug output
 	_modifiers[stat_name].erase(id)
 	_recalculate_and_update(stat_name)
 
@@ -194,6 +194,6 @@ func remove_modifier_if_exists(stat_name: String) -> void:
 		_modifiers[stat_name].erase(id)
 		_modifiers[stat_name] = null  # Clear the ID after removal
 		_recalculate_and_update(stat_name)
-		print("Removed modifier for", stat_name, "with ID", id)
+		#print("Removed modifier for", stat_name, "with ID", id)
 	else:
 		print("No modifier to remove for stat:", stat_name)

@@ -7,7 +7,7 @@ var knight_data: Dictionary = {
 	"exp": 0,
 	"exp_to_next_level": 100,
 	"max_health": 150,
-	"current_health": 150,  # Track current health
+	"current_health": 100,  # Track current health
 	"max_energy": 6,
 	"current_energy": 0,  # Track current energy
 	"attack": 20,
