@@ -297,3 +297,5 @@ func give_player_exp():
 		var exp_gained = randi_range(200, 300)
 		GlobalData.add_exp_to_player(battler.name, exp_gained)
 		print(battler.name, "gained", exp_gained, "EXP!")
+func get_battlers() -> Array[Battler]:
+	return _battlers

@@ -981,5 +981,6 @@ offset = Vector2(0, 100)
 transform = Transform2D(1, 0, 0, 1, 0, 100)
 
 [node name="Equipment" parent="." instance=ExtResource("75_ksl00")]
+visible = false
 
 [connection signal="area_entered" from="Field/Terrain/Gamepieces/Grove/GameEndTrigger/Area2D2" to="Field/Terrain/Gamepieces/Grove/GameEndTrigger" method="_on_area_entered"]

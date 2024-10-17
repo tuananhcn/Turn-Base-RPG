@@ -86,8 +86,8 @@ func show_equipment_inventory(slot_type: String) -> void:
 					texture_button.disconnect("pressed", _on_item_pressed)
 				if texture_button.is_connected("mouse_entered",_on_item_hover):
 					texture_button.disconnect("mouse_entered", _on_item_hover)
-				if texture_button.is_connected("mouse_exit",_on_item_hover):
-					texture_button.disconnect("mouse_exit", _on_item_hover)
+				if texture_button.is_connected("mouse_exited",_on_item_hover):
+					texture_button.disconnect("mouse_exited", _on_item_hover)
 				texture_button.pressed.connect(_on_item_pressed.bind(items_to_display[i]))  # Connect the click event
 				texture_button.mouse_entered.connect(_on_item_hover.bind(items_to_display[i]))
 				texture_button.mouse_exited.connect(_on_exited_hover)

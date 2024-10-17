@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://c6uxju87r2dck"]
+[gd_scene load_steps=10 format=3 uid="uid://c6uxju87r2dck"]
 
 [ext_resource type="Script" path="res://src/combat/combat_arena.gd" id="1_iqdn5"]
 [ext_resource type="Script" path="res://src/combat/active_turn_queue.gd" id="2_ll0ok"]
@@ -6,6 +6,9 @@
 [ext_resource type="PackedScene" uid="uid://cqle6yih3nfm5" path="res://assets/gui/01_Flat_Theme/SelectSkill.tscn" id="4_km2lf"]
 [ext_resource type="PackedScene" uid="uid://cpbx3es5oxmcq" path="res://assets/gui/01_Flat_Theme/SelectedOption.tscn" id="5_buisq"]
 [ext_resource type="PackedScene" uid="uid://c5w17hum6hdkk" path="res://src/gui/turnqueue/TurnOrder.tscn" id="6_f5gg2"]
+[ext_resource type="Script" path="res://src/combat/ui/effect_labels/ui_effect_label_builder.gd" id="7_xkof0"]
+[ext_resource type="PackedScene" uid="uid://bo6hj2mg02uef" path="res://src/combat/ui/effect_labels/ui_damage_label.tscn" id="8_qcvp3"]
+[ext_resource type="PackedScene" uid="uid://dxyw5j7wr56hl" path="res://src/combat/ui/effect_labels/ui_missed_label.tscn" id="9_d0y0d"]
 
 [node name="CombatArena" type="Control"]
 custom_minimum_size = Vector2(1920, 1080)
@@ -46,6 +49,7 @@ offset_right = -392.0
 grow_horizontal = 0
 
 [node name="SelectSkillOption" parent="." instance=ExtResource("5_buisq")]
+visible = false
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -72,3 +76,11 @@ layout_mode = 1
 anchors_preset = 0
 anchor_right = 0.0
 grow_horizontal = 1
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="EffectLabelBuilder" type="Node2D" parent="UI"]
+position = Vector2(-1, 0)
+script = ExtResource("7_xkof0")
+damage_label_scene = ExtResource("8_qcvp3")
+missed_label_scene = ExtResource("9_d0y0d")

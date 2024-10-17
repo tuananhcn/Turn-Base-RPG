@@ -7,12 +7,12 @@ var knight_data: Dictionary = {
 	"exp": 0,
 	"exp_to_next_level": 100,
 	"max_health": 150,
-	"current_health": 100,  # Track current health
+	"current_health": 150,  # Track current health
 	"max_energy": 6,
 	"current_energy": 0,  # Track current energy
 	"attack": 20,
 	"defense": 15,
-	"speed": 80,
+	"speed": 50,
 	"hit_chance": 90,
 	"evasion": 10
 }
@@ -24,8 +24,8 @@ var mage_data: Dictionary = {
 	"exp_to_next_level": 100,
 	"max_health": 100,
 	"current_health": 100,  # Track current health
-	"max_energy": 20,
-	"current_energy": 20,  # Track current energy
+	"max_energy": 6,
+	"current_energy": 0,  # Track current energy
 	"attack": 15,
 	"defense": 10,
 	"speed": 70,

@@ -252,3 +252,9 @@ texture = ExtResource("2_05rim")
 offset = Vector2(0, -50)
 hframes = 6
 frame = 1
+
+[node name="FrontAnchor" parent="." index="1"]
+position = Vector2(111, -74)
+
+[node name="TopAnchor" parent="." index="2"]
+position = Vector2(1, -274)

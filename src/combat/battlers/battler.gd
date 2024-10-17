@@ -37,6 +37,37 @@ signal energy_updated(value: int)  # For updating the Mana/Energy bar
 @export var icon: Texture = null  # Property to assign the battler's icon/portrait
 #@export var hp_bar: TextureProgressBar
 ## If `false`, the battler will not be able to act.
+@onready var anim: BattlerAnim = get_child(0)
+#@export var battler_anim_scene: PackedScene:
+	#set(value):
+		#battler_anim_scene = value
+		#
+		#if not is_inside_tree():
+			#await ready
+		#
+		## Free an already existing BattlerAnim.
+		#if anim:
+			#anim.queue_free()
+			#anim = null
+		#
+		## Add the new BattlerAnim class as a child and link it to this Battler instance.
+		#if battler_anim_scene:
+			## Normally we could wrap a check for battler_anim_scene's type (should be BattlerAnim)
+			## in a call to assert, but we want the following code to run in the editor and clean up
+			## dynamically if the user drops an incorrect PackedScene (i.e. not a BattlerAnim) into
+			## the battler_anim_scene slot.
+			#var new_scene: = battler_anim_scene.instantiate()
+			#anim = new_scene as BattlerAnim
+			#if not anim:
+				#push_warning("Battler '%s' cannot accept '%s' as " % [name, new_scene.name],
+					#"battler_anim_scene. '%s' is not a BattlerAnim!" % new_scene.name)
+				#new_scene.free()
+				#battler_anim_scene = null
+				#return
+			#
+			#add_child(anim)
+			#var facing: = BattlerAnim.Direction.LEFT if is_player else BattlerAnim.Direction.RIGHT
+			#anim.setup(self, facing)
 var is_active: bool = true:
 	set(value):
 		is_active = value
