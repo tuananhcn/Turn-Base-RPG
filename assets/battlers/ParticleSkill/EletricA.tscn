@@ -1,0 +1,52 @@
+[gd_scene load_steps=8 format=3 uid="uid://bbr4fug7am384"]
+
+[ext_resource type="Texture2D" uid="uid://ddm2d31n18eqk" path="res://assets/battlers/ParticleSkill/Eletric A-Sheet.png" id="1_dk05s"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p8o75"]
+atlas = ExtResource("1_dk05s")
+region = Rect2(0, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6yqaj"]
+atlas = ExtResource("1_dk05s")
+region = Rect2(192, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hmmv2"]
+atlas = ExtResource("1_dk05s")
+region = Rect2(96, 96, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_avd3p"]
+atlas = ExtResource("1_dk05s")
+region = Rect2(0, 192, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2sek8"]
+atlas = ExtResource("1_dk05s")
+region = Rect2(192, 192, 96, 96)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5dofl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p8o75")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6yqaj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hmmv2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_avd3p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2sek8")
+}],
+"loop": true,
+"name": &"default",
+"speed": 6.0
+}]
+
+[node name="EletricA" type="Node2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_5dofl")
+frame_progress = 0.627268

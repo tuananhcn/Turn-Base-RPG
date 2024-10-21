@@ -30,12 +30,13 @@ var amount := 0:
 		amount = value
 		
 		if not is_inside_tree(): await ready
-		_label.text = str(amount)
+		_label.text = "-" + str(abs(amount))
 		
 		if amount >= 0:
 			_label.modulate = color_damage
 			_label.label_settings.outline_color = color_damage_outline
 		else:
+			_label.text = "+" + str(abs(amount))  # Use abs() to get positive value
 			_label.modulate = color_heal
 			_label.label_settings.outline_color = color_heal_outline
 

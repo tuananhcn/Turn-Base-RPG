@@ -53,6 +53,6 @@ func execute(source: Battler, targets: Array[Battler] = []) -> void:
 	else:
 		tween.tween_property(source, "position", origin, 0.25)
 	await tween.finished
-	#if anim_player and anim_player.has_animation("idle"):
-		#anim_player.play("idle")
+	if anim_player and anim_player.has_animation("idle"):
+		anim_player.play("idle")
 	await source.get_tree().create_timer(0.1).timeout

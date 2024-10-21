@@ -8,7 +8,7 @@ class_name UIInventory extends HBoxContainer
 
 # Keep track of the inventory item packed scene to easily instantiate new items.
 var _ITEM_SCENE: = preload("res://src/field/ui/inventory/ui_inventory_item.tscn")
-
+var _HIDDEN_ITEMS: = [Inventory.ItemTypes.SWORD1,Inventory.ItemTypes.SWORD2,Inventory.ItemTypes.SWORD3]  # Add more items if necessary
 
 func _ready() -> void:
 	var inventory: = Inventory.restore()
@@ -31,7 +31,8 @@ func get_ui_item(item_id: Inventory.ItemTypes) -> UIInventoryItem:
 func _update_item(item_id: Inventory.ItemTypes, inventory: Inventory) -> void:
 	var amount: = inventory.get_item_count(item_id)
 	var item: = get_ui_item(item_id)
-	
+	if item_id in _HIDDEN_ITEMS:
+		return
 	if amount > 0:
 		if not item:
 			item = _ITEM_SCENE.instantiate() as UIInventoryItem

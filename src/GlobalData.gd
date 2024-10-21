@@ -1,5 +1,5 @@
 extends Node
-
+const SAVE_FILE_PATH = "user://savegame.save"
 # Player data for Knight and Mage
 var knight_data: Dictionary = {
 	"name": "Knight",
@@ -93,3 +93,31 @@ func update_player_health_and_energy(player_name: String, health: int, energy: i
 		player_data.current_health = clamp(health, 0, player_data.max_health)
 		player_data.current_energy = clamp(energy, 0, player_data.max_energy)
 		print(player_name, "'s health and energy updated to ", player_data.current_health, "/", player_data.max_health)
+func save_game():
+	var save_data = {
+		"knight_data": knight_data,
+		"mage_data": mage_data
+	}
+	
+	var file = FileAccess.open(SAVE_FILE_PATH, FileAccess.WRITE)
+	if file:
+		file.store_var(save_data)
+		file.close()
+		print("Game saved successfully")
+
+# Function to load the game
+func load_game():
+	if FileAccess.file_exists(SAVE_FILE_PATH):
+		var file = FileAccess.open(SAVE_FILE_PATH, FileAccess.READ)
+		if file:
+			var save_data = file.get_var()
+			file.close()
+			
+			# Load saved data into current variables
+			knight_data = save_data.get("knight_data", knight_data)
+			mage_data = save_data.get("mage_data", mage_data)
+			print("Game loaded successfully")
+		else:
+			print("Error: Unable to load the game data")
+	else:
+		print("No save file found")

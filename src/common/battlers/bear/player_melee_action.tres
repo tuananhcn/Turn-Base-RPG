@@ -6,12 +6,12 @@
 [resource]
 script = ExtResource("2_eicvg")
 hit_chance = 100.0
-base_damage = 100
+base_damage = -100
 icon = ExtResource("1_nktgp")
 label = "Base combat action"
 description = "A combat action."
 energy_cost = 0
-element = 0
+element = 1
 targets_self = false
-targets_all = true
+targets_all = false
 readiness_saved = 0.0

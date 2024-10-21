@@ -21,22 +21,6 @@ tracks/0/keys = {
 "update": 1,
 "values": [1]
 }
-
-[sub_resource type="Animation" id="Animation_bt3va"]
-resource_name = "attack1"
-step = 0.142857
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("5_8mlhr")]
-}
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
@@ -47,7 +31,48 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [8]
+"values": [6]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:texture")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_05rim")]
+}
+
+[sub_resource type="Animation" id="Animation_bt3va"]
+resource_name = "attack1"
+length = 2.00001
+step = 0.142857
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.85714),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("5_8mlhr"), ExtResource("2_05rim")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.85714),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [8, 6]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -56,10 +81,10 @@ tracks/2/path = NodePath("Sprite2D:frame")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.142857, 0.285714, 0.428571, 0.571429, 0.714286, 0.857143),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.285714, 0.571429, 0.857143, 1.14286, 1.42857, 1.71429, 1.85714),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [0, 1, 2, 3, 4, 5, 7]
+"values": [0, 1, 2, 3, 4, 5, 7, 0]
 }
 
 [sub_resource type="Animation" id="Animation_qjefv"]
@@ -254,7 +279,7 @@ hframes = 6
 frame = 1
 
 [node name="FrontAnchor" parent="." index="1"]
-position = Vector2(111, -74)
+position = Vector2(168, -167)
 
 [node name="TopAnchor" parent="." index="2"]
-position = Vector2(1, -274)
+position = Vector2(4, -301)

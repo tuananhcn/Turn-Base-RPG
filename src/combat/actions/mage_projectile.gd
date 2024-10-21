@@ -1,5 +1,5 @@
 # A sample [BattlerAction] implementation that simulates a ranged attack, such as a fireball.
-class_name RangedMageAction extends BattlerAction
+class_name RangedBattlerAction extends BattlerAction
 
 @export var attack_distance: = 350.0
 @export var attack_time: = 0.25
@@ -8,7 +8,7 @@ class_name RangedMageAction extends BattlerAction
 ## [member BattlerStats.evasion].
 @export var hit_chance: = 100.0
 @export var base_damage: = 100
-
+var skill_effect_scene = preload("res://assets/battlers/ParticleSkill/EletricA.tscn")
 func find_animation_player(node: Node) -> AnimationPlayer:
 	if node is AnimationPlayer:
 		return node
@@ -20,7 +20,12 @@ func find_animation_player(node: Node) -> AnimationPlayer:
 func execute(source: Battler, targets: Array[Battler] = []) -> void:
 	assert(not targets.is_empty(), "A ranged attack action requires a target.")
 	var target: = targets[0]
-
+	#var skill_effect_instance = skill_effect_scene.instantiate()
+	#skill_effect_instance.position = source.position
+	#add_child(skill_effect_instance)
+	#var tweenskill = create_tween()
+	#tweenskill.tween_property(skill_effect_instance, "position", target.position, 0.5)
+	#await tweenskill.finished
 	await source.get_tree().create_timer(0.1).timeout
 	var anim_player = find_animation_player(source)
 	# Calculate where the acting Battler will move from and to.
@@ -48,6 +53,6 @@ func execute(source: Battler, targets: Array[Battler] = []) -> void:
 	tween = source.create_tween().set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_CUBIC)
 	tween.tween_property(source, "position", origin, return_time)
 	await tween.finished
-	#if anim_player and anim_player.has_animation("idle"):
-		#anim_player.play("idle")
+	if anim_player and anim_player.has_animation("idle"):
+		anim_player.play("idle")
 	await source.get_tree().create_timer(0.1).timeout

@@ -150,17 +150,22 @@ func _play_turn(battler: Battler) -> void:
 	current_battler = battler	
 	# The code below makes a list of selectable targets using Battler.is_selectable
 	var potential_targets: Array[Battler] = []
+	var potential_allies: Array[Battler] = []
 	var opponents: = _enemies if battler.is_player else _party_members
+	var allies: = _party_members if battler.is_player else _enemies
 	for opponent: Battler in opponents:
 		if opponent.is_selectable:
 			potential_targets.append(opponent)
+	for ally in allies:
+		if ally.is_selectable:
+			potential_allies.append(ally)
 
 	if battler.is_player:
-		time_scale = 0
 		_is_player_playing = true
 		battler.is_selected = true
 		
-		#time_scale = 0.05
+		time_scale = 0
+		
 		select_skill_panel.show()
 		# Wait for the player to select a skill.
 		# Wait for the player to select targets.
@@ -172,7 +177,7 @@ func _play_turn(battler: Battler) -> void:
 			# Secondly, the player must select targets for the action.
 			# If the target may be selected automatically, do so.
 			if action.targets_self:
-				targets = [battler]
+				targets = await _player_select_targets_async(potential_allies)
 			else:
 				targets = await _player_select_targets_async(potential_targets)
 			# If the player selected a correct action and target, break out of the loop. Otherwise,
