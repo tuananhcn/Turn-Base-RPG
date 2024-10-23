@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://csn0o2o8uugd3"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5dofl"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]
+
+[node name="EletricA" type="Node2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(1, -73)
+sprite_frames = SubResource("SpriteFrames_5dofl")
+autoplay = "default"
+frame_progress = 0.390693

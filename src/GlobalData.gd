@@ -12,9 +12,15 @@ var knight_data: Dictionary = {
 	"current_energy": 0,  # Track current energy
 	"attack": 20,
 	"defense": 15,
-	"speed": 50,
+	"speed": 70,
 	"hit_chance": 90,
-	"evasion": 10
+	"evasion": 10,
+	"equipped_items": {  # Track the current equipped items
+		"Weapon": null,
+		"Armor": null,
+		"Head": null,
+		"Accessory": null
+	}
 }
 
 var mage_data: Dictionary = {
@@ -22,7 +28,7 @@ var mage_data: Dictionary = {
 	"level": 1,
 	"exp": 0,
 	"exp_to_next_level": 100,
-	"max_health": 100,
+	"max_health": 150,
 	"current_health": 100,  # Track current health
 	"max_energy": 6,
 	"current_energy": 0,  # Track current energy
@@ -30,7 +36,13 @@ var mage_data: Dictionary = {
 	"defense": 10,
 	"speed": 70,
 	"hit_chance": 85,
-	"evasion": 12
+	"evasion": 12,
+	"equipped_items": {  # Track the current equipped items
+		"Weapon": null,
+		"Armor": null,
+		"Head": null,
+		"Accessory": null
+	}
 }
 
 # Called when the script is loaded
@@ -93,6 +105,30 @@ func update_player_health_and_energy(player_name: String, health: int, energy: i
 		player_data.current_health = clamp(health, 0, player_data.max_health)
 		player_data.current_energy = clamp(energy, 0, player_data.max_energy)
 		print(player_name, "'s health and energy updated to ", player_data.current_health, "/", player_data.max_health)
+func get_equipped_item(player_name: String, slot_type: String) -> Equipable:
+	var player_data = get_player_data(player_name)
+	if player_data.has("equipped_items"):
+		return player_data["equipped_items"].get(slot_type, null)
+	return null
+# Function to update the player's equipped items
+func set_equipped_item(player_name: String, slot_type: String, item: Equipable) -> void:
+	var player_data = get_player_data(player_name)
+	if player_data.has("equipped_items"):
+		player_data["equipped_items"][slot_type] = item
+		print(player_name, "'s equipped item updated in slot ", slot_type, ": ", item)
+		# Function to unequip an item
+func unequip_item(player_name: String, slot_type: String) -> void:
+	var player_data = get_player_data(player_name)
+	if player_data.has("equipped_items"):
+		player_data["equipped_items"][slot_type] = null
+		print(player_name, " unequipped item from slot ", slot_type)
+		# Function to get all equipped items for a specific player (Knight or Mage)
+func get_equipped_items(player_name: String) -> Dictionary:
+	var player_data = get_player_data(player_name)
+	if player_data.has("equipped_items"):
+		return player_data["equipped_items"]
+	return {}  # Return an empty dictionary if the player has no equipped items
+
 func save_game():
 	var save_data = {
 		"knight_data": knight_data,

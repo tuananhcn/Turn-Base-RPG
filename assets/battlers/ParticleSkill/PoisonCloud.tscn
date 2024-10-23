@@ -1,0 +1,152 @@
+[gd_scene load_steps=22 format=3 uid="uid://bq6grjyb8c5ve"]
+
+[ext_resource type="Texture2D" uid="uid://duhujfss8a1wr" path="res://assets/battlers/ParticleSkill/Poison Cloud-Sheet.png" id="1_b24hd"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_845ah"]
+atlas = ExtResource("1_b24hd")
+region = Rect2(0, 0, 144, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_25sje"]
+atlas = ExtResource("1_b24hd")
+region = Rect2(144, 0, 144, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r6cd3"]
+atlas = ExtResource("1_b24hd")
+region = Rect2(288, 0, 144, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u0rab"]
+atlas = ExtResource("1_b24hd")
+region = Rect2(432, 0, 144, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_476e2"]
+atlas = ExtResource("1_b24hd")
+region = Rect2(0, 144, 144, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gxo0h"]
+atlas = ExtResource("1_b24hd")
+region = Rect2(144, 144, 144, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cg4aq"]
+atlas = ExtResource("1_b24hd")
+region = Rect2(288, 144, 144, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bywum"]
+atlas = ExtResource("1_b24hd")
+region = Rect2(432, 144, 144, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wdd51"]
+atlas = ExtResource("1_b24hd")
+region = Rect2(0, 288, 144, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nr3rs"]
+atlas = ExtResource("1_b24hd")
+region = Rect2(144, 288, 144, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3jt2h"]
+atlas = ExtResource("1_b24hd")
+region = Rect2(288, 288, 144, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5n2px"]
+atlas = ExtResource("1_b24hd")
+region = Rect2(432, 288, 144, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oesrw"]
+atlas = ExtResource("1_b24hd")
+region = Rect2(0, 432, 144, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_obdhn"]
+atlas = ExtResource("1_b24hd")
+region = Rect2(144, 432, 144, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hxi3g"]
+atlas = ExtResource("1_b24hd")
+region = Rect2(288, 432, 144, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gob8b"]
+atlas = ExtResource("1_b24hd")
+region = Rect2(432, 432, 144, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1iaoy"]
+atlas = ExtResource("1_b24hd")
+region = Rect2(0, 576, 144, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fym7h"]
+atlas = ExtResource("1_b24hd")
+region = Rect2(144, 576, 144, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h4nsc"]
+atlas = ExtResource("1_b24hd")
+region = Rect2(288, 576, 144, 144)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5dofl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_845ah")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_25sje")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r6cd3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u0rab")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_476e2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gxo0h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cg4aq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bywum")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wdd51")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nr3rs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3jt2h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5n2px")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oesrw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_obdhn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hxi3g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gob8b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1iaoy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fym7h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h4nsc")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]
+
+[node name="EletricA" type="Node2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(1, -73)
+sprite_frames = SubResource("SpriteFrames_5dofl")
+autoplay = "default"
+frame_progress = 0.390693

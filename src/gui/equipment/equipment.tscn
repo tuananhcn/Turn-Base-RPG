@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://src/gui/equipment/equipment.gd" id="1_xqqv8"]
 [ext_resource type="Texture2D" uid="uid://by1n78s0jsimd" path="res://assets/gui/01_Flat_Theme/Sprites/UI_Flat_Banner_01_Downward.png" id="2_isnhp"]
 [ext_resource type="Texture2D" uid="uid://cjeaipi7p6y1k" path="res://assets/equipment/item_slot.png" id="3_o1tyh"]
-[ext_resource type="Texture2D" uid="uid://dopua6orsf0bs" path="res://assets/battlers/Wizard Pack/mage.atlastex" id="4_g5nd5"]
+[ext_resource type="Texture2D" uid="uid://dopua6orsf0bs" path="res://assets/characters/ ghost.atlastex" id="4_g5nd5"]
 [ext_resource type="Texture2D" uid="uid://b14ao4liw6hs" path="res://assets/equipment/placeholder_chest.png" id="5_7r310"]
 [ext_resource type="Texture2D" uid="uid://8edyvvqffver" path="res://assets/equipment/placeholder_head.png" id="6_nhvwm"]
 [ext_resource type="Texture2D" uid="uid://o88phap7sd8s" path="res://assets/equipment/placeholder_main_hand.png" id="7_jk11a"]
@@ -302,12 +302,12 @@ grow_vertical = 2
 scale = Vector2(0.4, 0.4)
 stretch_mode = 3
 
-[node name="TextureRect" type="TextureRect" parent="Panel"]
+[node name="PlayerAtlas" type="TextureRect" parent="Panel"]
 layout_mode = 0
-offset_left = 119.5
-offset_top = 66.75
-offset_right = 135.5
-offset_bottom = 82.75
+offset_left = 119.0
+offset_top = 67.0
+offset_right = 135.0
+offset_bottom = 83.0
 scale = Vector2(4, 4)
 texture = SubResource("AtlasTexture_xdy1r")
 

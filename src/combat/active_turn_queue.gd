@@ -17,7 +17,6 @@ signal combat_finished(is_player_victory: bool)
 signal player_turn_finished
 signal skill_selected(action: BattlerAction)
 signal target_selected(targets: Array[Battler])
-signal turn_queue_ready
 var current_battler: Battler = null  # Biến toàn cục để lưu trữ nhân vật hiện tại
 
 @onready var target_indicator_scene = preload("res://assets/gui/01_Flat_Theme/TargetIndicator.tscn")
@@ -52,6 +51,7 @@ var _battlers: Array[Battler] = []
 var _party_members: Array[Battler] = []
 var _enemies: Array[Battler] = []
 @onready var select_skill_panel = get_node("../SelectSkillPanel")
+@onready var turn_order = get_node("../TurnOrder")
 func _ready() -> void:
 	# This is required in Godot 4.3 to strongly type the array.
 	_battlers.assign(get_children())
@@ -115,8 +115,7 @@ func _ready() -> void:
 	is_active = false
 	#select_skill_panel.connect("skill_selected", Callable(self,"_on_skill_selected"))
 	#refresh_turn_queue()
-	#turn_queue_ready.emit()
-	call_deferred("emit_turn_queue_ready")
+	
 # The active turn queue waits until all battlers have finished their animations before emitting the
 # finished signal.
 func _process(_delta: float) -> void:
@@ -139,10 +138,10 @@ func _process(_delta: float) -> void:
 		var inventory = ResourceLoader.load("user://inventory.tres") as Inventory
 		inventory.add(Inventory.ItemTypes.COIN, 1)
 func _play_turn(battler: Battler) -> void:
+	refresh_turn_queue()
 	var action: BattlerAction
 	var targets: Array[Battler] = []
 	#_combined_turn_queue.append(battler)
-	#refresh_turn_queue()
 	_has_player_won = true
 	# The battler is getting a new turn, so increment its energy count.
 	battler.stats.energy += 1
@@ -200,7 +199,6 @@ func _play_turn(battler: Battler) -> void:
 		select_skill_panel.hide()
 		player_turn_finished.emit()
 		time_scale = 1.0
-	refresh_turn_queue()
 #func _player_select_action_async(battler: Battler) -> BattlerAction:
 	#await get_tree().process_frame
 	#return battler.actions[0]
@@ -286,9 +284,6 @@ func refresh_turn_queue() -> void:
 	var turn_order = get_parent().get_node("TurnOrder")
 	if turn_order:
 		turn_order.update_turn_queue()
-func emit_turn_queue_ready() -> void:
-	print("Emitting turn_queue_ready signal")
-	turn_queue_ready.emit()
 func remove_battler_from_queue(battler: Battler) -> void:
 	if _combined_turn_queue.has(battler):
 		_combined_turn_queue.erase(battler)

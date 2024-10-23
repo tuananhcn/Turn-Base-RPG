@@ -5,9 +5,10 @@ var turn_queue: Array = []
 @onready var turn_queue_ui = $TurnBar as VBoxContainer  # Assuming you have a node named UITurnBar for the UI
 @onready var active_turn_queue = get_parent().get_node("Battlers") as ActiveTurnQueue
 func _ready() -> void:
+	pass
 	# Connect to the signal emitted by ActiveTurnQueue
-	if active_turn_queue:
-		active_turn_queue.turn_queue_ready.connect(update_turn_queue)
+	#if active_turn_queue:
+		#active_turn_queue.turn_queue_ready.connect(update_turn_queue)
 func update_turn_queue():
 	# Clear all previous turn indicators from the UI
 	print("Updating turn queue...")

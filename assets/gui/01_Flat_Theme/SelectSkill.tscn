@@ -46,7 +46,7 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 65
 theme_override_styles/hover = ExtResource("2_c1ndg")
 theme_override_styles/normal = ExtResource("3_w340x")
-text = "Summon"
+text = "Tactics"
 
 [node name="ItemButton" type="Button" parent="NinePatchRect/VBoxContainer"]
 layout_mode = 2

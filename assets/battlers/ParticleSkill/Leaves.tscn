@@ -1,0 +1,159 @@
+[gd_scene load_steps=23 format=3 uid="uid://u2clckpfcfxb"]
+
+[ext_resource type="Texture2D" uid="uid://bjqqdfpka5ofg" path="res://assets/battlers/ParticleSkill/Leaves-Sheet.png" id="1_tec1u"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0yb68"]
+atlas = ExtResource("1_tec1u")
+region = Rect2(0, 0, 120, 187)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eim0w"]
+atlas = ExtResource("1_tec1u")
+region = Rect2(120, 0, 120, 187)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ewcql"]
+atlas = ExtResource("1_tec1u")
+region = Rect2(240, 0, 120, 187)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_em6xx"]
+atlas = ExtResource("1_tec1u")
+region = Rect2(360, 0, 120, 187)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qgpud"]
+atlas = ExtResource("1_tec1u")
+region = Rect2(480, 0, 120, 187)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1m1vq"]
+atlas = ExtResource("1_tec1u")
+region = Rect2(0, 187, 120, 187)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_daavh"]
+atlas = ExtResource("1_tec1u")
+region = Rect2(120, 187, 120, 187)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7u45f"]
+atlas = ExtResource("1_tec1u")
+region = Rect2(240, 187, 120, 187)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vbbkb"]
+atlas = ExtResource("1_tec1u")
+region = Rect2(360, 187, 120, 187)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ktmgp"]
+atlas = ExtResource("1_tec1u")
+region = Rect2(480, 187, 120, 187)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j2slk"]
+atlas = ExtResource("1_tec1u")
+region = Rect2(0, 374, 120, 187)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kysp2"]
+atlas = ExtResource("1_tec1u")
+region = Rect2(120, 374, 120, 187)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cbpv6"]
+atlas = ExtResource("1_tec1u")
+region = Rect2(240, 374, 120, 187)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qtpvi"]
+atlas = ExtResource("1_tec1u")
+region = Rect2(360, 374, 120, 187)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ifjak"]
+atlas = ExtResource("1_tec1u")
+region = Rect2(480, 374, 120, 187)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rt5bl"]
+atlas = ExtResource("1_tec1u")
+region = Rect2(0, 561, 120, 187)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7y1sg"]
+atlas = ExtResource("1_tec1u")
+region = Rect2(120, 561, 120, 187)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wkplr"]
+atlas = ExtResource("1_tec1u")
+region = Rect2(240, 561, 120, 187)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_onyfa"]
+atlas = ExtResource("1_tec1u")
+region = Rect2(360, 561, 120, 187)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sa74c"]
+atlas = ExtResource("1_tec1u")
+region = Rect2(480, 561, 120, 187)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5dofl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0yb68")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eim0w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ewcql")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_em6xx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qgpud")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1m1vq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_daavh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7u45f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vbbkb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ktmgp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j2slk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kysp2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cbpv6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qtpvi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ifjak")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rt5bl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7y1sg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wkplr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_onyfa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sa74c")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]
+
+[node name="EletricA" type="Node2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(1, -94)
+sprite_frames = SubResource("SpriteFrames_5dofl")
+autoplay = "default"
+frame_progress = 0.457441

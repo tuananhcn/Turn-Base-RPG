@@ -48,8 +48,8 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id="Animation_bt3va"]
 resource_name = "attack1"
-length = 2.00001
-step = 0.142857
+length = 1.50002
+step = 0.166667
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -57,7 +57,7 @@ tracks/0/path = NodePath("Sprite2D:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1.85714),
+"times": PackedFloat32Array(0, 1.33333),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [ExtResource("5_8mlhr"), ExtResource("2_05rim")]
@@ -69,7 +69,7 @@ tracks/1/path = NodePath("Sprite2D:hframes")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 1.85714),
+"times": PackedFloat32Array(0, 1.33333),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [8, 6]
@@ -81,7 +81,7 @@ tracks/2/path = NodePath("Sprite2D:frame")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.285714, 0.571429, 0.857143, 1.14286, 1.42857, 1.71429, 1.85714),
+"times": PackedFloat32Array(0, 0.166667, 0.333333, 0.5, 0.833333, 1, 1.16667, 1.33333),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [0, 1, 2, 3, 4, 5, 7, 0]
