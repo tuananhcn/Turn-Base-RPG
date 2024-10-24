@@ -12,7 +12,7 @@ var knight_data: Dictionary = {
 	"current_energy": 0,  # Track current energy
 	"attack": 20,
 	"defense": 15,
-	"speed": 70,
+	"speed": 80,
 	"hit_chance": 90,
 	"evasion": 10,
 	"equipped_items": {  # Track the current equipped items
@@ -34,7 +34,7 @@ var mage_data: Dictionary = {
 	"current_energy": 0,  # Track current energy
 	"attack": 15,
 	"defense": 10,
-	"speed": 70,
+	"speed": 81,
 	"hit_chance": 85,
 	"evasion": 12,
 	"equipped_items": {  # Track the current equipped items

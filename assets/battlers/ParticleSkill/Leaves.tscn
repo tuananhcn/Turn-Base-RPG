@@ -147,7 +147,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"default",
-"speed": 12.0
+"speed": 15.0
 }]
 
 [node name="EletricA" type="Node2D"]
@@ -156,4 +156,4 @@ animations = [{
 position = Vector2(1, -94)
 sprite_frames = SubResource("SpriteFrames_5dofl")
 autoplay = "default"
-frame_progress = 0.457441
+frame_progress = 0.329753

@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="RangedBattlerAction" load_steps=4 format=3 uid="uid://blkv8wdng5c5v"]
 
 [ext_resource type="Texture2D" uid="uid://b8ojjrmvxaf43" path="res://icon.svg" id="1_368yr"]
-[ext_resource type="Script" path="res://src/combat/actions/mage_projectile.gd" id="1_ik68h"]
+[ext_resource type="Script" path="res://src/combat/actions/mage_action_projectile.gd" id="1_ik68h"]
 [ext_resource type="PackedScene" uid="uid://bbr4fug7am384" path="res://assets/battlers/ParticleSkill/EletricA.tscn" id="3_6ms5y"]
 
 [resource]

@@ -43,6 +43,7 @@ func execute(source: Battler, targets: Array[Battler] = []) -> void:
 	await source.get_tree().create_timer(0.1).timeout
 	var hit: = BattlerHit.new(base_damage, hit_chance)
 	target.take_hit(hit)
+	print(target.stats.defense)
 	await source.get_tree().create_timer(0.1).timeout
 
 	# Animate movement back to the attacker's original position.

@@ -12,3 +12,7 @@ script = ExtResource("1_j0v3v")
 [node name="FrontAnchor" type="Marker2D" parent="."]
 
 [node name="TopAnchor" type="Marker2D" parent="."]
+
+[node name="StatusIconContainer" type="HBoxContainer" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0

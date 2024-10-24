@@ -72,7 +72,7 @@ var energy := 0:
 # Dictionary values are another dictionary, with uid/modifier pairs.
 var _modifiers := {}
 var _multipliers := {}
-
+var temp_modifiers := {}
 
 func _init() -> void:
 	for prop_name in MODIFIABLE_STATS:
@@ -197,3 +197,80 @@ func remove_modifier_if_exists(stat_name: String) -> void:
 		#print("Removed modifier for", stat_name, "with ID", id)
 	else:
 		print("No modifier to remove for stat:", stat_name)
+func apply_temp_modifier(battler: Node2D, stat_name: String, percentage: float, turns: int, is_buff: bool = true, icon_texture: Texture2D = null) -> void:
+	# Ensure the stat exists
+	assert(stat_name in MODIFIABLE_STATS, "Trying to modify a nonexistent stat.")
+	
+	# Calculate the modifier value based on the base stat
+	var modifier_value = get("base_" + stat_name) * percentage
+	if not is_buff:
+		modifier_value = -modifier_value  # Debuffs are negative
+	# Apply the modifier
+	var id = add_modifier(stat_name, int(modifier_value))
+	# Store the temporary modifier along with its turns
+	temp_modifiers[id] = {
+		"stat_name": stat_name,
+		"value": modifier_value,
+		"turns": turns,
+		"id": id
+	}
+	# Display buff/debuff icon if provided
+	var status_container = battler.get_node("StatusIconContainer")
+	if icon_texture != null:
+		var icon = TextureRect.new()
+		status_container.add_child(icon)
+		icon.texture = icon_texture
+		icon.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+		icon.custom_minimum_size  = Vector2(90, 90)  # Set size for the icon
+		icon.expand_mode  = TextureRect.EXPAND_IGNORE_SIZE 
+		var turns_label = Label.new()
+		turns_label.text = str(turns)
+		turns_label.modulate = Color(1, 1, 1)  # White color
+		turns_label.add_theme_font_size_override("font_size",60)
+		icon.add_child(turns_label)
+		if battler.direction == 0:
+			turns_label.anchor_right = 0.0
+			turns_label.scale = Vector2(-1,1)
+			#turns_label.anchor_bottom = 0.0
+			#status_container.scale = Vector2(-1,1)
+		else:
+			turns_label.anchor_right = 0.0  # Align to the bottom-right of the icon
+			turns_label.anchor_bottom = 0.0
+			turns_label.scale = Vector2(1, 1)
+		# Attach the label to the icon
+		
+		
+		
+		# Store the icon in temp_modifiers so we can remove it later
+		temp_modifiers[id]["icon_node"] = icon
+	# Recalculate the stats with the new modifier
+	_recalculate_and_update(stat_name)
+
+
+# Updates the temporary modifiers' durations and removes them if expired
+func update_temp_modifiers() -> void:
+	var to_remove = []
+	for key in temp_modifiers.keys():
+		var modifier = temp_modifiers[key]
+		modifier["turns"] -= 1  # Decrement turns
+		if modifier.has("turns_label"):
+			modifier["turns_label"].text = str(modifier.turns)
+		# If expired, remove the modifier
+		if modifier["turns"] <= 0:
+			_recalculate_and_update(modifier["stat_name"])  # Recalculate before removal
+			remove_modifier(modifier["stat_name"], modifier["id"])
+			if modifier.has("icon_node") and modifier.icon_node != null:
+				modifier.icon_node.queue_free()
+			to_remove.append(key)
+	# Remove expired modifiers from the dictionary
+	for key in to_remove:
+		temp_modifiers.erase(key)
+
+
+func clear_temp_modifiers() -> void:
+	for key in temp_modifiers.keys():
+		var modifier = temp_modifiers[key]
+		remove_modifier(modifier["stat_name"], modifier["id"])
+	
+	# Clear the temp_modifiers dictionary
+	temp_modifiers.clear()

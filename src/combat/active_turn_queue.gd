@@ -78,6 +78,7 @@ func _ready() -> void:
 			if indicators.has(battler):
 				indicators[battler].queue_free()  # Free the indicator node
 				indicators.erase(battler)  # Remove it from the indicators dictionary
+			battler.stats.clear_temp_modifiers()
 			remove_battler_from_queue(battler)
 			if not _deactivate_if_side_downed(_party_members, false):
 				_deactivate_if_side_downed(_enemies, true)
@@ -127,6 +128,8 @@ func _process(_delta: float) -> void:
 	# There are no animations being played. Combat can now finish.
 	set_process(false)
 	combat_finished.emit(_has_player_won)
+	for battler in _battlers:
+		battler.stats.clear_temp_modifiers()  # Reset temporary modifiers for all battlers
 	if _has_player_won:
 		give_player_exp()
 		for battler in _party_members:
@@ -199,6 +202,7 @@ func _play_turn(battler: Battler) -> void:
 		select_skill_panel.hide()
 		player_turn_finished.emit()
 		time_scale = 1.0
+	battler.stats.update_temp_modifiers()
 #func _player_select_action_async(battler: Battler) -> BattlerAction:
 	#await get_tree().process_frame
 	#return battler.actions[0]

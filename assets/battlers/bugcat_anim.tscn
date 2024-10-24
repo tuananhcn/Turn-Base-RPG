@@ -110,3 +110,10 @@ position = Vector2(153, -65)
 
 [node name="TopAnchor" parent="." index="2"]
 position = Vector2(0, -340)
+
+[node name="StatusIconContainer" parent="." index="3"]
+offset_left = -103.0
+offset_top = -387.0
+offset_right = 108.0
+offset_bottom = -347.0
+alignment = 1

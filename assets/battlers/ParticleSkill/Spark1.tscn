@@ -226,4 +226,5 @@ animations = [{
 position = Vector2(1, -73)
 sprite_frames = SubResource("SpriteFrames_5dofl")
 autoplay = "default"
-frame_progress = 0.344507
+frame = 22
+frame_progress = 0.186087
