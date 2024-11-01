@@ -1,13 +1,13 @@
 [gd_resource type="Resource" script_class="AttackBattlerAction" load_steps=3 format=3 uid="uid://ovopmq0c2wg2"]
 
-[ext_resource type="Texture2D" uid="uid://b8ojjrmvxaf43" path="res://icon.svg" id="1_r3jko"]
-[ext_resource type="Script" path="res://src/combat/actions/battler_action_attack.gd" id="2_mbtys"]
+[ext_resource type="Texture2D" uid="uid://b8ojjrmvxaf43" path="res://icon.svg" id="1_24ec2"]
+[ext_resource type="Script" path="res://src/combat/actions/players/knight_melee_action_attack.gd" id="2_1iu47"]
 
 [resource]
-script = ExtResource("2_mbtys")
+script = ExtResource("2_1iu47")
 hit_chance = 100.0
 base_damage = 100
-icon = ExtResource("1_r3jko")
+icon = ExtResource("1_24ec2")
 label = "Base combat action"
 description = "A combat action."
 energy_cost = 0

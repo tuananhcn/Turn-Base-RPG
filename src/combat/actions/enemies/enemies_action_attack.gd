@@ -1,5 +1,5 @@
 # A sample [BattlerAction] implementation that simulates a direct melee hit.
-class_name AttackBattlerAction extends BattlerAction
+class_name AttackEnemyAction extends BattlerAction
 
 const ATTACK_DISTANCE: = 350.0
 ## A to-hit modifier for this attack that will be influenced by the target Battler's

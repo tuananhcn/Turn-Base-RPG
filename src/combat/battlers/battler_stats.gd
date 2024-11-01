@@ -205,45 +205,57 @@ func apply_temp_modifier(battler: Node2D, stat_name: String, percentage: float, 
 	var modifier_value = get("base_" + stat_name) * percentage
 	if not is_buff:
 		modifier_value = -modifier_value  # Debuffs are negative
-	# Apply the modifier
-	var id = add_modifier(stat_name, int(modifier_value))
-	# Store the temporary modifier along with its turns
-	temp_modifiers[id] = {
-		"stat_name": stat_name,
-		"value": modifier_value,
-		"turns": turns,
-		"id": id
-	}
-	# Display buff/debuff icon if provided
-	var status_container = battler.get_node("StatusIconContainer")
-	if icon_texture != null:
-		var icon = TextureRect.new()
-		status_container.add_child(icon)
-		icon.texture = icon_texture
-		icon.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
-		icon.custom_minimum_size  = Vector2(90, 90)  # Set size for the icon
-		icon.expand_mode  = TextureRect.EXPAND_IGNORE_SIZE 
-		var turns_label = Label.new()
-		turns_label.text = str(turns)
-		turns_label.modulate = Color(1, 1, 1)  # White color
-		turns_label.add_theme_font_size_override("font_size",60)
-		icon.add_child(turns_label)
-		#if battler.direction == 0:
-			#turns_label.anchor_right = 0.0
-			#turns_label.scale = Vector2(-1,1)
-		#else:
-		turns_label.anchor_right = 0.0  # Align to the bottom-right of the icon
-		turns_label.anchor_bottom = 0.0
-		turns_label.scale = Vector2(1, 1)
-		# Attach the label to the icon
+	
+	# Check if a similar modifier already exists
+	var existing_id = null
+	for id in temp_modifiers.keys():
+		var modifier = temp_modifiers[id]
+		# Check if there’s already a modifier with the same stat name and value
+		if modifier["stat_name"] == stat_name and modifier["value"] == modifier_value:
+			existing_id = id
+			break
+
+	# If a similar modifier exists, reset its duration
+	if existing_id != null:
+		temp_modifiers[existing_id]["turns"] = turns
+		if temp_modifiers[existing_id].has("turns_label"):
+			temp_modifiers[existing_id]["turns_label"].text = str(turns)  # Update the displayed duration
+	else:
+		# Apply the modifier if no similar one exists
+		var id = add_modifier(stat_name, int(modifier_value))
+		# Store the temporary modifier along with its turns
+		temp_modifiers[id] = {
+			"stat_name": stat_name,
+			"value": modifier_value,
+			"turns": turns,
+			"id": id
+		}
 		
+		# Display buff/debuff icon if provided
+		var status_container = battler.get_node("StatusIconContainer")
+		if icon_texture != null:
+			var icon = TextureRect.new()
+			status_container.add_child(icon)
+			icon.texture = icon_texture
+			icon.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+			icon.custom_minimum_size = Vector2(90, 90)  # Set size for the icon
+			icon.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+			var turns_label = Label.new()
+			turns_label.text = str(turns)
+			turns_label.modulate = Color(1, 1, 1)  # White color
+			turns_label.add_theme_font_size_override("font_size", 60)
+			icon.add_child(turns_label)
+			turns_label.anchor_right = 0.0  # Align to the bottom-right of the icon
+			turns_label.anchor_bottom = 0.0
+			turns_label.scale = Vector2(1, 1)
+
+			# Store the icon in temp_modifiers so we can remove it later
+			temp_modifiers[id]["icon_node"] = icon
+			temp_modifiers[id]["turns_label"] = turns_label
 		
-		
-		# Store the icon in temp_modifiers so we can remove it later
-		temp_modifiers[id]["icon_node"] = icon
-		temp_modifiers[id]["turns_label"] = turns_label
-	# Recalculate the stats with the new modifier
-	_recalculate_and_update(stat_name)
+		# Recalculate the stats with the new modifier
+		_recalculate_and_update(stat_name)
+
 
 
 # Updates the temporary modifiers' durations and removes them if expired
@@ -273,15 +285,3 @@ func clear_temp_modifiers() -> void:
 	
 	# Clear the temp_modifiers dictionary
 	temp_modifiers.clear()
-func apply_item_effect(hp_restore: int, energy_restore: int) -> void:
-	# Restore HP, clamping to the maximum health
-	if hp_restore > 0:
-		var previous_health = health
-		health = min(health + hp_restore, max_health)
-		health_changed.emit(previous_health, health)  # Emit health changed signal
-		print("Restored HP:", hp_restore, "New HP:", health)
-
-	# Restore Energy, clamping to the maximum energy
-	if energy_restore > 0:
-		energy = min(energy + energy_restore, max_energy)
-		print("Restored Energy:", energy_restore, "New Energy:", energy)

@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="PlayerDefend" load_steps=2 format=3 uid="uid://c1yfkrgq7bour"]
 
-[ext_resource type="Script" path="res://src/combat/actions/defend_action.gd" id="1_x7qlk"]
+[ext_resource type="Script" path="res://src/combat/actions/players/defend_action.gd" id="1_x7qlk"]
 
 [resource]
 script = ExtResource("1_x7qlk")

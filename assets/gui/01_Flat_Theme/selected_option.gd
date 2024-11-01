@@ -11,16 +11,38 @@ func show_skills_for_battler(battler: Battler):
 		child.queue_free()
 
 	# Tạo các nút kỹ năng cho từng kỹ năng của nhân vật
-	for skill_index in range(2,battler.actions.size()):
+	for skill_index in range(3, battler.actions.size()):
 		var skill = battler.actions[skill_index]
 		var skill_button = Button.new()
-		skill_button.add_theme_stylebox_override("normal", StyleBoxEmpty.new())
-		skill_button.add_theme_stylebox_override("hover", StyleBoxEmpty.new())
-		skill_button.add_theme_stylebox_override("pressed", StyleBoxEmpty.new())
+		skill_button.custom_minimum_size = Vector2(64, 64)  # Set fixed size to 128x128
 
+		# Style the button for normal, hover, and pressed states
+		var normal_style = StyleBoxFlat.new()
+		normal_style.bg_color = Color(1, 1, 1, 0.3)  # Light gray with some transparency
+		skill_button.add_theme_stylebox_override("normal", normal_style)
+
+		var hover_style = StyleBoxFlat.new()
+		hover_style.bg_color = Color(1, 1, 1, 0.5)  # Slightly darker on hover
+		skill_button.add_theme_stylebox_override("hover", hover_style)
+
+		var pressed_style = StyleBoxFlat.new()
+		pressed_style.bg_color = Color(1, 1, 1, 0.7)  # Darker gray when pressed
+		skill_button.add_theme_stylebox_override("pressed", pressed_style)
+
+		# Set the icon and ensure it is centered and sized properly within the button
 		skill_button.icon = skill.icon
-		# Pass both the skill and its index to the _on_skill_selected function
-		skill_button.connect("pressed", Callable(self, "_on_skill_selected").bind(skill, skill_index))
+		#skill_button.icon_scale = Vector2(2, 2)  # Scale the icon to fit the button size
+		skill_button.icon_alignment = 1  # Center the icon horizontally
+		skill_button.vertical_icon_alignment = 1  # Center the icon vertically
+		skill_button.mouse_default_cursor_shape = 2  # Normal state cursor
+		# Disable the button if the battler doesn't have enough energy to use the skill
+		if battler.stats.energy < skill.energy_cost:
+			skill_button.disabled = true  # Disable button if not enough energy
+		else:
+			# Connect only if button is enabled, passing both skill and index
+			skill_button.connect("pressed", Callable(self, "_on_skill_selected").bind(skill, skill_index))
+
+		# Add the skill button to the grid container
 		grid_container.add_child(skill_button)
 func _on_skill_selected(skill: BattlerAction, attack_index):
 	print("Selected skill: ", skill.label)

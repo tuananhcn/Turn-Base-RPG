@@ -4,7 +4,7 @@ class_name RangedBattlerAction extends BattlerAction
 @export var attack_time: = 0.25
 @export var return_time: = 0.25
 @export var hit_chance: = 100.0
-@export var base_damage: = 1
+@export var base_damage: = 30
 @export var skill_effect_scene: PackedScene  # Export the scene so you can assign different effects
 @export var debuff_defense_percentage: = 0  # Reduces defense by 20%
 @export var debuff_duration: = 2  # Number of turns the debuff lasts

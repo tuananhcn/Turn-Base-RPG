@@ -176,9 +176,10 @@ func _play_turn(battler: Battler) -> void:
 		var is_selection_complete: = false
 		while not is_selection_complete:
 			# First of all, the player must select an action.
-			action = await _player_select_action_async(battler)
 			# Secondly, the player must select targets for the action.
 			# If the target may be selected automatically, do so.
+			action = await _player_select_action_async(battler)
+			#action = battler.actions[selected_action_index]  # Lock the action based on the chosen index
 			if action.targets_self:
 				targets = await _player_select_targets_async(potential_allies)
 			else:
@@ -253,6 +254,11 @@ func _player_select_action_async(battler: Battler) -> BattlerAction:
 	await get_tree().process_frame
 	var selected_action_index: int = await skill_selected
 	return battler.actions[selected_action_index]
+func _player_select_action_index_async(battler: Battler) -> int:
+	# Logic to await player's skill selection and return the selected skill index
+	await get_tree().process_frame
+	return await skill_selected  # Assuming `skill_selected` returns the selected action index
+
 func setup_indicators():
 	for battler in _battlers:
 		var indicator = target_indicator_scene.instantiate()

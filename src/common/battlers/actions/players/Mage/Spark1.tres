@@ -1,9 +1,9 @@
-[gd_resource type="Resource" script_class="RangedBattlerAction" load_steps=2 format=3 uid="uid://fmx6dldfjeg"]
+[gd_resource type="Resource" script_class="RangedBattlerAction" load_steps=2 format=3 uid="uid://dwcj2b2vt1lkn"]
 
-[ext_resource type="Script" path="res://src/combat/actions/mage_action_projectile.gd" id="1_appvx"]
+[ext_resource type="Script" path="res://src/combat/actions/players/mage_action_projectile.gd" id="1_s57ye"]
 
 [resource]
-script = ExtResource("1_appvx")
+script = ExtResource("1_s57ye")
 attack_distance = 350.0
 attack_time = 0.25
 return_time = 0.25

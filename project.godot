@@ -22,8 +22,8 @@ CombatEvents="*res://src/common/combat_events.gd"
 FieldEvents="*res://src/common/field_events.gd"
 Music="*res://src/common/music/music_player.tscn"
 Transition="*res://src/common/screen_transitions/ScreenTransition.tscn"
-AppConfig="*res://addons/maaacks_options_menus/base/scenes/autoloads/app_config.tscn"
 GlobalData="*res://src/GlobalData.gd"
+AppConfig="*res://addons/maaacks_options_menus/base/scenes/autoloads/app_config.tscn"
 Dialogic="*res://addons/dialogic/Core/DialogicGameHandler.gd"
 
 [dialogic]

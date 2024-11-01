@@ -3,7 +3,7 @@
 class_name CombatArena extends Control
 
 @export var music: AudioStream
-
+@onready var audio_player: AudioStreamPlayer = $AudioStreamPlayer
 @onready var turn_queue: ActiveTurnQueue = $Battlers as ActiveTurnQueue
 @onready var player_bars: VBoxContainer = $PlayerBars/NinePatchRect/VBoxContainer
 @onready var enemy_bars: VBoxContainer = $EnemyBars/NinePatchRect/VBoxContainer
@@ -12,6 +12,11 @@ class_name CombatArena extends Control
 func _ready():
 	# If using a preloaded UI scene, ensure it's instanced and added to the tree
 	# Access player_bars and enemy_bars after instancing UI
+	if music:
+		audio_player.stream = music
+		audio_player.play()
+	else:
+		print("No music assigned to the 'music' variable.")
 	effect_label_builder.setup(turn_queue.get_battlers())
 	print(turn_queue._battlers)
 	if player_bars and enemy_bars:
