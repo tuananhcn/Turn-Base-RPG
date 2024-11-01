@@ -144,3 +144,17 @@ func take_hit(hit: BattlerHit) -> void:
 		health_updated.emit(stats.health)
 	else:
 		hit_missed.emit()
+func apply_item_effect(hp_restore: int, energy_restore: int) -> void:
+	# Restore HP, clamping to max_health
+	if hp_restore > 0:
+		var previous_health = stats.health
+		stats.health = min(stats.health + hp_restore, stats.max_health)
+		health_updated.emit(stats.health)  # Emit signal to update the UI
+		print("Restored HP:", hp_restore, "New HP:", stats.health)
+
+	# Restore Energy, clamping to max_energy
+	if energy_restore > 0:
+		var previous_energy = stats.energy
+		stats.energy = min(stats.energy + energy_restore, stats.max_energy)
+		energy_updated.emit(stats.energy)  # Emit signal to update the UI
+		print("Restored Energy:", energy_restore, "New Energy:", stats.energy)

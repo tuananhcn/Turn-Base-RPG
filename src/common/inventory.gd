@@ -17,6 +17,7 @@ const ICONS: = {
 	ItemTypes.BLUE_WAND: preload("res://assets/items/wand_blue.atlastex"),
 	ItemTypes.GREEN_WAND: preload("res://assets/items/wand_green.atlastex"),
 	ItemTypes.HP: preload("res://assets/items/HpPotion.atlastex"),
+	ItemTypes.EP: preload("res://assets/items/EnergyPotion.atlastex"),
 	ItemTypes.SWORD1: preload("res://assets/items/sword1.atlastex"),
 	ItemTypes.SWORD2: preload("res://assets/items/sword2.atlastex"),
 	ItemTypes.SWORD3: preload("res://assets/items/sword3.atlastex"),

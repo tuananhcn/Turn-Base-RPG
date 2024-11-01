@@ -1,0 +1,68 @@
+[gd_scene load_steps=10 format=3 uid="uid://um2tqohuf6md"]
+
+[ext_resource type="Texture2D" uid="uid://ch4hp3mx6pb1q" path="res://assets/battlers/ParticleSkill/01.png" id="1_edt4c"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5e10y"]
+atlas = ExtResource("1_edt4c")
+region = Rect2(0, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hct0o"]
+atlas = ExtResource("1_edt4c")
+region = Rect2(64, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_85005"]
+atlas = ExtResource("1_edt4c")
+region = Rect2(128, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sg4ax"]
+atlas = ExtResource("1_edt4c")
+region = Rect2(192, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mopd8"]
+atlas = ExtResource("1_edt4c")
+region = Rect2(256, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uicop"]
+atlas = ExtResource("1_edt4c")
+region = Rect2(320, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4gamp"]
+atlas = ExtResource("1_edt4c")
+region = Rect2(384, 64, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5dofl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5e10y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hct0o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_85005")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sg4ax")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mopd8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uicop")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4gamp")
+}],
+"loop": true,
+"name": &"default",
+"speed": 7.0
+}]
+
+[node name="EletricA" type="Node2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(1, -33)
+sprite_frames = SubResource("SpriteFrames_5dofl")
+autoplay = "default"
+frame_progress = 0.177616

@@ -23,7 +23,7 @@ func update_turn_queue():
 # Create a display node for each battler's turn in the queue
 func create_turn_display(battler: Battler) -> Control:
 	# Create a container for each battler's turn display
-	print("create_turn_display")
+	#print("create_turn_display")
 	var turn_container = HBoxContainer.new()
 	turn_container.name = "TurnDisplay_" + str(battler.name)  # Optional for debugging
 	turn_container.custom_minimum_size = Vector2(128, 128)  # Fixed size container

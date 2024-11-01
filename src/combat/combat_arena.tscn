@@ -1,12 +1,14 @@
-[gd_scene load_steps=10 format=3 uid="uid://c6uxju87r2dck"]
+[gd_scene load_steps=12 format=3 uid="uid://c6uxju87r2dck"]
 
 [ext_resource type="Script" path="res://src/combat/combat_arena.gd" id="1_iqdn5"]
 [ext_resource type="Script" path="res://src/combat/active_turn_queue.gd" id="2_ll0ok"]
 [ext_resource type="PackedScene" uid="uid://bo1ekbs2isbn4" path="res://assets/gui/01_Flat_Theme/HpScene.tscn" id="3_77xtk"]
 [ext_resource type="PackedScene" uid="uid://cqle6yih3nfm5" path="res://assets/gui/01_Flat_Theme/SelectSkill.tscn" id="4_km2lf"]
+[ext_resource type="PackedScene" uid="uid://dnu5daq5jsrtf" path="res://assets/gui/01_Flat_Theme/tactics.tscn" id="5_6utbr"]
 [ext_resource type="PackedScene" uid="uid://cpbx3es5oxmcq" path="res://assets/gui/01_Flat_Theme/SelectedOption.tscn" id="5_buisq"]
 [ext_resource type="PackedScene" uid="uid://c5w17hum6hdkk" path="res://src/gui/turnqueue/TurnOrder.tscn" id="6_f5gg2"]
 [ext_resource type="Script" path="res://src/combat/ui/effect_labels/ui_effect_label_builder.gd" id="7_xkof0"]
+[ext_resource type="PackedScene" uid="uid://dlp2yu52o1clj" path="res://assets/gui/01_Flat_Theme/item.tscn" id="8_3iu7r"]
 [ext_resource type="PackedScene" uid="uid://bo6hj2mg02uef" path="res://src/combat/ui/effect_labels/ui_damage_label.tscn" id="8_qcvp3"]
 [ext_resource type="PackedScene" uid="uid://dxyw5j7wr56hl" path="res://src/combat/ui/effect_labels/ui_missed_label.tscn" id="9_d0y0d"]
 
@@ -59,6 +61,12 @@ offset_top = 0.0
 offset_right = -373.0
 grow_horizontal = 2
 
+[node name="Tactics" parent="." instance=ExtResource("5_6utbr")]
+visible = false
+layout_mode = 1
+offset_left = 587.0
+offset_right = 587.0
+
 [node name="SelectSkillPanel" parent="." instance=ExtResource("4_km2lf")]
 layout_mode = 1
 anchors_preset = 2
@@ -76,6 +84,12 @@ layout_mode = 1
 anchors_preset = 0
 anchor_right = 0.0
 grow_horizontal = 1
+
+[node name="Item" parent="." instance=ExtResource("8_3iu7r")]
+visible = false
+layout_mode = 1
+offset_left = 587.0
+offset_right = 587.0
 
 [node name="UI" type="CanvasLayer" parent="."]
 

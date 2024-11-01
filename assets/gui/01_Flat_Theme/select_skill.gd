@@ -1,5 +1,7 @@
 extends Control
 @onready var select_skill_option = get_node("../SelectSkillOption")
+@onready var select_tactics = get_node("../Tactics")
+@onready var select_items = get_node("../Item")
 func _ready():
 	# Connecting signals in Godot 4
 	$NinePatchRect/VBoxContainer/AttackButton.pressed.connect(_on_attack_pressed)
@@ -32,12 +34,23 @@ func _on_skill_pressed():
 	print("Skill Pressed")
 	var active_turn_queue = get_node("../Battlers")
 	active_turn_queue.hide_all_indicators()
+	select_tactics.hide()
+	select_items.hide()
 	select_skill_option.show()
 	select_skill_option.show_skills_for_battler(active_turn_queue.current_battler)
 func _on_summon_pressed():
-	print("Summon Pressed")
+	print("Tactics Pressed")
+	var active_turn_queue = get_node("../Battlers")
+	active_turn_queue.hide_all_indicators()
+	select_skill_option.hide()
+	select_items.hide()
+	select_tactics.show()
 	# Handle summon logic here
 
 func _on_item_pressed():
 	print("Item Pressed")
+	select_skill_option.hide()
+	select_tactics.hide()
+	select_items.show()
+	select_items.show_items()
 	# Handle item logic here

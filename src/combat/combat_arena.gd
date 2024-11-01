@@ -70,8 +70,8 @@ func update_hp_bar(battler: Battler, is_player: bool, index: int):
 	var hp_bar = battler_container.get_node("Hp/HpProgressBar")
 	var hp_label = battler_container.get_node("Hp/HpNum")
 	# Update HP
-	hp_bar.value = battler.stats.health
 	hp_bar.max_value = battler.stats.max_health
+	hp_bar.value = battler.stats.health
 	hp_label.text = "%d/%d" % [battler.stats.health, battler.stats.max_health]
 func update_mana_bar(battler: Battler, is_player: bool, index: int):
 	var battler_container

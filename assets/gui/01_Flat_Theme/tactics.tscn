@@ -1,22 +1,23 @@
-[gd_scene load_steps=2 format=3 uid="uid://dnu5daq5jsrtf"]
+[gd_scene load_steps=3 format=3 uid="uid://dnu5daq5jsrtf"]
 
+[ext_resource type="Script" path="res://assets/gui/01_Flat_Theme/tactics.gd" id="1_6upwo"]
 [ext_resource type="Texture2D" uid="uid://b60gi1112ndc1" path="res://assets/gui/01_Flat_Theme/Sprites/UI_Flat_Frame_01_Horizontal.png" id="1_tagw6"]
 
 [node name="Tactics" type="Control"]
 layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
+anchors_preset = 2
+anchor_top = 1.0
 anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+grow_vertical = 0
+script = ExtResource("1_6upwo")
 
 [node name="NinePatchRect" type="NinePatchRect" parent="."]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_top = -291.0
-offset_right = 359.0
+offset_top = -248.0
+offset_right = 285.0
 grow_vertical = 0
 texture = ExtResource("1_tagw6")
 region_rect = Rect2(0, 0, 96, 32)
@@ -30,6 +31,19 @@ axis_stretch_vertical = 2
 [node name="GridContainer" type="GridContainer" parent="NinePatchRect"]
 layout_mode = 0
 offset_left = 27.0
-offset_top = 19.0
-offset_right = 67.0
-offset_bottom = 59.0
+offset_top = 23.0
+offset_right = 251.0
+offset_bottom = 239.0
+theme_override_constants/h_separation = 14
+theme_override_constants/v_separation = 40
+
+[node name="Defend" type="Button" parent="NinePatchRect/GridContainer"]
+layout_mode = 2
+text = "Defend"
+
+[node name="Escape" type="Button" parent="NinePatchRect/GridContainer"]
+layout_mode = 2
+text = "Escape"
+
+[connection signal="pressed" from="NinePatchRect/GridContainer/Defend" to="." method="_on_defend_pressed"]
+[connection signal="pressed" from="NinePatchRect/GridContainer/Escape" to="." method="_on_escape_pressed"]

@@ -1,0 +1,82 @@
+[gd_scene load_steps=12 format=3 uid="uid://c761ivthty0b6"]
+
+[ext_resource type="Texture2D" uid="uid://ch4hp3mx6pb1q" path="res://assets/battlers/ParticleSkill/01.png" id="1_s8572"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i6d4c"]
+atlas = ExtResource("1_s8572")
+region = Rect2(0, 192, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w7idu"]
+atlas = ExtResource("1_s8572")
+region = Rect2(64, 192, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sf11g"]
+atlas = ExtResource("1_s8572")
+region = Rect2(128, 192, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_anutp"]
+atlas = ExtResource("1_s8572")
+region = Rect2(192, 192, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gs61m"]
+atlas = ExtResource("1_s8572")
+region = Rect2(256, 192, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_el400"]
+atlas = ExtResource("1_s8572")
+region = Rect2(320, 192, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_66ttg"]
+atlas = ExtResource("1_s8572")
+region = Rect2(384, 192, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_778vj"]
+atlas = ExtResource("1_s8572")
+region = Rect2(448, 192, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nj3ki"]
+atlas = ExtResource("1_s8572")
+region = Rect2(512, 192, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5dofl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i6d4c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w7idu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sf11g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_anutp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gs61m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_el400")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_66ttg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_778vj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nj3ki")
+}],
+"loop": true,
+"name": &"default",
+"speed": 9.0
+}]
+
+[node name="EletricA" type="Node2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(1, -33)
+sprite_frames = SubResource("SpriteFrames_5dofl")
+autoplay = "default"
+frame_progress = 0.385575

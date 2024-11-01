@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ItemAction" load_steps=2 format=3 uid="uid://d3jlrkdt6kkrf"]
+
+[ext_resource type="Script" path="res://src/combat/actions/item_action.gd" id="1_yso2v"]
+
+[resource]
+script = ExtResource("1_yso2v")
+label = "Base combat action"
+description = "A combat action."
+energy_cost = 0
+element = 0
+targets_self = true
+targets_all = false
+readiness_saved = 0.0

@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="PlayerDefend" load_steps=2 format=3 uid="uid://c1yfkrgq7bour"]
+
+[ext_resource type="Script" path="res://src/combat/actions/defend_action.gd" id="1_x7qlk"]
+
+[resource]
+script = ExtResource("1_x7qlk")
+defense_boost = 0.5
+duration = 1
+label = "Base combat action"
+description = "A combat action."
+energy_cost = 0
+element = 0
+targets_self = true
+targets_all = false
+readiness_saved = 0.0

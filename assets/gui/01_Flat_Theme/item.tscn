@@ -1,0 +1,38 @@
+[gd_scene load_steps=3 format=3 uid="uid://dlp2yu52o1clj"]
+
+[ext_resource type="Script" path="res://assets/gui/01_Flat_Theme/item.gd" id="1_kgxay"]
+[ext_resource type="Texture2D" uid="uid://b60gi1112ndc1" path="res://assets/gui/01_Flat_Theme/Sprites/UI_Flat_Frame_01_Horizontal.png" id="2_573ra"]
+
+[node name="Item" type="Control"]
+layout_mode = 3
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+grow_vertical = 0
+script = ExtResource("1_kgxay")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -248.0
+offset_right = 285.0
+grow_vertical = 0
+texture = ExtResource("2_573ra")
+region_rect = Rect2(0, 0, 96, 32)
+patch_margin_left = 15
+patch_margin_top = 9
+patch_margin_right = 11
+patch_margin_bottom = 8
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 2
+
+[node name="GridContainer" type="GridContainer" parent="NinePatchRect"]
+layout_mode = 0
+offset_left = 27.0
+offset_top = 23.0
+offset_right = 251.0
+offset_bottom = 239.0
+theme_override_constants/h_separation = 14
+theme_override_constants/v_separation = 40

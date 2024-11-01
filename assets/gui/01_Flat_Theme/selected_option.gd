@@ -10,9 +10,8 @@ func show_skills_for_battler(battler: Battler):
 	for child in grid_container.get_children():
 		child.queue_free()
 
-
 	# Tạo các nút kỹ năng cho từng kỹ năng của nhân vật
-	for skill_index in range(1,battler.actions.size()):
+	for skill_index in range(2,battler.actions.size()):
 		var skill = battler.actions[skill_index]
 		var skill_button = Button.new()
 		skill_button.add_theme_stylebox_override("normal", StyleBoxEmpty.new())

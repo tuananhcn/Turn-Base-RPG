@@ -52,6 +52,7 @@ var _party_members: Array[Battler] = []
 var _enemies: Array[Battler] = []
 @onready var select_skill_panel = get_node("../SelectSkillPanel")
 @onready var turn_order = get_node("../TurnOrder")
+#@onready var _defend_selected = false;
 func _ready() -> void:
 	# This is required in Godot 4.3 to strongly type the array.
 	_battlers.assign(get_children())
@@ -188,6 +189,11 @@ func _play_turn(battler: Battler) -> void:
 		battler.is_selected = false
 		hide_all_indicators()
 		await battler.act(action, targets)
+		if action is ItemAction:
+			# Assuming `item_type` is stored in ItemAction or retrieved from action attributes
+			var inventory = Inventory.restore()
+			var item_type = Inventory.ItemTypes.HP if action.item_name == "HP Potion" else Inventory.ItemTypes.EP
+			inventory.remove(item_type, 1)  # Decrement item count in inventory
 	else:
 		# Allow the AI to take a turn.
 		if battler.actions.size():
@@ -234,6 +240,7 @@ func _deactivate_if_side_downed(checked_battlers: Array[Battler],
 func _player_select_targets_async(potential_targets: Array[Battler]) -> Array[Battler]:
 	await get_tree().process_frame
 	var selected_targets: Array[Battler] = await target_selected as Array[Battler]
+	print(selected_targets)
 	if selected_targets.size() > 0:
 		var index = get_opponent_index(selected_targets[0],potential_targets)
 		if index != -1:

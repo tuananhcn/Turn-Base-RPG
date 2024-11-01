@@ -228,21 +228,20 @@ func apply_temp_modifier(battler: Node2D, stat_name: String, percentage: float, 
 		turns_label.modulate = Color(1, 1, 1)  # White color
 		turns_label.add_theme_font_size_override("font_size",60)
 		icon.add_child(turns_label)
-		if battler.direction == 0:
-			turns_label.anchor_right = 0.0
-			turns_label.scale = Vector2(-1,1)
-			#turns_label.anchor_bottom = 0.0
-			#status_container.scale = Vector2(-1,1)
-		else:
-			turns_label.anchor_right = 0.0  # Align to the bottom-right of the icon
-			turns_label.anchor_bottom = 0.0
-			turns_label.scale = Vector2(1, 1)
+		#if battler.direction == 0:
+			#turns_label.anchor_right = 0.0
+			#turns_label.scale = Vector2(-1,1)
+		#else:
+		turns_label.anchor_right = 0.0  # Align to the bottom-right of the icon
+		turns_label.anchor_bottom = 0.0
+		turns_label.scale = Vector2(1, 1)
 		# Attach the label to the icon
 		
 		
 		
 		# Store the icon in temp_modifiers so we can remove it later
 		temp_modifiers[id]["icon_node"] = icon
+		temp_modifiers[id]["turns_label"] = turns_label
 	# Recalculate the stats with the new modifier
 	_recalculate_and_update(stat_name)
 
@@ -274,3 +273,15 @@ func clear_temp_modifiers() -> void:
 	
 	# Clear the temp_modifiers dictionary
 	temp_modifiers.clear()
+func apply_item_effect(hp_restore: int, energy_restore: int) -> void:
+	# Restore HP, clamping to the maximum health
+	if hp_restore > 0:
+		var previous_health = health
+		health = min(health + hp_restore, max_health)
+		health_changed.emit(previous_health, health)  # Emit health changed signal
+		print("Restored HP:", hp_restore, "New HP:", health)
+
+	# Restore Energy, clamping to the maximum energy
+	if energy_restore > 0:
+		energy = min(energy + energy_restore, max_energy)
+		print("Restored Energy:", energy_restore, "New Energy:", energy)

@@ -82,4 +82,3 @@ func add_end_control(control:Control) -> void:
 	if control.has_method('refresh'):
 		control.refresh()
 	end_control = control
-
