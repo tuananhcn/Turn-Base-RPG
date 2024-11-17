@@ -229,4 +229,3 @@ func godot_file_dialog(callable:Callable, filter:String, mode := EditorFileDialo
 		editor_file_dialog.dir_selected.connect(callable)
 		editor_file_dialog.file_selected.connect(callable)
 	return editor_file_dialog
-

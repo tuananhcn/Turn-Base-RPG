@@ -14,20 +14,20 @@ func show_skills_for_battler(battler: Battler):
 	for skill_index in range(3, battler.actions.size()):
 		var skill = battler.actions[skill_index]
 		var skill_button = Button.new()
-		skill_button.custom_minimum_size = Vector2(64, 64)  # Set fixed size to 128x128
+		skill_button.custom_minimum_size = Vector2(100, 100)  # Set fixed size to 128x128
 
 		# Style the button for normal, hover, and pressed states
-		var normal_style = StyleBoxFlat.new()
-		normal_style.bg_color = Color(1, 1, 1, 0.3)  # Light gray with some transparency
-		skill_button.add_theme_stylebox_override("normal", normal_style)
-
-		var hover_style = StyleBoxFlat.new()
-		hover_style.bg_color = Color(1, 1, 1, 0.5)  # Slightly darker on hover
-		skill_button.add_theme_stylebox_override("hover", hover_style)
-
-		var pressed_style = StyleBoxFlat.new()
-		pressed_style.bg_color = Color(1, 1, 1, 0.7)  # Darker gray when pressed
-		skill_button.add_theme_stylebox_override("pressed", pressed_style)
+		#var normal_style = StyleBoxFlat.new()
+		#normal_style.bg_color = Color(1, 1, 1, 0.3)  # Light gray with some transparency
+		#skill_button.add_theme_stylebox_override("normal", normal_style)
+#
+		#var hover_style = StyleBoxFlat.new()
+		#hover_style.bg_color = Color(1, 1, 1, 0.5)  # Slightly darker on hover
+		#skill_button.add_theme_stylebox_override("hover", hover_style)
+#
+		#var pressed_style = StyleBoxFlat.new()
+		#pressed_style.bg_color = Color(1, 1, 1, 0.7)  # Darker gray when pressed
+		#skill_button.add_theme_stylebox_override("pressed", pressed_style)
 
 		# Set the icon and ensure it is centered and sized properly within the button
 		skill_button.icon = skill.icon
@@ -35,6 +35,43 @@ func show_skills_for_battler(battler: Battler):
 		skill_button.icon_alignment = 1  # Center the icon horizontally
 		skill_button.vertical_icon_alignment = 1  # Center the icon vertically
 		skill_button.mouse_default_cursor_shape = 2  # Normal state cursor
+		skill_button.expand_icon = true
+		# Create style for normal state
+		var normal_style = StyleBoxFlat.new()
+		normal_style.bg_color = Color(0.2, 0.2, 0.2, 0.9)  # Darker background
+		normal_style.border_color = Color(0.8, 0.8, 0.8, 0.5)  # More visible border
+		normal_style.set_corner_radius_all(5)
+		normal_style.set_border_width_all(2)
+		normal_style.set_expand_margin_all(5)
+
+		# Create style for hover state
+		var hover_style = StyleBoxFlat.new()
+		hover_style.bg_color = Color(0.3, 0.3, 0.3, 1.0)  # More visible hover color
+		hover_style.border_color = Color(1, 1, 1, 0.8)  # Brighter border on hover
+		hover_style.set_corner_radius_all(5)
+		normal_style.set_border_width_all(2)
+		normal_style.set_expand_margin_all(5)
+		# More visible glow effect
+		hover_style.shadow_color = Color(0.5, 0.5, 1.0, 0.5)
+		hover_style.shadow_size = 8
+
+		# Create style for pressed state
+		var pressed_style = StyleBoxFlat.new()
+		pressed_style.bg_color = Color(0.15, 0.15, 0.15, 1.0)
+		pressed_style.border_color = Color(0.3, 0.3, 1.0, 1.0)  # Blue-ish border when pressed
+		pressed_style.set_corner_radius_all(5)
+		normal_style.set_border_width_all(2)
+		normal_style.set_expand_margin_all(5)
+		# Stronger pressed effect
+		pressed_style.shadow_color = Color(0.0, 0.0, 0.5, 0.8)
+		pressed_style.shadow_size = 4
+		# Add inset effect when pressed
+		pressed_style.shadow_offset = Vector2(2, 2)
+
+		# Apply styles to button
+		skill_button.add_theme_stylebox_override("normal", normal_style)
+		skill_button.add_theme_stylebox_override("hover", hover_style)
+		skill_button.add_theme_stylebox_override("pressed", pressed_style)
 		# Disable the button if the battler doesn't have enough energy to use the skill
 		if battler.stats.energy < skill.energy_cost:
 			skill_button.disabled = true  # Disable button if not enough energy

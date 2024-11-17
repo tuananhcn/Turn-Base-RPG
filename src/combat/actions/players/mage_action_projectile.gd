@@ -1,4 +1,4 @@
-class_name RangedBattlerAction extends BattlerAction
+class_name RangedMageAction extends BattlerAction
 
 @export var attack_distance: = 350.0
 @export var attack_time: = 0.25

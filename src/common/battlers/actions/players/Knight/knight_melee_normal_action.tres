@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="AttackBattlerAction" load_steps=3 format=3 uid="uid://dp7wo0l4es3w4"]
+[gd_resource type="Resource" script_class="KnightMeleeAction" load_steps=3 format=3 uid="uid://dp7wo0l4es3w4"]
 
 [ext_resource type="Texture2D" uid="uid://b8ojjrmvxaf43" path="res://icon.svg" id="1_nktgp"]
 [ext_resource type="Script" path="res://src/combat/actions/players/knight_melee_action_attack.gd" id="2_eicvg"]
@@ -6,7 +6,7 @@
 [resource]
 script = ExtResource("2_eicvg")
 hit_chance = 100.0
-base_damage = 1
+base_damage = 100
 icon = ExtResource("1_nktgp")
 label = "Base combat action"
 description = "A combat action."
