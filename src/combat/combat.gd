@@ -22,6 +22,7 @@ func _ready() -> void:
 	FieldEvents.combat_triggered.connect(start)
 
 
+@onready var _main_music_player = $"../AudioStreamPlayer" as AudioStreamPlayer
 ## Begin a combat. Takes a PackedScene as its only parameter, expecting it to be a CombatState object once
 ## instantiated.
 ## This is normally a response to [signal FieldEvents.combat_triggered].
@@ -29,7 +30,8 @@ func start(arena: PackedScene) -> void:
 	assert(_active_arena == null, "Attempting to start a combat while one is ongoing!")
 
 	await Transition.cover(0.2)
-
+	_previous_music_track = _main_music_player.stream
+	_main_music_player.stop()
 	var new_arena: = arena.instantiate()
 	assert(
 		new_arena != null,
@@ -52,16 +54,22 @@ func start(arena: PackedScene) -> void:
 			_active_arena.queue_free()
 			_active_arena = null
 
-			Music.play(_previous_music_track)
-			_previous_music_track = null
+			#Music.play(_previous_music_track)
+			#_previous_music_track = null
 
 			# Whatever object started the combat will now be responsible for flow of the game. In
 			# particular, the screen is still covered, so the combat-starting object will want to decide
 			# what to do now that the outcome of the combat is known.
+			# Resume the previous music
+			# Resume the previous music
+			if _previous_music_track:
+				_main_music_player.stream = _previous_music_track
+				_main_music_player.play()
+				_previous_music_track = null
 			CombatEvents.combat_finished.emit()
 	)
 
-	_previous_music_track = Music.get_playing_track()
+	#_previous_music_track = Music.get_playing_track()
 	Music.play(_active_arena.music)
 
 	CombatEvents.combat_initiated.emit()

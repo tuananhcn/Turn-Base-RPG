@@ -68,6 +68,7 @@ offset_left = 587.0
 offset_right = 587.0
 
 [node name="SelectSkillPanel" parent="." instance=ExtResource("4_km2lf")]
+visible = false
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0

@@ -2,8 +2,8 @@ class_name MusicPlayer extends Node
 
 @onready var _anim: = $AnimationPlayer as AnimationPlayer
 @onready var _track: = $AudioStreamPlayer as AudioStreamPlayer
-
-
+#func _ready():
+	#_track.play()
 func play(new_stream: AudioStream, time_in: = 0.0, time_out: = 0.0) -> void:
 	if new_stream == _track.stream:
 		return

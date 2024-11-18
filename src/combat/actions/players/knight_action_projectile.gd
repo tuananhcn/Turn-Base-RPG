@@ -29,8 +29,8 @@ func execute(source: Battler, targets: Array[Battler] = []) -> void:
 	var target: = targets[0]
 	await source.get_tree().create_timer(0.1).timeout
 	var anim_player = find_animation_player(source)
-	if anim_player.has_animation("attack2"):
-		anim_player.play("attack2")
+	if anim_player.has_animation("buff_skill"):
+		anim_player.play("buff_skill")
 		await anim_player.animation_finished  # Wait for the attack animation to finish
 	await source.get_tree().create_timer(0.1).timeout
 	# Instantiate the skill effect and position it at the target's pivot

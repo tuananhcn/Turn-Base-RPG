@@ -1,4 +1,4 @@
-[gd_scene load_steps=92 format=3 uid="uid://p01fb6nvi144"]
+[gd_scene load_steps=95 format=3 uid="uid://p01fb6nvi144"]
 
 [ext_resource type="Script" path="res://src/field/field.gd" id="2_bkxev"]
 [ext_resource type="Script" path="res://src/field/field_cursor.gd" id="5_3guor"]
@@ -49,6 +49,7 @@
 [ext_resource type="Script" path="res://maps/town/door_unlock_interaction.gd" id="34_xtrml"]
 [ext_resource type="Resource" path="res://maps/town/sign.dtl" id="35_gv62s"]
 [ext_resource type="Script" path="res://maps/town/conversation_encounter.gd" id="35_i66wm"]
+[ext_resource type="PackedScene" uid="uid://dgx514k1lb42h" path="res://assets/characters/monster_gfx.tscn" id="35_nupx4"]
 [ext_resource type="PackedScene" uid="uid://bq6b26pctmol4" path="res://maps/town/battles/test_combat_arena2.tscn" id="35_x5y1m"]
 [ext_resource type="PackedScene" uid="uid://cgwailb13nkcd" path="res://assets/characters/ghost_gfx.tscn" id="36_7n3c5"]
 [ext_resource type="Resource" path="res://maps/town/encounter_before_combat.dtl" id="36_fu3a1"]
@@ -71,10 +72,12 @@
 [ext_resource type="AudioStream" uid="uid://dnboblpkf0fqi" path="res://addons/dialogic/Example Assets/sound-effects/typing3.wav" id="56_prbwr"]
 [ext_resource type="AudioStream" uid="uid://c2viukvbub6v6" path="res://addons/dialogic/Example Assets/sound-effects/typing4.wav" id="57_tomnb"]
 [ext_resource type="AudioStream" uid="uid://dwcre3fjf3cj8" path="res://addons/dialogic/Example Assets/sound-effects/typing5.wav" id="58_br2ni"]
+[ext_resource type="PackedScene" uid="uid://d4lcsv4t256xl" path="res://assets/characters/bat_gfx.tscn" id="58_bwccp"]
 [ext_resource type="Resource" path="res://maps/opening_cutscene.dtl" id="68_jcriq"]
 [ext_resource type="Script" path="res://src/combat/combat.gd" id="69_meyff"]
 [ext_resource type="PackedScene" uid="uid://4s62mhbkiktj" path="res://src/gui/shop.tscn" id="71_n12l7"]
 [ext_resource type="PackedScene" uid="uid://c8bg71377pejj" path="res://src/gui/equipment/equipment.tscn" id="75_ksl00"]
+[ext_resource type="AudioStream" uid="uid://c3a7oqucd5ig0" path="res://assets/music/A Breeze from Home.mp3" id="78_b71ac"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_oktsl"]
 resource_name = "Overlay"
@@ -402,7 +405,7 @@ gameboard = ExtResource("6_kd8tv")
 y_sort_enabled = true
 
 [node name="Player" parent="Field/Terrain/Gamepieces" instance=ExtResource("11_yntrj")]
-position = Vector2(154.4, 582.8)
+position = Vector2(262, 160.4)
 gameboard = ExtResource("6_kd8tv")
 blocks_movement = true
 move_speed = 96.0
@@ -563,7 +566,8 @@ gameboard = ExtResource("6_kd8tv")
 move_speed = 235.0
 metadata/_edit_group_ = true
 
-[node name="GhostGFX" parent="Field/Terrain/Gamepieces/Town/RoamingEncounter2" instance=ExtResource("36_7n3c5")]
+[node name="MonsterGFX" parent="Field/Terrain/Gamepieces/Town/RoamingEncounter2" instance=ExtResource("35_nupx4")]
+scale = Vector2(1, 1)
 
 [node name="CombatStartTrigger" parent="Field/Terrain/Gamepieces/Town/RoamingEncounter2" instance=ExtResource("39_p2lth")]
 script = ExtResource("33_0gswb")
@@ -828,7 +832,8 @@ gameboard = ExtResource("6_kd8tv")
 move_speed = 235.0
 metadata/_edit_group_ = true
 
-[node name="GhostGFX" parent="Field/Terrain/Gamepieces/Desert/RoamingEncounter3" instance=ExtResource("36_7n3c5")]
+[node name="BatGFX" parent="Field/Terrain/Gamepieces/Desert/RoamingEncounter3" instance=ExtResource("58_bwccp")]
+scale = Vector2(1, 1)
 
 [node name="CombatStartTrigger" parent="Field/Terrain/Gamepieces/Desert/RoamingEncounter3" instance=ExtResource("39_p2lth")]
 script = ExtResource("33_0gswb")
@@ -1038,5 +1043,9 @@ transform = Transform2D(1, 0, 0, 1, 0, 100)
 
 [node name="Equipment" parent="." instance=ExtResource("75_ksl00")]
 visible = false
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("78_b71ac")
+autoplay = true
 
 [connection signal="area_entered" from="Field/Terrain/Gamepieces/Grove/GameEndTrigger/Area2D2" to="Field/Terrain/Gamepieces/Grove/GameEndTrigger" method="_on_area_entered"]
