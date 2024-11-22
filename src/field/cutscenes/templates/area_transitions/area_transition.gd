@@ -1,7 +1,7 @@
 @tool
 
 class_name AreaTransition extends Trigger
-
+@onready var _main_music_player = $"/root/Main/AudioStreamPlayer" as AudioStreamPlayer
 @export var arrival_coordinates: Vector2:
 	set(value):
 		arrival_coordinates = value
@@ -73,4 +73,13 @@ func _on_area_entered(area: Area2D) -> void:
 
 
 func _on_blackout() -> void:
-	Music.play(new_music, 0.0, 0.15)
+	if new_music:
+		# Fade out current music
+		var tween = create_tween()
+		tween.tween_property(_main_music_player, "volume_db", -80.0, 0.15)
+		await tween.finished
+		
+		# Change and play new music
+		_main_music_player.stream = new_music
+		_main_music_player.volume_db = 0.0
+		_main_music_player.play()

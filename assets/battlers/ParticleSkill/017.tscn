@@ -49,7 +49,7 @@ region = Rect2(640, 512, 64, 64)
 [sub_resource type="SpriteFrames" id="SpriteFrames_5dofl"]
 animations = [{
 "frames": [{
-"duration": 1.0,
+"duration": 2.0,
 "texture": SubResource("AtlasTexture_dg26g")
 }, {
 "duration": 1.0,
@@ -84,7 +84,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"default",
-"speed": 10.0
+"speed": 14.0
 }]
 
 [node name="EletricA" type="Node2D"]
@@ -93,4 +93,4 @@ animations = [{
 position = Vector2(1, -33)
 sprite_frames = SubResource("SpriteFrames_5dofl")
 autoplay = "default"
-frame_progress = 0.500832
+frame_progress = 0.780828

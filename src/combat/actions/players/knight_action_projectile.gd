@@ -40,7 +40,7 @@ func execute(source: Battler, targets: Array[Battler] = []) -> void:
 		return
 	var skill_effect_instance = skill_effect_scene.instantiate()
 	skill_effect_instance.z_index = 10  # Make sure it's on top
-	skill_effect_instance.scale = Vector2(4, 4)  # Temporarily scale up to make it more visible
+	skill_effect_instance.scale = Vector2(8, 8)  # Temporarily scale up to make it more visible
 	skill_effect_instance.position = target_pivot.global_position  # Use the pivot's global position
 	source.get_parent().add_child(skill_effect_instance)  # Add to the same parent of source
 	await source.get_tree().create_timer(1).timeout

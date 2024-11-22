@@ -1,0 +1,62 @@
+[gd_scene load_steps=9 format=3 uid="uid://dx4dib5f0dsa7"]
+
+[ext_resource type="Texture2D" uid="uid://bj2jono35ohbr" path="res://assets/battlers/ParticleSkill/Water Effect and Bullet 16x16.png" id="1_1nhca"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pvot1"]
+atlas = ExtResource("1_1nhca")
+region = Rect2(480, 150, 16, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vxakd"]
+atlas = ExtResource("1_1nhca")
+region = Rect2(496, 150, 16, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_at50o"]
+atlas = ExtResource("1_1nhca")
+region = Rect2(512, 150, 16, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_afk46"]
+atlas = ExtResource("1_1nhca")
+region = Rect2(528, 150, 16, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8wr1b"]
+atlas = ExtResource("1_1nhca")
+region = Rect2(544, 150, 16, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mlxu6"]
+atlas = ExtResource("1_1nhca")
+region = Rect2(560, 150, 16, 26)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5dofl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pvot1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vxakd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_at50o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_afk46")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8wr1b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mlxu6")
+}],
+"loop": false,
+"name": &"default",
+"speed": 11.0
+}]
+
+[node name="EletricA" type="Node2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -13)
+sprite_frames = SubResource("SpriteFrames_5dofl")
+autoplay = "default"
+frame = 5
+frame_progress = 1.0
