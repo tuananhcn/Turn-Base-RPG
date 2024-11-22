@@ -76,7 +76,4 @@ metadata/_edit_group_ = true
 
 [node name="MageAnim" parent="Battlers/Mage" index="0" instance=ExtResource("12_rxi00")]
 
-[node name="SelectSkillPanel" parent="." index="7"]
-visible = false
-
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." index="11"]
