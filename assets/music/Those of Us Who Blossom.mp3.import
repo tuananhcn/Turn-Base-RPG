@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://c2j6t5oqik7vu"
+path="res://.godot/imported/Those of Us Who Blossom.mp3-aa5a6610d7fe10da258d955e04cf6c00.mp3str"
+
+[deps]
+
+source_file="res://assets/music/Those of Us Who Blossom.mp3"
+dest_files=["res://.godot/imported/Those of Us Who Blossom.mp3-aa5a6610d7fe10da258d955e04cf6c00.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

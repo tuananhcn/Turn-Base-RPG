@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="RangedMageAction" load_steps=2 format=3 uid="uid://hrghs7xtghj8"]
+
+[ext_resource type="Script" path="res://src/combat/actions/players/mage_action_projectile.gd" id="2_183rs"]
+
+[resource]
+script = ExtResource("2_183rs")
+attack_distance = 350.0
+attack_time = 0.25
+return_time = 0.25
+hit_chance = 100.0
+base_damage = 20
+debuff_defense_percentage = 0
+debuff_duration = 0
+buff_attack_percentage = 0
+buff_duration = 0
+label = "Normal Attack"
+description = "Normal Attack nothing special !"
+energy_cost = 0
+element = 0
+targets_self = false
+targets_all = false
+readiness_saved = 0.15

@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="Equipable" load_steps=3 format=3 uid="uid://se1fabik5e2t"]
+
+[ext_resource type="Texture2D" uid="uid://crdhixjthwj1c" path="res://assets/items/shield1.atlastex" id="1_t3spy"]
+[ext_resource type="Script" path="res://src/combat/equipable/Equipable.gd" id="2_yq7eq"]
+
+[resource]
+script = ExtResource("2_yq7eq")
+name = ""
+icon = ExtResource("1_t3spy")
+attack_bonus = 1
+defense_bonus = 1
+max_health_bonus = 1
+max_energy_bonus = 1
+speed_bonus = 1
+hit_chance_bonus = 1
+evasion_bonus = 1
+equipped = false
+description = "A sword 1"
+equipable_type = 3

@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="RangedMageAction" load_steps=4 format=3 uid="uid://dxe0lmwb6me8d"]
+
+[ext_resource type="Texture2D" uid="uid://ckcrgmdjn32a" path="res://assets/battlers/ParticleSkill/SkillIcon/45.png" id="1_3wbik"]
+[ext_resource type="Script" path="res://src/combat/actions/players/mage_action_projectile_withoutmoving.gd" id="1_o5q0h"]
+[ext_resource type="PackedScene" uid="uid://um2tqohuf6md" path="res://assets/battlers/ParticleSkill/011.tscn" id="3_17ddu"]
+
+[resource]
+script = ExtResource("1_o5q0h")
+attack_distance = 350.0
+attack_time = 0.25
+return_time = 0.25
+hit_chance = 100.0
+base_damage = -20
+skill_effect_scene = ExtResource("3_17ddu")
+debuff_defense_percentage = 0
+debuff_duration = 2
+buff_attack_percentage = 0
+buff_duration = 2
+icon = ExtResource("1_3wbik")
+label = "Healing spell"
+description = "Healing action."
+energy_cost = 1
+element = 0
+targets_self = true
+targets_all = false
+readiness_saved = 0.0

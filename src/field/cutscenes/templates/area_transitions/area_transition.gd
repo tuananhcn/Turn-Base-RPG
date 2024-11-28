@@ -1,7 +1,7 @@
 @tool
 
 class_name AreaTransition extends Trigger
-@onready var _main_music_player = $"/root/Main/AudioStreamPlayer" as AudioStreamPlayer
+@onready var _main_music_player
 @export var arrival_coordinates: Vector2:
 	set(value):
 		arrival_coordinates = value
@@ -23,8 +23,8 @@ class_name AreaTransition extends Trigger
 
 func _ready() -> void:
 	super._ready()
-	
 	if not Engine.is_editor_hint():
+		_main_music_player = get_node("//root/Main/AudioStreamPlayer") as AudioStreamPlayer
 		$Destination.queue_free()
 
 

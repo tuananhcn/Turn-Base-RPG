@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="KnightProjectileAction" load_steps=4 format=3 uid="uid://d2kxwqyvcp83k"]
+
+[ext_resource type="Texture2D" uid="uid://bnbxtm6it4lm7" path="res://assets/battlers/ParticleSkill/SkillIconknight/Barbarian_17.png" id="1_w7rp4"]
+[ext_resource type="Script" path="res://src/combat/actions/players/knight_action_projectile.gd" id="2_5dgwr"]
+[ext_resource type="PackedScene" uid="uid://dx6tvswws5ca0" path="res://assets/battlers/ParticleSkill/014.tscn" id="3_34oaw"]
+
+[resource]
+script = ExtResource("2_5dgwr")
+hit_chance = 100.0
+base_damage = 30
+skill_effect_scene = ExtResource("3_34oaw")
+debuff_defense_percentage = 0
+debuff_duration = 2
+buff_attack_percentage = 0
+buff_duration = 0
+icon = ExtResource("1_w7rp4")
+label = "Wind"
+description = "A combat action."
+energy_cost = 1
+element = 0
+targets_self = false
+targets_all = false
+readiness_saved = 0.0

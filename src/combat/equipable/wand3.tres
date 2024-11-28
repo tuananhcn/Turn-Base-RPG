@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="Equipable" load_steps=3 format=3 uid="uid://b6ba5ghg4smc"]
+
+[ext_resource type="Texture2D" uid="uid://d3dqau0icns6k" path="res://assets/items/wand3.atlastex" id="1_oltj7"]
+[ext_resource type="Script" path="res://src/combat/equipable/Equipable.gd" id="2_1th18"]
+
+[resource]
+script = ExtResource("2_1th18")
+name = ""
+icon = ExtResource("1_oltj7")
+attack_bonus = 1
+defense_bonus = 1
+max_health_bonus = 1
+max_energy_bonus = 1
+speed_bonus = 1
+hit_chance_bonus = 1
+evasion_bonus = 1
+equipped = false
+description = "A sword 1"
+equipable_type = 0

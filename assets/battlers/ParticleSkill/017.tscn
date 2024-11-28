@@ -1,10 +1,6 @@
-[gd_scene load_steps=14 format=3 uid="uid://35mrf3lyawtx"]
+[gd_scene load_steps=13 format=3 uid="uid://35mrf3lyawtx"]
 
 [ext_resource type="Texture2D" uid="uid://ch4hp3mx6pb1q" path="res://assets/battlers/ParticleSkill/01.png" id="1_a8drc"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_dg26g"]
-atlas = ExtResource("1_a8drc")
-region = Rect2(0, 512, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rgmmr"]
 atlas = ExtResource("1_a8drc")
@@ -49,9 +45,6 @@ region = Rect2(640, 512, 64, 64)
 [sub_resource type="SpriteFrames" id="SpriteFrames_5dofl"]
 animations = [{
 "frames": [{
-"duration": 2.0,
-"texture": SubResource("AtlasTexture_dg26g")
-}, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_rgmmr")
 }, {

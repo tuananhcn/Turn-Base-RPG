@@ -1,7 +1,7 @@
-[gd_scene load_steps=22 format=3 uid="uid://wivtmf75ic3f"]
+[gd_scene load_steps=25 format=3 uid="uid://wivtmf75ic3f"]
 
 [ext_resource type="PackedScene" uid="uid://c6uxju87r2dck" path="res://src/combat/combat_arena.tscn" id="1_etpkf"]
-[ext_resource type="AudioStream" uid="uid://dagiejnj8dwqb" path="res://assets/music/squashin_bugs_fixed.mp3" id="2_vo8mp"]
+[ext_resource type="AudioStream" uid="uid://c2j6t5oqik7vu" path="res://assets/music/Those of Us Who Blossom.mp3" id="2_k1fjp"]
 [ext_resource type="Texture2D" uid="uid://247edqngmrqp" path="res://assets/arenas/arena1.jpg" id="3_dwmm3"]
 [ext_resource type="Script" path="res://src/combat/battlers/battler.gd" id="4_6ngh4"]
 [ext_resource type="Resource" uid="uid://chuarvle06xxf" path="res://src/common/battlers/bugcat_stats.tres" id="5_1st0g"]
@@ -20,10 +20,13 @@
 [ext_resource type="Texture2D" uid="uid://kvntqlbnef4e" path="res://assets/battlers/Knight Pack/knight.atlastex" id="15_fp2gg"]
 [ext_resource type="Resource" uid="uid://c1yfkrgq7bour" path="res://src/common/battlers/actions/players/player_defend.tres" id="15_tmtid"]
 [ext_resource type="Resource" uid="uid://blkv8wdng5c5v" path="res://src/common/battlers/actions/players/Mage/EletricA.tres" id="17_8vcmh"]
-[ext_resource type="Resource" uid="uid://fmx6dldfjeg" path="res://src/common/battlers/actions/players/Mage/Leaves.tres" id="18_fldes"]
+[ext_resource type="Resource" uid="uid://fmx6dldfjeg" path="res://src/common/battlers/actions/players/Mage/017.tres" id="18_fldes"]
+[ext_resource type="Resource" uid="uid://hrghs7xtghj8" path="res://src/common/battlers/actions/players/Mage/NormalAttack.tres" id="18_xdyb8"]
+[ext_resource type="Resource" uid="uid://dxe0lmwb6me8d" path="res://src/common/battlers/actions/players/Mage/011.tres" id="21_4y1lm"]
+[ext_resource type="Resource" uid="uid://by1g2pdh5cva4" path="res://src/common/battlers/actions/players/Mage/Gravity.tres" id="22_kjkfp"]
 
 [node name="TestCombatArena" instance=ExtResource("1_etpkf")]
-music = ExtResource("2_vo8mp")
+music = ExtResource("2_k1fjp")
 
 [node name="Background" parent="." index="0"]
 offset_right = 1920.0
@@ -69,7 +72,7 @@ metadata/_edit_group_ = true
 position = Vector2(502, 778)
 script = ExtResource("4_6ngh4")
 stats = ExtResource("12_j58rm")
-actions = Array[ExtResource("6_b04cs")]([ExtResource("11_82xso"), ExtResource("15_tmtid"), ExtResource("13_bo5g3"), ExtResource("17_8vcmh"), ExtResource("18_fldes")])
+actions = Array[ExtResource("6_b04cs")]([ExtResource("18_xdyb8"), ExtResource("15_tmtid"), ExtResource("13_bo5g3"), ExtResource("17_8vcmh"), ExtResource("18_fldes"), ExtResource("21_4y1lm"), ExtResource("22_kjkfp")])
 is_player = true
 icon = ExtResource("15_cony4")
 metadata/_edit_group_ = true

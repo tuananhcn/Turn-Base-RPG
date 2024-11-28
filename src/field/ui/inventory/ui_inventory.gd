@@ -20,6 +20,7 @@ func _ready() -> void:
 	inventory.add(inventory.ItemTypes.SWORD3, 1)
 	inventory.add(inventory.ItemTypes.HP, 1)
 	inventory.add(inventory.ItemTypes.EP, 1)
+	inventory.add(inventory.ItemTypes.SHIELD1, 1)
 
 
 func get_ui_item(item_id: Inventory.ItemTypes) -> UIInventoryItem:

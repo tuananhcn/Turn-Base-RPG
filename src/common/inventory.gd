@@ -3,7 +3,7 @@
 class_name Inventory extends Resource
 
 ## All item types available to add or remove from the inventory.
-enum ItemTypes { KEY, COIN, BOMB, RED_WAND, BLUE_WAND, GREEN_WAND, HP, EP, SWORD1, SWORD2, SWORD3 }
+enum ItemTypes { KEY, COIN, BOMB, RED_WAND, BLUE_WAND, GREEN_WAND, HP, EP, SWORD1, SWORD2, SWORD3, WAND1, WAND2, WAND3, SHIELD1, SHIELD2 }
 
 #TODO: I expect we'll want to have a proper inventory definition somewhere. Some folks advocate for
 # spreadsheets, but whatever it is should probably integrate with the editor so that level designers
@@ -21,6 +21,11 @@ const ICONS: = {
 	ItemTypes.SWORD1: preload("res://assets/items/sword1.atlastex"),
 	ItemTypes.SWORD2: preload("res://assets/items/sword2.atlastex"),
 	ItemTypes.SWORD3: preload("res://assets/items/sword3.atlastex"),
+	ItemTypes.WAND1: preload("res://assets/items/wand1.atlastex"),
+	ItemTypes.WAND2: preload("res://assets/items/wand2.atlastex"),
+	ItemTypes.WAND3: preload("res://assets/items/wand3.atlastex"),
+	ItemTypes.SHIELD1: preload("res://assets/items/shield1.atlastex"),
+	ItemTypes.SHIELD2: preload("res://assets/items/shield2.atlastex"),
 }
 
 const INVENTORY_PATH: = "user://inventory.tres"
