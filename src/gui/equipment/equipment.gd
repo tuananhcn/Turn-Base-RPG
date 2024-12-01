@@ -25,8 +25,10 @@ extends CanvasLayer
 # Set default battler to Knight
 var current_battler = "Knight"  # Default
 var current_stats = load("res://src/common/battlers/bear/knight_stats.tres") as Resource  # Default stats are Knight's stats
-
+#@onready var combat_events = CombatEvents  # Reference the global CombatEvents
 func _ready():
+	CombatEvents.connect("combat_initiated", Callable(self, "_on_combat_initiated"))
+	CombatEvents.connect("combat_finished", Callable(self, "_on_combat_finished"))
 	weapon_slot.get_child(0).pressed.connect(_on_slot_pressed.bind("Weapon"))
 	armor_slot.get_child(0).pressed.connect(_on_slot_pressed.bind("Armor"))
 	head_slot.get_child(0).pressed.connect(_on_slot_pressed.bind("Head"))
@@ -45,10 +47,13 @@ func _ready():
 	player_atlas.expand_mode  = TextureRect.EXPAND_IGNORE_SIZE
 	player_atlas.size_flags_horizontal = Control.SIZE_SHRINK_CENTER
 	player_atlas.size_flags_vertical = Control.SIZE_SHRINK_CENTER
-
 func _input(event):
-	if event.is_action_pressed("ui_inventory"):  # Define "ui_inventory" in your Input Map (set it to key "C")
+	# Check if the action is pressed and combat is active
+	if event.is_action_pressed("ui_inventory"):
+		if GlobalData.is_in_combat:  # Prevent opening Equipment UI during combat
+			return
 		toggle_inventory_visibility()
+
 func toggle_inventory_visibility():
 	# Toggle the visibility of the equipment inventory
 	visible = not visible

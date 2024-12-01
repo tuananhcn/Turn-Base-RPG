@@ -44,7 +44,7 @@ func start(arena: PackedScene) -> void:
 	_active_arena.turn_queue.combat_finished.connect(
 		func on_combat_finished(is_player_victory: bool):
 			CombatEvents.did_player_win_last_combat = is_player_victory
-
+			
 			_transition_delay_timer.start()
 			await _transition_delay_timer.timeout
 			# Cover the screen again, transitioning away from the combat game state.
@@ -66,6 +66,7 @@ func start(arena: PackedScene) -> void:
 				_main_music_player.stream = _previous_music_track
 				_main_music_player.play()
 				_previous_music_track = null
+			GlobalData.is_in_combat = false  # Example global state for combat tracking
 			CombatEvents.combat_finished.emit()
 	)
 

@@ -55,6 +55,7 @@ var _enemies: Array[Battler] = []
 #@onready var _defend_selected = false;
 func _ready() -> void:
 	# This is required in Godot 4.3 to strongly type the array.
+	GlobalData.is_in_combat = true
 	_battlers.assign(get_children())
 	setup_indicators()
 	set_process(false)

@@ -200,7 +200,7 @@ func remove_modifier_if_exists(stat_name: String) -> void:
 func apply_temp_modifier(battler: Node2D, stat_name: String, percentage: float, turns: int, is_buff: bool = true, icon_texture: Texture2D = null) -> void:
 	# Ensure the stat exists
 	assert(stat_name in MODIFIABLE_STATS, "Trying to modify a nonexistent stat.")
-	
+
 	# Calculate the modifier value based on the base stat
 	var modifier_value = get("base_" + stat_name) * percentage
 	if not is_buff:
@@ -282,6 +282,8 @@ func clear_temp_modifiers() -> void:
 	for key in temp_modifiers.keys():
 		var modifier = temp_modifiers[key]
 		remove_modifier(modifier["stat_name"], modifier["id"])
+		if modifier.has("icon_node") and modifier.icon_node != null:
+			modifier.icon_node.queue_free()
 	
 	# Clear the temp_modifiers dictionary
 	temp_modifiers.clear()
