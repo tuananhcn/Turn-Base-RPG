@@ -56,6 +56,8 @@ var _enemies: Array[Battler] = []
 func _ready() -> void:
 	# This is required in Godot 4.3 to strongly type the array.
 	GlobalData.is_in_combat = true
+	var InventoryUI = get_node("//root/Main/Field/UI/Inventory")
+	InventoryUI.hide()
 	_battlers.assign(get_children())
 	setup_indicators()
 	set_process(false)

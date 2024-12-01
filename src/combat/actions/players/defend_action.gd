@@ -28,11 +28,11 @@ func execute(source: Battler, targets: Array[Battler] = []) -> void:
 	print("Defense buff applied to", source.name)
 	await source.get_tree().create_timer(0.1).timeout
 func apply_defend(battler: Battler) -> void:
-	var buff_icon = load("res://icon.svg")
+	var buff_icon = load("res://assets/battlers/ParticleSkill/SkillIcon/shield.png")
 	battler.stats.apply_temp_modifier(battler, "defense", 0.5, 1, true, buff_icon)
 	print("Defense buff applied to", battler.name, "for 1 turn.")
 	# Skip to the next turn without casting any skill
 func apply_buff(source: Battler, stat: String, percentage: float, turns: int) -> void:
 	print("Applying", stat, "buff to", source.name, "by", percentage * 100, "% for", turns, "turns")
-	var debuff_icon = load("res://icon.svg")
+	var debuff_icon = load("res://assets/battlers/ParticleSkill/SkillIcon/shield.png")
 	source.stats.apply_temp_modifier(source.get_child(0),stat, percentage, turns, true,debuff_icon)

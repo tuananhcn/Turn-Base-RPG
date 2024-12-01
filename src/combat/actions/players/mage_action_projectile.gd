@@ -89,13 +89,21 @@ func calculate_damage(attack: int, defense: int, base_damage: int) -> int:
 	return damage
 func apply_debuff(target: Battler, stat: String, percentage: float, turns: int) -> void:
 	print("Applying", stat, "debuff to", target.name, "by", percentage * 100, "% for", turns, "turns")
-	var debuff_icon = load("res://icon.svg")
+	var debuff_icon
+	if stat == "attack":
+		debuff_icon = load("res://assets/battlers/ParticleSkill/SkillIcon/debuff.png")
+	else:
+		debuff_icon = load("res://assets/battlers/ParticleSkill/SkillIcon/shield_debuff.png")
 	if target.stats.health >=0:
 		target.stats.apply_temp_modifier(target.get_child(0),stat, percentage, turns, false, debuff_icon)
 
 # Apply a buff to the source
 func apply_buff(source: Battler, stat: String, percentage: float, turns: int) -> void:
 	print("Applying", stat, "buff to", source.name, "by", percentage * 100, "% for", turns, "turns")
-	var debuff_icon = load("res://icon.svg")
+	var buff_icon
+	if stat == "attack":
+		buff_icon = load("res://assets/battlers/ParticleSkill/SkillIcon/buff.png")
+	else:
+		buff_icon = load("res://assets/battlers/ParticleSkill/SkillIcon/shield.png")
 	if source.stats.health >=0:
-		source.stats.apply_temp_modifier(source.get_child(0),stat, percentage, turns, true,debuff_icon)
+		source.stats.apply_temp_modifier(source.get_child(0),stat, percentage, turns, true,buff_icon)

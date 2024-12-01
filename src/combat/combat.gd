@@ -67,6 +67,8 @@ func start(arena: PackedScene) -> void:
 				_main_music_player.play()
 				_previous_music_track = null
 			GlobalData.is_in_combat = false  # Example global state for combat tracking
+			var InventoryUI = get_node("//root/Main/Field/UI/Inventory")
+			InventoryUI.show()
 			CombatEvents.combat_finished.emit()
 	)
 
