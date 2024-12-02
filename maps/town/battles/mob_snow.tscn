@@ -1,0 +1,89 @@
+[gd_scene load_steps=31 format=3 uid="uid://chr4kqr6lkso6"]
+
+[ext_resource type="PackedScene" uid="uid://c6uxju87r2dck" path="res://src/combat/combat_arena.tscn" id="1_71vlu"]
+[ext_resource type="AudioStream" uid="uid://c2j6t5oqik7vu" path="res://assets/music/Those of Us Who Blossom.mp3" id="2_yjx6x"]
+[ext_resource type="Texture2D" uid="uid://bhyeglu6q64bb" path="res://assets/arenas/Snow.jpeg" id="3_080u0"]
+[ext_resource type="Script" path="res://src/combat/battlers/battler.gd" id="4_iyphb"]
+[ext_resource type="Resource" uid="uid://chuarvle06xxf" path="res://src/common/battlers/bugcat_stats.tres" id="5_18a1p"]
+[ext_resource type="Script" path="res://src/combat/actions/battler_action.gd" id="6_mqnyo"]
+[ext_resource type="Resource" uid="uid://752xsau3xyx0" path="res://src/common/battlers/actions/enemies/melee_action.tres" id="7_c2ie7"]
+[ext_resource type="Texture2D" uid="uid://e4b6flk7roy3" path="res://assets/battlers/bugcat.png" id="8_0tiuh"]
+[ext_resource type="PackedScene" uid="uid://ugsq7u4cue4w" path="res://assets/battlers/bugcat_anim.tscn" id="9_pp7t2"]
+[ext_resource type="Resource" uid="uid://ci2upqpdbr5p7" path="res://src/common/battlers/bear/knight_stats.tres" id="10_1k2ne"]
+[ext_resource type="Resource" uid="uid://dp7wo0l4es3w4" path="res://src/common/battlers/actions/players/Knight/knight_melee_normal_action.tres" id="11_8i52n"]
+[ext_resource type="Resource" uid="uid://c1yfkrgq7bour" path="res://src/common/battlers/actions/players/player_defend.tres" id="12_qnt7e"]
+[ext_resource type="Resource" uid="uid://d3jlrkdt6kkrf" path="res://src/common/battlers/actions/players/item_action.tres" id="13_uvp1f"]
+[ext_resource type="Resource" uid="uid://c8kdob825mc7e" path="res://src/common/battlers/actions/players/Knight/013.tres" id="14_fvhmb"]
+[ext_resource type="Resource" uid="uid://d2kxwqyvcp83k" path="res://src/common/battlers/actions/players/Knight/014.tres" id="15_o6xnu"]
+[ext_resource type="Resource" uid="uid://bgjtadjv3isyf" path="res://src/common/battlers/actions/players/Knight/015.tres" id="16_3qaiw"]
+[ext_resource type="Texture2D" uid="uid://kvntqlbnef4e" path="res://assets/battlers/Knight Pack/knight.atlastex" id="17_nx42p"]
+[ext_resource type="PackedScene" uid="uid://bi0yj1rc0exw2" path="res://assets/battlers/Knight Pack/knight_anim.tscn" id="18_xxqwd"]
+[ext_resource type="Resource" uid="uid://bn4nqbuhq4ih8" path="res://src/common/battlers/bear/mage_stats.tres" id="19_he61i"]
+[ext_resource type="Resource" uid="uid://hrghs7xtghj8" path="res://src/common/battlers/actions/players/Mage/NormalAttack.tres" id="20_pk0go"]
+[ext_resource type="Resource" uid="uid://blkv8wdng5c5v" path="res://src/common/battlers/actions/players/Mage/EletricA.tres" id="21_usmtx"]
+[ext_resource type="Resource" uid="uid://fmx6dldfjeg" path="res://src/common/battlers/actions/players/Mage/017.tres" id="22_wcwmt"]
+[ext_resource type="Resource" uid="uid://dxe0lmwb6me8d" path="res://src/common/battlers/actions/players/Mage/011.tres" id="23_mcxfq"]
+[ext_resource type="Resource" uid="uid://by1g2pdh5cva4" path="res://src/common/battlers/actions/players/Mage/Gravity.tres" id="24_n0br1"]
+[ext_resource type="Texture2D" uid="uid://bdbtd0m317l8j" path="res://assets/battlers/Wizard Pack/mage.atlastex" id="25_d6hb2"]
+[ext_resource type="PackedScene" uid="uid://cuqqcvkl0d8bw" path="res://assets/battlers/Wizard Pack/mage_anim.tscn" id="26_ji8ul"]
+[ext_resource type="Resource" uid="uid://chd4ncpr7k7lg" path="res://src/common/battlers/wolf_stats.tres" id="27_flepy"]
+[ext_resource type="PackedScene" uid="uid://8f7e4yxs3poj" path="res://assets/battlers/wolf_anim.tscn" id="28_gfu2s"]
+[ext_resource type="Texture2D" uid="uid://dr8cs6liv45hd" path="res://assets/battlers/wolf.png" id="28_v1cnp"]
+[ext_resource type="AudioStream" uid="uid://d4bwljfd0sihu" path="res://assets/sfx/hitsound.ogg" id="29_a03fw"]
+
+[node name="TestCombatArena" instance=ExtResource("1_71vlu")]
+music = ExtResource("2_yjx6x")
+
+[node name="Background" parent="." index="0"]
+offset_right = 1920.0
+offset_bottom = 1080.0
+texture = ExtResource("3_080u0")
+
+[node name="Bugcat" type="Node2D" parent="Battlers" index="0"]
+position = Vector2(1268, 817)
+script = ExtResource("4_iyphb")
+stats = ExtResource("5_18a1p")
+actions = Array[ExtResource("6_mqnyo")]([ExtResource("7_c2ie7")])
+icon = ExtResource("8_0tiuh")
+metadata/_edit_group_ = true
+
+[node name="BugcatAnim" parent="Battlers/Bugcat" index="0" instance=ExtResource("9_pp7t2")]
+scale = Vector2(-1, 1)
+direction = 0
+
+[node name="Knight" type="Node2D" parent="Battlers" index="1"]
+position = Vector2(424, 494)
+script = ExtResource("4_iyphb")
+stats = ExtResource("10_1k2ne")
+actions = Array[ExtResource("6_mqnyo")]([ExtResource("11_8i52n"), ExtResource("12_qnt7e"), ExtResource("13_uvp1f"), ExtResource("14_fvhmb"), ExtResource("15_o6xnu"), ExtResource("16_3qaiw")])
+is_player = true
+icon = ExtResource("17_nx42p")
+metadata/_edit_group_ = true
+
+[node name="BattlerAnim" parent="Battlers/Knight" index="0" instance=ExtResource("18_xxqwd")]
+
+[node name="Mage" type="Node2D" parent="Battlers" index="2"]
+position = Vector2(530, 833)
+script = ExtResource("4_iyphb")
+stats = ExtResource("19_he61i")
+actions = Array[ExtResource("6_mqnyo")]([ExtResource("20_pk0go"), ExtResource("12_qnt7e"), ExtResource("13_uvp1f"), ExtResource("21_usmtx"), ExtResource("22_wcwmt"), ExtResource("23_mcxfq"), ExtResource("24_n0br1")])
+is_player = true
+icon = ExtResource("25_d6hb2")
+metadata/_edit_group_ = true
+
+[node name="MageAnim" parent="Battlers/Mage" index="0" instance=ExtResource("26_ji8ul")]
+
+[node name="Wolf" type="Node2D" parent="Battlers" index="3"]
+position = Vector2(1493, 517)
+script = ExtResource("4_iyphb")
+stats = ExtResource("27_flepy")
+actions = Array[ExtResource("6_mqnyo")]([ExtResource("7_c2ie7")])
+icon = ExtResource("28_v1cnp")
+metadata/_edit_group_ = true
+
+[node name="WolfAnim" parent="Battlers/Wolf" index="0" instance=ExtResource("28_gfu2s")]
+scale = Vector2(-1, 1)
+direction = 0
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." index="11"]
+stream = ExtResource("29_a03fw")

@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://w0uv0huigswc"
+path="res://.godot/imported/Never Falter[overworld]_part.mp3-06917bd7bdb3bb29cb685beb3d9a6a95.mp3str"
+
+[deps]
+
+source_file="res://assets/music/Never Falter[overworld]_part.mp3"
+dest_files=["res://.godot/imported/Never Falter[overworld]_part.mp3-06917bd7bdb3bb29cb685beb3d9a6a95.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

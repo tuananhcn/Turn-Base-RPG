@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dhflb6j75mj0r"
+path="res://.godot/imported/Voices of Feelings.mp3-8d379abb9197ce912844d465c59e60c5.mp3str"
+
+[deps]
+
+source_file="res://assets/music/Voices of Feelings.mp3"
+dest_files=["res://.godot/imported/Voices of Feelings.mp3-8d379abb9197ce912844d465c59e60c5.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

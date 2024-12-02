@@ -1,0 +1,87 @@
+[gd_scene load_steps=30 format=3 uid="uid://wivtmf75ic3f"]
+
+[ext_resource type="PackedScene" uid="uid://c6uxju87r2dck" path="res://src/combat/combat_arena.tscn" id="1_etpkf"]
+[ext_resource type="AudioStream" uid="uid://dhflb6j75mj0r" path="res://assets/music/Voices of Feelings.mp3" id="2_mnyhe"]
+[ext_resource type="Texture2D" uid="uid://bthxy2c8r1uxn" path="res://assets/arenas/forest.jpeg" id="3_20jqm"]
+[ext_resource type="Script" path="res://src/combat/battlers/battler.gd" id="4_6ngh4"]
+[ext_resource type="Resource" uid="uid://chuarvle06xxf" path="res://src/common/battlers/bugcat_stats.tres" id="5_1st0g"]
+[ext_resource type="Script" path="res://src/combat/actions/battler_action.gd" id="6_b04cs"]
+[ext_resource type="PackedScene" uid="uid://ugsq7u4cue4w" path="res://assets/battlers/bugcat_anim.tscn" id="6_r8rpm"]
+[ext_resource type="Resource" uid="uid://752xsau3xyx0" path="res://src/common/battlers/actions/enemies/melee_action.tres" id="7_nlv7y"]
+[ext_resource type="Texture2D" uid="uid://e4b6flk7roy3" path="res://assets/battlers/bugcat.png" id="8_khvpj"]
+[ext_resource type="Resource" uid="uid://dp7wo0l4es3w4" path="res://src/common/battlers/actions/players/Knight/knight_melee_normal_action.tres" id="11_82xso"]
+[ext_resource type="PackedScene" uid="uid://bi0yj1rc0exw2" path="res://assets/battlers/Knight Pack/knight_anim.tscn" id="12_gq2ys"]
+[ext_resource type="Resource" uid="uid://bn4nqbuhq4ih8" path="res://src/common/battlers/bear/mage_stats.tres" id="12_j58rm"]
+[ext_resource type="PackedScene" uid="uid://cuqqcvkl0d8bw" path="res://assets/battlers/Wizard Pack/mage_anim.tscn" id="12_rxi00"]
+[ext_resource type="Resource" uid="uid://d3jlrkdt6kkrf" path="res://src/common/battlers/actions/players/item_action.tres" id="13_bo5g3"]
+[ext_resource type="Resource" uid="uid://c8kdob825mc7e" path="res://src/common/battlers/actions/players/Knight/013.tres" id="14_d65vh"]
+[ext_resource type="Resource" uid="uid://ci2upqpdbr5p7" path="res://src/common/battlers/bear/knight_stats.tres" id="15_5comn"]
+[ext_resource type="Texture2D" uid="uid://bdbtd0m317l8j" path="res://assets/battlers/Wizard Pack/mage.atlastex" id="15_cony4"]
+[ext_resource type="Texture2D" uid="uid://kvntqlbnef4e" path="res://assets/battlers/Knight Pack/knight.atlastex" id="15_fp2gg"]
+[ext_resource type="Resource" uid="uid://d2kxwqyvcp83k" path="res://src/common/battlers/actions/players/Knight/014.tres" id="15_n6hwk"]
+[ext_resource type="Resource" uid="uid://c1yfkrgq7bour" path="res://src/common/battlers/actions/players/player_defend.tres" id="15_tmtid"]
+[ext_resource type="Resource" uid="uid://bgjtadjv3isyf" path="res://src/common/battlers/actions/players/Knight/015.tres" id="16_w5cn3"]
+[ext_resource type="Resource" uid="uid://blkv8wdng5c5v" path="res://src/common/battlers/actions/players/Mage/EletricA.tres" id="17_8vcmh"]
+[ext_resource type="Resource" uid="uid://fmx6dldfjeg" path="res://src/common/battlers/actions/players/Mage/017.tres" id="18_fldes"]
+[ext_resource type="Resource" uid="uid://hrghs7xtghj8" path="res://src/common/battlers/actions/players/Mage/NormalAttack.tres" id="18_xdyb8"]
+[ext_resource type="Resource" uid="uid://dxe0lmwb6me8d" path="res://src/common/battlers/actions/players/Mage/011.tres" id="21_4y1lm"]
+[ext_resource type="Resource" uid="uid://by1g2pdh5cva4" path="res://src/common/battlers/actions/players/Mage/Gravity.tres" id="22_kjkfp"]
+[ext_resource type="AudioStream" uid="uid://d4bwljfd0sihu" path="res://assets/sfx/hitsound.ogg" id="25_phs11"]
+[ext_resource type="Resource" uid="uid://chd4ncpr7k7lg" path="res://src/common/battlers/wolf_stats.tres" id="27_oo3fx"]
+[ext_resource type="PackedScene" uid="uid://8f7e4yxs3poj" path="res://assets/battlers/wolf_anim.tscn" id="28_iynrj"]
+
+[node name="TestCombatArena" instance=ExtResource("1_etpkf")]
+music = ExtResource("2_mnyhe")
+
+[node name="Background" parent="." index="0"]
+offset_right = 1920.0
+offset_bottom = 1080.0
+texture = ExtResource("3_20jqm")
+
+[node name="Bugcat" type="Node2D" parent="Battlers" index="0"]
+position = Vector2(1268, 817)
+script = ExtResource("4_6ngh4")
+stats = ExtResource("5_1st0g")
+actions = Array[ExtResource("6_b04cs")]([ExtResource("7_nlv7y")])
+icon = ExtResource("8_khvpj")
+metadata/_edit_group_ = true
+
+[node name="BugcatAnim" parent="Battlers/Bugcat" index="0" instance=ExtResource("6_r8rpm")]
+scale = Vector2(-1, 1)
+direction = 0
+
+[node name="Knight" type="Node2D" parent="Battlers" index="1"]
+position = Vector2(424, 494)
+script = ExtResource("4_6ngh4")
+stats = ExtResource("15_5comn")
+actions = Array[ExtResource("6_b04cs")]([ExtResource("11_82xso"), ExtResource("15_tmtid"), ExtResource("13_bo5g3"), ExtResource("14_d65vh"), ExtResource("15_n6hwk"), ExtResource("16_w5cn3")])
+is_player = true
+icon = ExtResource("15_fp2gg")
+metadata/_edit_group_ = true
+
+[node name="BattlerAnim" parent="Battlers/Knight" index="0" instance=ExtResource("12_gq2ys")]
+
+[node name="Mage" type="Node2D" parent="Battlers" index="2"]
+position = Vector2(530, 833)
+script = ExtResource("4_6ngh4")
+stats = ExtResource("12_j58rm")
+actions = Array[ExtResource("6_b04cs")]([ExtResource("18_xdyb8"), ExtResource("15_tmtid"), ExtResource("13_bo5g3"), ExtResource("17_8vcmh"), ExtResource("18_fldes"), ExtResource("21_4y1lm"), ExtResource("22_kjkfp")])
+is_player = true
+icon = ExtResource("15_cony4")
+metadata/_edit_group_ = true
+
+[node name="MageAnim" parent="Battlers/Mage" index="0" instance=ExtResource("12_rxi00")]
+
+[node name="Wolf" type="Node2D" parent="Battlers" index="3"]
+position = Vector2(1493, 517)
+script = ExtResource("4_6ngh4")
+stats = ExtResource("27_oo3fx")
+actions = Array[ExtResource("6_b04cs")]([ExtResource("7_nlv7y")])
+metadata/_edit_group_ = true
+
+[node name="WolfAnim" parent="Battlers/Wolf" index="0" instance=ExtResource("28_iynrj")]
+scale = Vector2(-1, 1)
+direction = 0
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." index="11"]
+stream = ExtResource("25_phs11")

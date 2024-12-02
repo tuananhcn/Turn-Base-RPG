@@ -8,16 +8,52 @@ extends CanvasLayer
 		"item_type": Inventory.ItemTypes.RED_WAND
 	},
 	{
-		"name": "Bomb",
+		"name": "WAND1",
 		"price": 1,
-		"texture": preload("res://assets/items/bomb.atlastex"),
-		"item_type": Inventory.ItemTypes.BOMB
+		"texture": preload("res://assets/items/wand1.atlastex"),
+		"item_type": Inventory.ItemTypes.WAND1
 	},
 	{
-		"name": "Key",
+		"name": "WAND2",
 		"price": 1,
-		"texture": preload("res://assets/items/key.atlastex"),
-		"item_type": Inventory.ItemTypes.KEY
+		"texture": preload("res://assets/items/wand2.atlastex"),
+		"item_type": Inventory.ItemTypes.WAND2
+	},
+	{
+		"name": "WAND3",
+		"price": 1,
+		"texture": preload("res://assets/items/wand3.atlastex"),
+		"item_type": Inventory.ItemTypes.WAND3
+	},
+	{
+		"name": "SWORD1",
+		"price": 1,
+		"texture": preload("res://assets/items/sword1.atlastex"),
+		"item_type": Inventory.ItemTypes.SWORD1
+	},
+	{
+		"name": "SWORD2",
+		"price": 1,
+		"texture": preload("res://assets/items/sword2.atlastex"),
+		"item_type": Inventory.ItemTypes.SWORD2
+	},
+	{
+		"name": "SWORD3",
+		"price": 1,
+		"texture": preload("res://assets/items/sword3.atlastex"),
+		"item_type": Inventory.ItemTypes.SWORD3
+	},
+	{
+		"name": "SHIELD1",
+		"price": 1,
+		"texture": preload("res://assets/items/shield1.atlastex"),
+		"item_type": Inventory.ItemTypes.SHIELD1
+	},
+	{
+		"name": "SHIELD2",
+		"price": 1,
+		"texture": preload("res://assets/items/shield2.atlastex"),
+		"item_type": Inventory.ItemTypes.SHIELD2
 	}
 ]
 

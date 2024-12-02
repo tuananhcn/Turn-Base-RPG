@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://d1jxyfrwc67n7"]
+[gd_scene load_steps=15 format=3 uid="uid://d1jxyfrwc67n7"]
 
 [ext_resource type="Script" path="res://src/gui/mainmenu/main_menu.gd" id="1_j6o5n"]
 [ext_resource type="Texture2D" uid="uid://cyum24lqx283v" path="res://assets/gui/icons/UI_stone_buttons_2.png" id="1_lvlox"]
@@ -17,18 +17,6 @@ region = Rect2(0, 16, 16, 16)
 [sub_resource type="AtlasTexture" id="AtlasTexture_f3k7s"]
 atlas = ExtResource("3_mxfye")
 region = Rect2(0, 16, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_3spdl"]
-atlas = ExtResource("1_lvlox")
-region = Rect2(0, 48, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_4jati"]
-atlas = ExtResource("2_f2sfw")
-region = Rect2(0, 48, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_fskof"]
-atlas = ExtResource("3_mxfye")
-region = Rect2(0, 48, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_o8wnl"]
 atlas = ExtResource("1_lvlox")
@@ -95,7 +83,7 @@ theme_override_colors/font_color = Color(0.820305, 0.497791, 1.34766e-06, 1)
 theme_override_constants/shadow_offset_x = 5
 theme_override_constants/shadow_offset_y = 5
 theme_override_font_sizes/font_size = 200
-text = "2D platformer"
+text = "Turn Base RPG"
 horizontal_alignment = 1
 uppercase = true
 
@@ -110,14 +98,6 @@ layout_mode = 2
 texture_normal = SubResource("AtlasTexture_lw7vp")
 texture_pressed = SubResource("AtlasTexture_5mtvn")
 texture_hover = SubResource("AtlasTexture_f3k7s")
-stretch_mode = 0
-
-[node name="LoadGameButton" type="TextureButton" parent="VBoxContainer/HBoxContainer"]
-custom_minimum_size = Vector2(128, 128)
-layout_mode = 2
-texture_normal = SubResource("AtlasTexture_3spdl")
-texture_pressed = SubResource("AtlasTexture_4jati")
-texture_hover = SubResource("AtlasTexture_fskof")
 stretch_mode = 0
 
 [node name="SettingButton" type="TextureButton" parent="VBoxContainer/HBoxContainer"]
@@ -137,6 +117,5 @@ texture_hover = SubResource("AtlasTexture_7rfd0")
 stretch_mode = 0
 
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/PlayButton" to="." method="_on_texture_button_pressed"]
-[connection signal="pressed" from="VBoxContainer/HBoxContainer/LoadGameButton" to="." method="_on_load_game_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/SettingButton" to="." method="_on_setting_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/CloseGameButton" to="." method="_on_close_game_button_pressed"]

@@ -122,6 +122,8 @@ offset_bottom = 860.0
 
 [node name="GridContainer" type="GridContainer" parent="Panel/ScrollContainer"]
 layout_mode = 2
+theme_override_constants/h_separation = 100
+theme_override_constants/v_separation = 10
 columns = 3
 
 [node name="PlayerGold" type="Label" parent="Panel"]

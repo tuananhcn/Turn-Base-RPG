@@ -56,7 +56,7 @@ static func restore() -> Inventory:
 	# Either there is no inventory associated with this profile or the file itself could not be
 	# loaded. Either way, a new inventory resource must be created.
 	var new_inventory: = Inventory.new()
-	new_inventory.save()
+	#new_inventory.save()
 	return new_inventory
 
 

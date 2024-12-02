@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dsr443dwt71lm"
+path="res://.godot/imported/Those of Us Who Blossom__5OU_A4-48zE_00_00_26_00_02_34_part.mp3-291ba4b37b77c8b977d430bc9291a550.mp3str"
+
+[deps]
+
+source_file="res://assets/music/Those of Us Who Blossom__5OU_A4-48zE_00_00_26_00_02_34_part.mp3"
+dest_files=["res://.godot/imported/Those of Us Who Blossom__5OU_A4-48zE_00_00_26_00_02_34_part.mp3-291ba4b37b77c8b977d430bc9291a550.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
