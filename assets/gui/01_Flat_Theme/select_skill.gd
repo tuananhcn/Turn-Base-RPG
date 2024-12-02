@@ -2,6 +2,7 @@ extends Control
 @onready var select_skill_option = get_node("../SelectSkillOption")
 @onready var select_tactics = get_node("../Tactics")
 @onready var select_items = get_node("../Item")
+@onready var audiostream = $AudioStreamPlayer
 func _ready():
 	# Connecting signals in Godot 4
 	$NinePatchRect/VBoxContainer/AttackButton.pressed.connect(_on_attack_pressed)
@@ -10,6 +11,8 @@ func _ready():
 	$NinePatchRect/VBoxContainer/ItemButton.pressed.connect(_on_item_pressed)
 
 func _on_attack_pressed():
+	if audiostream:
+		audiostream.play()
 	var active_turn_queue = get_node("../Battlers")
 	select_skill_option.hide()
 	select_tactics.hide()
@@ -36,6 +39,8 @@ func _on_attack_pressed():
 		active_turn_queue.indicators[battler].visible = battler in target_group
 	active_turn_queue.emit_signal("skill_selected", attack_index)
 func _on_skill_pressed():
+	if audiostream:
+		audiostream.play()
 	var active_turn_queue = get_node("../Battlers")
 	active_turn_queue.emit_signal("target_selected", [] as Array[Battler])
 	active_turn_queue.hide_all_indicators()
@@ -44,6 +49,8 @@ func _on_skill_pressed():
 	select_skill_option.show()
 	select_skill_option.show_skills_for_battler(active_turn_queue.current_battler)
 func _on_summon_pressed():
+	if audiostream:
+		audiostream.play()
 	var active_turn_queue = get_node("../Battlers")
 	active_turn_queue.emit_signal("target_selected", [] as Array[Battler])
 	active_turn_queue.hide_all_indicators()
@@ -53,6 +60,8 @@ func _on_summon_pressed():
 	# Handle summon logic here
 
 func _on_item_pressed():
+	if audiostream:
+		audiostream.play()
 	var active_turn_queue = get_node("../Battlers")
 	active_turn_queue.emit_signal("target_selected", [] as Array[Battler])
 	active_turn_queue.hide_all_indicators()

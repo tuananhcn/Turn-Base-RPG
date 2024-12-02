@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://cpbx3es5oxmcq"]
+[gd_scene load_steps=4 format=3 uid="uid://cpbx3es5oxmcq"]
 
 [ext_resource type="Texture2D" uid="uid://b60gi1112ndc1" path="res://assets/gui/01_Flat_Theme/Sprites/UI_Flat_Frame_01_Horizontal.png" id="1_0ix4f"]
 [ext_resource type="Script" path="res://assets/gui/01_Flat_Theme/selected_option.gd" id="1_umhio"]
+[ext_resource type="AudioStream" uid="uid://djp6b68ye2bx8" path="res://assets/sfx/click_sound_1.mp3" id="3_ju2fd"]
 
 [node name="UI" type="Control"]
 layout_mode = 3
@@ -39,3 +40,6 @@ offset_right = 67.0
 offset_bottom = 59.0
 theme_override_constants/h_separation = 25
 theme_override_constants/v_separation = 20
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_ju2fd")

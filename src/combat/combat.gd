@@ -73,7 +73,7 @@ func start(arena: PackedScene) -> void:
 	)
 
 	#_previous_music_track = Music.get_playing_track()
-	Music.play(_active_arena.music)
+	#Music.play(_active_arena.music)
 
 	CombatEvents.combat_initiated.emit()
 

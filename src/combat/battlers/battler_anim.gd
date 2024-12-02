@@ -40,6 +40,7 @@ var _move_tween: Tween = null
 var _rest_position: = Vector2.ZERO
 @onready var front: = $FrontAnchor as Marker2D
 @onready var top: = $TopAnchor as Marker2D
+
 var _battler: Battler:
 	set(value):
 		# If this object had a previous battler parent and had connected to its signals, disconnect

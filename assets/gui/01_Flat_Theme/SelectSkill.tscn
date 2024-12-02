@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://cqle6yih3nfm5"]
+[gd_scene load_steps=6 format=3 uid="uid://cqle6yih3nfm5"]
 
 [ext_resource type="Texture2D" uid="uid://buowwyog0qmty" path="res://assets/gui/01_Flat_Theme/Sprites/UI_Flat_Frame_01_Vertical.png" id="1_2jwvv"]
 [ext_resource type="Script" path="res://assets/gui/01_Flat_Theme/select_skill.gd" id="1_x2rro"]
 [ext_resource type="StyleBox" path="res://addons/dialogic/Editor/Events/styles/SimpleButtonHover.tres" id="2_c1ndg"]
 [ext_resource type="StyleBox" path="res://addons/dialogic/Editor/Events/styles/SimpleButtonNormal.tres" id="3_w340x"]
+[ext_resource type="AudioStream" uid="uid://djp6b68ye2bx8" path="res://assets/sfx/click_sound_1.mp3" id="5_qfgx7"]
 
 [node name="SelectSkillPanel" type="Control"]
 layout_mode = 3
@@ -55,3 +56,6 @@ theme_override_styles/hover = ExtResource("2_c1ndg")
 theme_override_styles/normal = ExtResource("3_w340x")
 text = "Item
 "
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_qfgx7")

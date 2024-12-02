@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://wivtmf75ic3f"]
+[gd_scene load_steps=26 format=3 uid="uid://wivtmf75ic3f"]
 
 [ext_resource type="PackedScene" uid="uid://c6uxju87r2dck" path="res://src/combat/combat_arena.tscn" id="1_etpkf"]
 [ext_resource type="AudioStream" uid="uid://c2j6t5oqik7vu" path="res://assets/music/Those of Us Who Blossom.mp3" id="2_k1fjp"]
@@ -24,6 +24,7 @@
 [ext_resource type="Resource" uid="uid://hrghs7xtghj8" path="res://src/common/battlers/actions/players/Mage/NormalAttack.tres" id="18_xdyb8"]
 [ext_resource type="Resource" uid="uid://dxe0lmwb6me8d" path="res://src/common/battlers/actions/players/Mage/011.tres" id="21_4y1lm"]
 [ext_resource type="Resource" uid="uid://by1g2pdh5cva4" path="res://src/common/battlers/actions/players/Mage/Gravity.tres" id="22_kjkfp"]
+[ext_resource type="AudioStream" uid="uid://d4bwljfd0sihu" path="res://assets/sfx/hitsound.ogg" id="25_phs11"]
 
 [node name="TestCombatArena" instance=ExtResource("1_etpkf")]
 music = ExtResource("2_k1fjp")
@@ -80,3 +81,4 @@ metadata/_edit_group_ = true
 [node name="MageAnim" parent="Battlers/Mage" index="0" instance=ExtResource("12_rxi00")]
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." index="11"]
+stream = ExtResource("25_phs11")

@@ -5,3 +5,12 @@
 
 [node name="Video" instance=ExtResource("1_raus8")]
 script = ExtResource("2_3yg47")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer" index="2"]
+layout_mode = 2
+theme_override_constants/separation = 35
+alignment = 1
+
+[node name="ReturnButton" type="Button" parent="VBoxContainer/HBoxContainer" index="0"]
+layout_mode = 2
+text = "Return"

@@ -38,6 +38,7 @@ signal energy_updated(value: int)  # For updating the Mana/Energy bar
 #@export var hp_bar: TextureProgressBar
 ## If `false`, the battler will not be able to act.
 @onready var anim: BattlerAnim = get_child(0)
+@onready var audio_player = anim.get_node("AudioStreamPlayer")
 #@export var battler_anim_scene: PackedScene:
 	#set(value):
 		#battler_anim_scene = value
@@ -142,6 +143,7 @@ func take_hit(hit: BattlerHit) -> void:
 		hit_received.emit(hit.damage)
 		stats.health -= hit.damage 
 		health_updated.emit(stats.health)
+		audio_player.play()
 	else:
 		hit_missed.emit()
 func apply_item_effect(hp_restore: int, energy_restore: int) -> void:

@@ -35,8 +35,8 @@ func execute(source: Battler, targets: Array[Battler] = []) -> void:
 	else:
 		tween.tween_property(source, "position", destination, 0.25)
 	await tween.finished
-	if anim_player.has_animation("attack"):
-		anim_player.play("attack")
+	if anim_player.has_animation("attack1"):
+		anim_player.play("attack1")
 		await anim_player.animation_finished  # Wait for the attack animation to finish
 	# No attack animations yet, so wait for a short delay and then apply damage to the target.
 	# Normally we would wait for an attack animation's "triggered" signal.

@@ -28,3 +28,5 @@ key = "CameraShake"
 section = "VideoSettings"
 property_type = 3
 default_value = 1.0
+
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/ReturnButton" to="." method="_on_return_button_pressed"]

@@ -1,5 +1,6 @@
 extends Control
 @onready var grid_container = $NinePatchRect/GridContainer
+@onready var audiostream = $AudioStreamPlayer
 @onready var custom_theme = preload("res://src/gui/mainmenu/new_theme.tres")
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -82,6 +83,8 @@ func show_skills_for_battler(battler: Battler):
 		# Add the skill button to the grid container
 		grid_container.add_child(skill_button)
 func _on_skill_selected(skill: BattlerAction, attack_index):
+	if audiostream:
+		audiostream.play()
 	print("Selected skill: ", skill.label)
 	var active_turn_queue = get_node("../Battlers")
 	var current_battler = active_turn_queue.current_battler
