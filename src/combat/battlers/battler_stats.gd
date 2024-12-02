@@ -81,6 +81,7 @@ func _init() -> void:
 
 
 func initialize() -> void:
+	max_health = base_max_health
 	health = max_health
 
 

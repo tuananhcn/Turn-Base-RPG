@@ -1,11 +1,11 @@
-[gd_resource type="Resource" script_class="AttackBattlerAction" load_steps=2 format=3 uid="uid://752xsau3xyx0"]
+[gd_resource type="Resource" script_class="AttackEnemyAction" load_steps=2 format=3 uid="uid://752xsau3xyx0"]
 
 [ext_resource type="Script" path="res://src/combat/actions/enemies/enemies_action_attack.gd" id="1_etuya"]
 
 [resource]
 script = ExtResource("1_etuya")
 hit_chance = 100.0
-base_damage = 1
+base_damage = 20
 label = "Base combat action"
 description = "A combat action."
 energy_cost = 0

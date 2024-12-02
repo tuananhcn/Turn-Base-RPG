@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource("1_5cya5")
 affinity = 0
-base_max_health = 100
+base_max_health = 200
 base_max_energy = 6
 base_attack = 50
 base_defense = 10

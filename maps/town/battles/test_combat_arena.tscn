@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://wivtmf75ic3f"]
+[gd_scene load_steps=28 format=3 uid="uid://wivtmf75ic3f"]
 
 [ext_resource type="PackedScene" uid="uid://c6uxju87r2dck" path="res://src/combat/combat_arena.tscn" id="1_etpkf"]
 [ext_resource type="AudioStream" uid="uid://c2j6t5oqik7vu" path="res://assets/music/Those of Us Who Blossom.mp3" id="2_k1fjp"]
@@ -18,7 +18,9 @@
 [ext_resource type="Resource" uid="uid://ci2upqpdbr5p7" path="res://src/common/battlers/bear/knight_stats.tres" id="15_5comn"]
 [ext_resource type="Texture2D" uid="uid://bdbtd0m317l8j" path="res://assets/battlers/Wizard Pack/mage.atlastex" id="15_cony4"]
 [ext_resource type="Texture2D" uid="uid://kvntqlbnef4e" path="res://assets/battlers/Knight Pack/knight.atlastex" id="15_fp2gg"]
+[ext_resource type="Resource" uid="uid://d2kxwqyvcp83k" path="res://src/common/battlers/actions/players/Knight/014.tres" id="15_n6hwk"]
 [ext_resource type="Resource" uid="uid://c1yfkrgq7bour" path="res://src/common/battlers/actions/players/player_defend.tres" id="15_tmtid"]
+[ext_resource type="Resource" uid="uid://bgjtadjv3isyf" path="res://src/common/battlers/actions/players/Knight/015.tres" id="16_w5cn3"]
 [ext_resource type="Resource" uid="uid://blkv8wdng5c5v" path="res://src/common/battlers/actions/players/Mage/EletricA.tres" id="17_8vcmh"]
 [ext_resource type="Resource" uid="uid://fmx6dldfjeg" path="res://src/common/battlers/actions/players/Mage/017.tres" id="18_fldes"]
 [ext_resource type="Resource" uid="uid://hrghs7xtghj8" path="res://src/common/battlers/actions/players/Mage/NormalAttack.tres" id="18_xdyb8"]
@@ -62,7 +64,7 @@ direction = 0
 position = Vector2(424, 494)
 script = ExtResource("4_6ngh4")
 stats = ExtResource("15_5comn")
-actions = Array[ExtResource("6_b04cs")]([ExtResource("11_82xso"), ExtResource("15_tmtid"), ExtResource("13_bo5g3"), ExtResource("14_d65vh")])
+actions = Array[ExtResource("6_b04cs")]([ExtResource("11_82xso"), ExtResource("15_tmtid"), ExtResource("13_bo5g3"), ExtResource("14_d65vh"), ExtResource("15_n6hwk"), ExtResource("16_w5cn3")])
 is_player = true
 icon = ExtResource("15_fp2gg")
 metadata/_edit_group_ = true
@@ -70,7 +72,7 @@ metadata/_edit_group_ = true
 [node name="BattlerAnim" parent="Battlers/Knight" index="0" instance=ExtResource("12_gq2ys")]
 
 [node name="Mage" type="Node2D" parent="Battlers" index="3"]
-position = Vector2(502, 778)
+position = Vector2(530, 833)
 script = ExtResource("4_6ngh4")
 stats = ExtResource("12_j58rm")
 actions = Array[ExtResource("6_b04cs")]([ExtResource("18_xdyb8"), ExtResource("15_tmtid"), ExtResource("13_bo5g3"), ExtResource("17_8vcmh"), ExtResource("18_fldes"), ExtResource("21_4y1lm"), ExtResource("22_kjkfp")])

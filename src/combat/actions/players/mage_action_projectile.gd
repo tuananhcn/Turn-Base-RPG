@@ -6,10 +6,13 @@ class_name RangedMageActionNoMoving extends BattlerAction
 @export var hit_chance: = 100.0
 @export var base_damage: = 30
 @export var skill_effect_scene: PackedScene  # Export the scene so you can assign different effects
-@export var debuff_defense_percentage: = 0  # Reduces defense by 20%
+@export var debuff_defense_percentage: float= 0  # Reduces defense by 20%
+@export var debuff_attack_percentage: float= 0
+@export var buff_attack_percentage: float = 0  # Increases attack by 30%
+@export var buff_defense_percentage: float= 0  # Increases attack by 30%
 @export var debuff_duration: = 2  # Number of turns the debuff lasts
-@export var buff_attack_percentage: = 0  # Increases attack by 30%
 @export var buff_duration: = 2  # Buff duration in turns
+@export var skill_effect_scale: Vector2 = Vector2(4, 4)  # Default scale value
 func find_animation_player(node: Node) -> AnimationPlayer:
 	if node is AnimationPlayer:
 		return node
@@ -57,7 +60,7 @@ func execute(source: Battler, targets: Array[Battler] = []) -> void:
 	if skill_effect_scene:
 		var skill_effect_instance = skill_effect_scene.instantiate()
 		skill_effect_instance.z_index = 10  # Make sure it's on top
-		skill_effect_instance.scale = Vector2(8, 8)  # Temporarily scale up to make it more visible
+		skill_effect_instance.scale = skill_effect_scale  # Temporarily scale up to make it more visible
 		skill_effect_instance.position = target_pivot.global_position  # Use the pivot's global position
 		source.get_parent().add_child(skill_effect_instance)  # Add to the same parent of source
 		await source.get_tree().create_timer(1).timeout
@@ -70,10 +73,20 @@ func execute(source: Battler, targets: Array[Battler] = []) -> void:
 	var damage = calculate_damage(attack_power, defense_power, base_damage)
 	var hit = BattlerHit.new(damage, hit_chance)
 	target.take_hit(hit)
-	if(debuff_defense_percentage != 0):
-		apply_debuff(target, "defense", debuff_defense_percentage, debuff_duration)
-	if(buff_attack_percentage != 0):
-		apply_buff(source, "attack", buff_attack_percentage, buff_duration)
+	if targets_self:
+		if(buff_attack_percentage != 0):
+			apply_buff(target, "attack", buff_attack_percentage, buff_duration)
+		if(buff_defense_percentage != 0):
+			apply_buff(target, "defense", buff_defense_percentage, buff_duration)
+	else:
+		if(debuff_attack_percentage != 0):
+			apply_debuff(target, "attack", debuff_defense_percentage, debuff_duration)
+		if(debuff_defense_percentage != 0):
+			apply_debuff(target, "defense", debuff_defense_percentage, debuff_duration)
+		if(buff_attack_percentage != 0):
+			apply_buff(source, "attack", buff_attack_percentage, buff_duration)
+		if(buff_defense_percentage != 0):
+			apply_buff(source, "defense", buff_defense_percentage, buff_duration)
 	await source.get_tree().create_timer(0.1).timeout
 	# Move back to the original position
 	tween = source.create_tween().set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_CUBIC)
@@ -95,7 +108,7 @@ func apply_debuff(target: Battler, stat: String, percentage: float, turns: int) 
 	else:
 		debuff_icon = load("res://assets/battlers/ParticleSkill/SkillIcon/shield_debuff.png")
 	if target.stats.health >=0:
-		target.stats.apply_temp_modifier(target.get_child(0),stat, percentage, turns, false, debuff_icon)
+		target.stats.apply_temp_modifier(target.get_child(0),stat, -percentage, turns, false, debuff_icon)
 
 # Apply a buff to the source
 func apply_buff(source: Battler, stat: String, percentage: float, turns: int) -> void:

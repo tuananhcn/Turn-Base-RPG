@@ -45,7 +45,15 @@ var mage_data: Dictionary = {
 		"Accessory": null
 	}
 }
+func _input(event):
+	if event.is_action_pressed("ui_settings"):  # Check if ESC key is pressed
+		open_settings()
 
+func open_settings():
+	var settings_scene = preload("res://scenes/menus/options_menu/master_options_menu_with_tabs.tscn")  # Update this path to your `setting.tscn`
+	var settings_instance = settings_scene.instantiate()
+	get_tree().get_root().add_child(settings_instance)  # Add the settings scene to the root node
+	settings_instance.name = "Settings"  # Optional: Set a unique name for the instance
 # Called when the script is loaded
 func _ready():
 	print("GlobalData is initialized")

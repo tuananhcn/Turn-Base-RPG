@@ -41,7 +41,11 @@ func execute(source: Battler, targets: Array[Battler] = []) -> void:
 	# No attack animations yet, so wait for a short delay and then apply damage to the target.
 	# Normally we would wait for an attack animation's "triggered" signal.
 	await source.get_tree().create_timer(0.1).timeout
-	var hit: = BattlerHit.new(base_damage, hit_chance)
+	# Apply the hit/damage
+	var attack_power = source.stats.attack  # Get the source's base attack
+	var defense_power = target.stats.defense  # Get the target's defense
+	var damage = calculate_damage(attack_power, defense_power, base_damage)
+	var hit = BattlerHit.new(damage, hit_chance)
 	target.take_hit(hit)
 	print(target.stats.defense)
 	await source.get_tree().create_timer(0.1).timeout
@@ -57,3 +61,11 @@ func execute(source: Battler, targets: Array[Battler] = []) -> void:
 	if anim_player and anim_player.has_animation("idle"):
 		anim_player.play("idle")
 	await source.get_tree().create_timer(0.1).timeout
+func calculate_damage(attack: int, defense: int, base_damage: int) -> int:
+	var random_factor = randi_range(0, 10)  # Random factor between 0.9 and 1.1 (10% variation)
+	var damage
+	if base_damage >= 0:
+		damage = (abs(attack - defense) + base_damage) + random_factor
+	else:
+		damage = (-attack + base_damage) + random_factor
+	return damage

@@ -59,3 +59,5 @@ metadata/_edit_group_ = true
 [node name="BearAnim" parent="Battlers/PlayerBattler" index="0" instance=ExtResource("9_jq0mb")]
 scale = Vector2(-1, 1)
 direction = 0
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." index="11"]
