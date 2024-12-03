@@ -100,7 +100,8 @@ func _ready() -> void:
 				battler.stats.hit_chance = knight_stats.hit_chance
 				battler.stats.evasion = knight_stats.evasion
 				battler.stats.health = knight_stats.max_health  # Fully heal
-				battler.stats.health = knight_stats.current_health  # Use current health
+				if knight_stats.current_health:
+					battler.stats.health = knight_stats.current_health  # Use current health
 				battler.stats.energy = knight_stats.current_energy
 			elif battler.name == "Mage":
 				var mage_stats = GlobalData.get_player_stats("Mage")
@@ -112,7 +113,8 @@ func _ready() -> void:
 				battler.stats.hit_chance = mage_stats.hit_chance
 				battler.stats.evasion = mage_stats.evasion
 				battler.stats.health = mage_stats.max_health  # Fully heal
-				battler.stats.health = mage_stats.current_health  # Use current health
+				if mage_stats.current_health:
+					battler.stats.health = mage_stats.current_health  # Use current health
 				battler.stats.energy = mage_stats.current_energy
 		else:
 			_enemies.append(battler)
@@ -142,7 +144,7 @@ func _process(_delta: float) -> void:
 			elif battler.name == "Mage":
 				GlobalData.update_player_health_and_energy("Mage", battler.stats.health, battler.stats.energy)    
 		print("Player stats updated in GlobalData after combat.")
-		var inventory = ResourceLoader.load("user://inventory.tres") as Inventory
+		var inventory = Inventory.restore()
 		inventory.add(Inventory.ItemTypes.COIN, 1)
 func _play_turn(battler: Battler) -> void:
 	refresh_turn_queue()

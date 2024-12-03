@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://vrpfw5x1emwu"
+path="res://.godot/imported/Fight the Movement!.mp3-fa194d7d6d000c5f245e4f1e71cb253a.mp3str"
+
+[deps]
+
+source_file="res://assets/music/Fight the Movement!.mp3"
+dest_files=["res://.godot/imported/Fight the Movement!.mp3-fa194d7d6d000c5f245e4f1e71cb253a.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

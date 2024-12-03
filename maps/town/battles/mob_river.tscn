@@ -1,7 +1,7 @@
 [gd_scene load_steps=31 format=3 uid="uid://jetpp8r4ostn"]
 
 [ext_resource type="PackedScene" uid="uid://c6uxju87r2dck" path="res://src/combat/combat_arena.tscn" id="1_yt0ui"]
-[ext_resource type="AudioStream" uid="uid://c2j6t5oqik7vu" path="res://assets/music/Those of Us Who Blossom.mp3" id="2_b0mf2"]
+[ext_resource type="AudioStream" uid="uid://dsr443dwt71lm" path="res://assets/music/Those of Us Who Blossom__5OU_A4-48zE_00_00_26_00_02_34_part.mp3" id="2_jx3w2"]
 [ext_resource type="Texture2D" uid="uid://cd0x7tiemhbwq" path="res://assets/arenas/river2.jpeg" id="3_aionj"]
 [ext_resource type="Script" path="res://src/combat/battlers/battler.gd" id="4_wp0p4"]
 [ext_resource type="Resource" uid="uid://chuarvle06xxf" path="res://src/common/battlers/bugcat_stats.tres" id="5_itdwm"]
@@ -32,7 +32,7 @@
 [ext_resource type="AudioStream" uid="uid://d4bwljfd0sihu" path="res://assets/sfx/hitsound.ogg" id="29_m8qhd"]
 
 [node name="TestCombatArena" instance=ExtResource("1_yt0ui")]
-music = ExtResource("2_b0mf2")
+music = ExtResource("2_jx3w2")
 
 [node name="Background" parent="." index="0"]
 offset_right = 1920.0
@@ -40,7 +40,7 @@ offset_bottom = 1080.0
 texture = ExtResource("3_aionj")
 
 [node name="Bear" type="Node2D" parent="Battlers" index="0"]
-position = Vector2(1268, 817)
+position = Vector2(1545, 494)
 script = ExtResource("4_wp0p4")
 stats = ExtResource("5_itdwm")
 actions = Array[ExtResource("6_cwf5c")]([ExtResource("7_7a2o6")])
@@ -72,7 +72,7 @@ metadata/_edit_group_ = true
 [node name="MageAnim" parent="Battlers/Mage" index="0" instance=ExtResource("26_3xqtr")]
 
 [node name="Wolf" type="Node2D" parent="Battlers" index="3"]
-position = Vector2(1493, 517)
+position = Vector2(1271, 804)
 script = ExtResource("4_wp0p4")
 stats = ExtResource("27_w32ko")
 actions = Array[ExtResource("6_cwf5c")]([ExtResource("7_7a2o6")])

@@ -40,7 +40,7 @@ offset_bottom = 1080.0
 texture = ExtResource("3_080u0")
 
 [node name="Bugcat" type="Node2D" parent="Battlers" index="0"]
-position = Vector2(1268, 817)
+position = Vector2(1430, 436)
 script = ExtResource("4_iyphb")
 stats = ExtResource("5_18a1p")
 actions = Array[ExtResource("6_mqnyo")]([ExtResource("7_c2ie7")])
@@ -74,7 +74,7 @@ metadata/_edit_group_ = true
 [node name="MageAnim" parent="Battlers/Mage" index="0" instance=ExtResource("26_ji8ul")]
 
 [node name="Wolf" type="Node2D" parent="Battlers" index="3"]
-position = Vector2(1493, 517)
+position = Vector2(1182, 812)
 script = ExtResource("4_iyphb")
 stats = ExtResource("27_flepy")
 actions = Array[ExtResource("6_mqnyo")]([ExtResource("7_c2ie7")])

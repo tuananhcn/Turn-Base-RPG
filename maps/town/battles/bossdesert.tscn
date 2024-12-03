@@ -1,7 +1,7 @@
 [gd_scene load_steps=33 format=3 uid="uid://dy6wei83tcouf"]
 
 [ext_resource type="PackedScene" uid="uid://c6uxju87r2dck" path="res://src/combat/combat_arena.tscn" id="1_ykm60"]
-[ext_resource type="AudioStream" uid="uid://c2j6t5oqik7vu" path="res://assets/music/Those of Us Who Blossom.mp3" id="2_irndl"]
+[ext_resource type="AudioStream" uid="uid://vrpfw5x1emwu" path="res://assets/music/Fight the Movement!.mp3" id="2_flixk"]
 [ext_resource type="Texture2D" uid="uid://bh22empdohcqk" path="res://assets/arenas/Desert.jpeg" id="3_xng3i"]
 [ext_resource type="Script" path="res://src/combat/battlers/battler.gd" id="4_m2cc8"]
 [ext_resource type="Resource" uid="uid://ci2upqpdbr5p7" path="res://src/common/battlers/bear/knight_stats.tres" id="5_7pjwb"]
@@ -34,7 +34,7 @@
 [ext_resource type="AudioStream" uid="uid://d4bwljfd0sihu" path="res://assets/sfx/hitsound.ogg" id="31_f0650"]
 
 [node name="TestCombatArena" instance=ExtResource("1_ykm60")]
-music = ExtResource("2_irndl")
+music = ExtResource("2_flixk")
 
 [node name="Background" parent="." index="0"]
 offset_right = 1920.0
