@@ -1,16 +1,23 @@
 name: Build Godot
-  # Use the specific version of the action
-uses: yeslayla/build-godot-action@v1.4.1
-  with:
-    # Name of the exported binary
-    name: "MyGame" # Replace with your exported binary name
-    # Name of the preset in `export_presets.cfg` to use
-    preset: "HTML5" # Replace with your desired export preset
-    # Optional name of the subdirectory to put the exported project in
-    subdirectory: "build" # Replace with a subdirectory name or leave empty
-    # Set true to output an artifact zip file
-    package: true # Set to true if you want to package the output as a zip file
-    # Location of Godot project in the repository
-    projectDir: "./game" # Replace with your project directory or leave as "."
-    # Whether or not to use `--export-debug`
-    debugMode: false # Set to true if exporting in debug mode
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Build Godot
+        uses: yeslayla/build-godot-action@v1.4.1
+        with:
+          name: "MyGame" # Replace with your exported binary name
+          preset: "HTML5" # Replace with your desired export preset
+          subdirectory: "build" # Optional: Specify a subdirectory for the exported project
+          package: true # Set true to output an artifact zip file
+          projectDir: "./game" # Location of your Godot project in the repository
+          debugMode: false # Set true if exporting in debug mode
