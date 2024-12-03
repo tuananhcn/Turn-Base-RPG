@@ -1,6 +1,6 @@
 name: Build Godot
   # Use the specific version of the action
-  uses: yeslayla/build-godot-action@v1.4.1
+uses: yeslayla/build-godot-action@v1.4.1
   with:
     # Name of the exported binary
     name: "MyGame" # Replace with your exported binary name
