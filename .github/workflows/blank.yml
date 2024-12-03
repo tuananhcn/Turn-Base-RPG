@@ -1,4 +1,4 @@
-- name: Build Godot
+name: Build Godot
   # Use the specific version of the action
   uses: yeslayla/build-godot-action@v1.4.1
   with:
