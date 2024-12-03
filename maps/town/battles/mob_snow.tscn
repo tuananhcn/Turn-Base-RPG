@@ -82,8 +82,6 @@ icon = ExtResource("28_v1cnp")
 metadata/_edit_group_ = true
 
 [node name="WolfAnim" parent="Battlers/Wolf" index="0" instance=ExtResource("28_gfu2s")]
-scale = Vector2(-1, 1)
-direction = 0
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." index="11"]
 stream = ExtResource("29_a03fw")

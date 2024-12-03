@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="RangedEnemyAction" load_steps=3 format=3 uid="uid://s1n2pdtwlpfn"]
+
+[ext_resource type="Script" path="res://src/combat/actions/enemies/enemies_action_projectile.gd" id="1_f20bk"]
+[ext_resource type="PackedScene" uid="uid://qvnqf0xo5t6v" path="res://assets/battlers/ParticleSkill/BringerProject.tscn" id="2_r6q5t"]
+
+[resource]
+script = ExtResource("1_f20bk")
+attack_distance = 350.0
+attack_time = 0.25
+return_time = 0.25
+hit_chance = 100.0
+base_damage = 30
+skill_effect_scene = ExtResource("2_r6q5t")
+debuff_defense_percentage = 0.2
+buff_attack_percentage = 0.25
+debuff_duration = 2
+buff_duration = 2
+skill_effect_scale = Vector2(4, 4)
+label = "Base combat action"
+description = "A combat action."
+energy_cost = 1
+element = 1
+targets_self = false
+targets_all = false
+readiness_saved = 0.0

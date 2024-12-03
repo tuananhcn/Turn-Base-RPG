@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource("1_iel8o")
 affinity = 0
-base_max_health = 150
+base_max_health = 200
 base_max_energy = 3
 base_attack = 10
 base_defense = 5

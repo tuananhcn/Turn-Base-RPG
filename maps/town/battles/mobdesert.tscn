@@ -1,0 +1,86 @@
+[gd_scene load_steps=32 format=3 uid="uid://u7wxnxpadro8"]
+
+[ext_resource type="PackedScene" uid="uid://c6uxju87r2dck" path="res://src/combat/combat_arena.tscn" id="1_i4yai"]
+[ext_resource type="AudioStream" uid="uid://c2j6t5oqik7vu" path="res://assets/music/Those of Us Who Blossom.mp3" id="2_ahjme"]
+[ext_resource type="Texture2D" uid="uid://bh22empdohcqk" path="res://assets/arenas/Desert.jpeg" id="3_28mdf"]
+[ext_resource type="Script" path="res://src/combat/battlers/battler.gd" id="4_wmrks"]
+[ext_resource type="Resource" uid="uid://ci2upqpdbr5p7" path="res://src/common/battlers/bear/knight_stats.tres" id="5_wqxrx"]
+[ext_resource type="Script" path="res://src/combat/actions/battler_action.gd" id="6_h6nv4"]
+[ext_resource type="Resource" uid="uid://dp7wo0l4es3w4" path="res://src/common/battlers/actions/players/Knight/knight_melee_normal_action.tres" id="7_p5nd6"]
+[ext_resource type="Resource" uid="uid://c1yfkrgq7bour" path="res://src/common/battlers/actions/players/player_defend.tres" id="8_dw1nk"]
+[ext_resource type="Resource" uid="uid://d3jlrkdt6kkrf" path="res://src/common/battlers/actions/players/item_action.tres" id="9_mn2g1"]
+[ext_resource type="Resource" uid="uid://c8kdob825mc7e" path="res://src/common/battlers/actions/players/Knight/013.tres" id="10_1v2nj"]
+[ext_resource type="Resource" uid="uid://d2kxwqyvcp83k" path="res://src/common/battlers/actions/players/Knight/014.tres" id="11_gwogh"]
+[ext_resource type="Resource" uid="uid://bgjtadjv3isyf" path="res://src/common/battlers/actions/players/Knight/015.tres" id="12_8t7dn"]
+[ext_resource type="Texture2D" uid="uid://kvntqlbnef4e" path="res://assets/battlers/Knight Pack/knight.atlastex" id="13_hb6n0"]
+[ext_resource type="PackedScene" uid="uid://bi0yj1rc0exw2" path="res://assets/battlers/Knight Pack/knight_anim.tscn" id="14_tnvf3"]
+[ext_resource type="Resource" uid="uid://bn4nqbuhq4ih8" path="res://src/common/battlers/bear/mage_stats.tres" id="15_hsudn"]
+[ext_resource type="Resource" uid="uid://hrghs7xtghj8" path="res://src/common/battlers/actions/players/Mage/NormalAttack.tres" id="16_0fofj"]
+[ext_resource type="Resource" uid="uid://blkv8wdng5c5v" path="res://src/common/battlers/actions/players/Mage/EletricA.tres" id="17_66gtp"]
+[ext_resource type="Resource" uid="uid://fmx6dldfjeg" path="res://src/common/battlers/actions/players/Mage/017.tres" id="18_dpy7u"]
+[ext_resource type="Resource" uid="uid://dxe0lmwb6me8d" path="res://src/common/battlers/actions/players/Mage/011.tres" id="19_5tqtv"]
+[ext_resource type="Resource" uid="uid://by1g2pdh5cva4" path="res://src/common/battlers/actions/players/Mage/Gravity.tres" id="20_g2h03"]
+[ext_resource type="Texture2D" uid="uid://bdbtd0m317l8j" path="res://assets/battlers/Wizard Pack/mage.atlastex" id="21_7rurp"]
+[ext_resource type="PackedScene" uid="uid://cuqqcvkl0d8bw" path="res://assets/battlers/Wizard Pack/mage_anim.tscn" id="22_3p5a3"]
+[ext_resource type="Resource" uid="uid://chd4ncpr7k7lg" path="res://src/common/battlers/wolf_stats.tres" id="23_wf8ms"]
+[ext_resource type="Resource" uid="uid://752xsau3xyx0" path="res://src/common/battlers/actions/enemies/melee_action.tres" id="24_wv7uu"]
+[ext_resource type="Texture2D" uid="uid://dr8cs6liv45hd" path="res://assets/battlers/wolf.png" id="25_w15d7"]
+[ext_resource type="PackedScene" uid="uid://8f7e4yxs3poj" path="res://assets/battlers/wolf_anim.tscn" id="26_gbvah"]
+[ext_resource type="Resource" uid="uid://bka1pe2l3gbv" path="res://src/common/battlers/squirrel_stats.tres" id="27_tmerj"]
+[ext_resource type="Resource" uid="uid://bs4g81qa8u57q" path="res://src/common/battlers/actions/enemies/ranged_action.tres" id="28_mtry5"]
+[ext_resource type="Texture2D" uid="uid://cbgfjvlm8kx4k" path="res://assets/battlers/squirrel.png" id="29_prvfj"]
+[ext_resource type="PackedScene" uid="uid://cch8nxgex1edr" path="res://assets/battlers/squirrel_anim.tscn" id="30_qgi6d"]
+[ext_resource type="AudioStream" uid="uid://d4bwljfd0sihu" path="res://assets/sfx/hitsound.ogg" id="31_wefih"]
+
+[node name="TestCombatArena" instance=ExtResource("1_i4yai")]
+music = ExtResource("2_ahjme")
+
+[node name="Background" parent="." index="0"]
+offset_right = 1920.0
+offset_bottom = 1080.0
+texture = ExtResource("3_28mdf")
+
+[node name="Knight" type="Node2D" parent="Battlers" index="0"]
+position = Vector2(424, 494)
+script = ExtResource("4_wmrks")
+stats = ExtResource("5_wqxrx")
+actions = Array[ExtResource("6_h6nv4")]([ExtResource("7_p5nd6"), ExtResource("8_dw1nk"), ExtResource("9_mn2g1"), ExtResource("10_1v2nj"), ExtResource("11_gwogh"), ExtResource("12_8t7dn")])
+is_player = true
+icon = ExtResource("13_hb6n0")
+metadata/_edit_group_ = true
+
+[node name="BattlerAnim" parent="Battlers/Knight" index="0" instance=ExtResource("14_tnvf3")]
+
+[node name="Mage" type="Node2D" parent="Battlers" index="1"]
+position = Vector2(530, 833)
+script = ExtResource("4_wmrks")
+stats = ExtResource("15_hsudn")
+actions = Array[ExtResource("6_h6nv4")]([ExtResource("16_0fofj"), ExtResource("8_dw1nk"), ExtResource("9_mn2g1"), ExtResource("17_66gtp"), ExtResource("18_dpy7u"), ExtResource("19_5tqtv"), ExtResource("20_g2h03")])
+is_player = true
+icon = ExtResource("21_7rurp")
+metadata/_edit_group_ = true
+
+[node name="MageAnim" parent="Battlers/Mage" index="0" instance=ExtResource("22_3p5a3")]
+
+[node name="Wolf" type="Node2D" parent="Battlers" index="2"]
+position = Vector2(1493, 517)
+script = ExtResource("4_wmrks")
+stats = ExtResource("23_wf8ms")
+actions = Array[ExtResource("6_h6nv4")]([ExtResource("24_wv7uu")])
+icon = ExtResource("25_w15d7")
+metadata/_edit_group_ = true
+
+[node name="WolfAnim" parent="Battlers/Wolf" index="0" instance=ExtResource("26_gbvah")]
+
+[node name="Squirrel" type="Node2D" parent="Battlers" index="3"]
+position = Vector2(1268, 843)
+script = ExtResource("4_wmrks")
+stats = ExtResource("27_tmerj")
+actions = Array[ExtResource("6_h6nv4")]([ExtResource("28_mtry5")])
+icon = ExtResource("29_prvfj")
+metadata/_edit_group_ = true
+
+[node name="SquirrelAnim" parent="Battlers/Squirrel" index="0" instance=ExtResource("30_qgi6d")]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." index="11"]
+stream = ExtResource("31_wefih")

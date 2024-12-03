@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://badexg85lctrq" path="res://src/combat/battlers/battler_anim.tscn" id="1_6ixqs"]
 [ext_resource type="Texture2D" uid="uid://dwi2ujjxs5e8a" path="res://assets/battlers/Sprite Sheets/Skeleton Idle.png" id="2_0fd2i"]
 [ext_resource type="Texture2D" uid="uid://cpr1u6dnteroy" path="res://assets/battlers/SpriteSheet/Bringer-of-Death-SpritSheet.png" id="2_5xtf7"]
+[ext_resource type="Texture2D" uid="uid://bk36plkx12oxh" path="res://assets/battlers/Sprite Sheets/Skeleton Attack.png" id="4_e8et8"]
 [ext_resource type="Texture2D" uid="uid://cd4tnx4t474wp" path="res://assets/battlers/Sprite Sheets/Skeleton Walk.png" id="4_eys0x"]
 [ext_resource type="Texture2D" uid="uid://dagqdyj7b54ca" path="res://assets/battlers/Sprite Sheets/Skeleton Dead.png" id="4_vacpn"]
 [ext_resource type="Texture2D" uid="uid://ic6v6u6co788" path="res://assets/battlers/Sprite Sheets/Skeleton React.png" id="5_i0wk5"]
@@ -48,7 +49,7 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id="Animation_bt3va"]
 resource_name = "attack1"
-length = 1.00001
+length = 1.80001
 step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -60,7 +61,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("2_5xtf7")]
+"values": [ExtResource("4_e8et8")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -72,7 +73,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [8]
+"values": [18]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -81,51 +82,10 @@ tracks/2/path = NodePath("Sprite2D:frame")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [16, 17, 18, 19, 20, 21, 22, 23, 24, 25]
-}
-
-[sub_resource type="Animation" id="Animation_qjefv"]
-resource_name = "attack2"
-length = 0.80001
-step = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("2_5xtf7")]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:hframes")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [8]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Sprite2D:frame")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [40, 41, 42, 43, 44, 45, 46, 47]
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17]
 }
 
 [sub_resource type="Animation" id="Animation_8k83w"]
@@ -280,12 +240,23 @@ tracks/1/keys = {
 "update": 1,
 "values": [ExtResource("4_eys0x")]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:hframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [13]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ifyoa"]
 _data = {
 "RESET": SubResource("Animation_rmqcy"),
 "attack1": SubResource("Animation_bt3va"),
-"attack2": SubResource("Animation_qjefv"),
 "die": SubResource("Animation_8k83w"),
 "hurt": SubResource("Animation_1yj4m"),
 "idle": SubResource("Animation_0bk15"),
@@ -301,8 +272,8 @@ libraries = {
 autoplay = "idle"
 
 [node name="Sprite2D" type="Sprite2D" parent="Pivot" index="1"]
-position = Vector2(6, 130)
-scale = Vector2(4, 4)
+position = Vector2(85, 231)
+scale = Vector2(-7, 7)
 texture = ExtResource("2_0fd2i")
 offset = Vector2(0, -50)
 hframes = 11
@@ -312,10 +283,10 @@ frame = 1
 position = Vector2(-170, -133)
 
 [node name="TopAnchor" parent="." index="2"]
-position = Vector2(4, -301)
+position = Vector2(8, -323)
 
 [node name="StatusIconContainer" parent="." index="3"]
-offset_left = 35.0
+offset_left = -14.0
 offset_top = -281.0
-offset_right = 75.0
+offset_right = 26.0
 offset_bottom = -241.0

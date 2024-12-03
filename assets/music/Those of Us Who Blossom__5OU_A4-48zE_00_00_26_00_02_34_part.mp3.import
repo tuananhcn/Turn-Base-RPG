@@ -13,7 +13,7 @@ dest_files=["res://.godot/imported/Those of Us Who Blossom__5OU_A4-48zE_00_00_26
 [params]
 
 loop=false
-loop_offset=0
-bpm=0
+loop_offset=0.0
+bpm=0.0
 beat_count=0
 bar_beats=4

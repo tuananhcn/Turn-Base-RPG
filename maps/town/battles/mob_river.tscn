@@ -48,8 +48,6 @@ icon = ExtResource("8_7duo2")
 metadata/_edit_group_ = true
 
 [node name="BearAnim" parent="Battlers/Bear" index="0" instance=ExtResource("9_y8jnj")]
-scale = Vector2(-1, 1)
-direction = 0
 
 [node name="Knight" type="Node2D" parent="Battlers" index="1"]
 position = Vector2(390, 456)
@@ -82,8 +80,6 @@ icon = ExtResource("28_8dm4h")
 metadata/_edit_group_ = true
 
 [node name="WolfAnim" parent="Battlers/Wolf" index="0" instance=ExtResource("28_u5umd")]
-scale = Vector2(-1, 1)
-direction = 0
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." index="11"]
 stream = ExtResource("29_m8qhd")

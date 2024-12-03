@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="RangedBattlerAction" load_steps=2 format=3 uid="uid://bs4g81qa8u57q"]
+[gd_resource type="Resource" script_class="RangedEnemyAction" load_steps=2 format=3 uid="uid://bs4g81qa8u57q"]
 
 [ext_resource type="Script" path="res://src/combat/actions/enemies/enemies_action_projectile.gd" id="1_hylg4"]
 
@@ -8,7 +8,12 @@ attack_distance = 350.0
 attack_time = 0.25
 return_time = 0.25
 hit_chance = 100.0
-base_damage = 50
+base_damage = 10
+debuff_defense_percentage = 0.0
+buff_attack_percentage = 0.0
+debuff_duration = 0
+buff_duration = 0
+skill_effect_scale = Vector2(4, 4)
 label = "Base combat action"
 description = "A combat action."
 energy_cost = 0

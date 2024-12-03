@@ -1,8 +1,8 @@
 [gd_scene load_steps=33 format=3 uid="uid://cj51a83agmm7s"]
 
 [ext_resource type="PackedScene" uid="uid://c6uxju87r2dck" path="res://src/combat/combat_arena.tscn" id="1_8i6bs"]
-[ext_resource type="AudioStream" uid="uid://c2j6t5oqik7vu" path="res://assets/music/Those of Us Who Blossom.mp3" id="2_0lnrd"]
-[ext_resource type="Texture2D" uid="uid://bh22empdohcqk" path="res://assets/arenas/Desert.jpeg" id="3_fbbbr"]
+[ext_resource type="AudioStream" uid="uid://ddxvy8w6le8f" path="res://assets/music/Return of the Snow Queen.mp3" id="2_5wrrw"]
+[ext_resource type="Texture2D" uid="uid://bhyeglu6q64bb" path="res://assets/arenas/Snow.jpeg" id="3_n1t7p"]
 [ext_resource type="Script" path="res://src/combat/battlers/battler.gd" id="4_2jkrr"]
 [ext_resource type="Resource" uid="uid://chuarvle06xxf" path="res://src/common/battlers/bugcat_stats.tres" id="5_xw1cg"]
 [ext_resource type="Script" path="res://src/combat/actions/battler_action.gd" id="6_0jf36"]
@@ -34,12 +34,12 @@
 [ext_resource type="AudioStream" uid="uid://d4bwljfd0sihu" path="res://assets/sfx/hitsound.ogg" id="32_25d52"]
 
 [node name="TestCombatArena" instance=ExtResource("1_8i6bs")]
-music = ExtResource("2_0lnrd")
+music = ExtResource("2_5wrrw")
 
 [node name="Background" parent="." index="0"]
 offset_right = 1920.0
 offset_bottom = 1080.0
-texture = ExtResource("3_fbbbr")
+texture = ExtResource("3_n1t7p")
 
 [node name="Bugcat" type="Node2D" parent="Battlers" index="0"]
 position = Vector2(1522, 497)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://wivtmf75ic3f"]
+[gd_scene load_steps=31 format=3 uid="uid://wivtmf75ic3f"]
 
 [ext_resource type="PackedScene" uid="uid://c6uxju87r2dck" path="res://src/combat/combat_arena.tscn" id="1_etpkf"]
 [ext_resource type="AudioStream" uid="uid://dhflb6j75mj0r" path="res://assets/music/Voices of Feelings.mp3" id="2_mnyhe"]
@@ -29,6 +29,7 @@
 [ext_resource type="AudioStream" uid="uid://d4bwljfd0sihu" path="res://assets/sfx/hitsound.ogg" id="25_phs11"]
 [ext_resource type="Resource" uid="uid://chd4ncpr7k7lg" path="res://src/common/battlers/wolf_stats.tres" id="27_oo3fx"]
 [ext_resource type="PackedScene" uid="uid://8f7e4yxs3poj" path="res://assets/battlers/wolf_anim.tscn" id="28_iynrj"]
+[ext_resource type="Texture2D" uid="uid://dr8cs6liv45hd" path="res://assets/battlers/wolf.png" id="28_t48us"]
 
 [node name="TestCombatArena" instance=ExtResource("1_etpkf")]
 music = ExtResource("2_mnyhe")
@@ -73,15 +74,14 @@ metadata/_edit_group_ = true
 [node name="MageAnim" parent="Battlers/Mage" index="0" instance=ExtResource("12_rxi00")]
 
 [node name="Wolf" type="Node2D" parent="Battlers" index="3"]
-position = Vector2(1493, 517)
+position = Vector2(1436, 513)
 script = ExtResource("4_6ngh4")
 stats = ExtResource("27_oo3fx")
 actions = Array[ExtResource("6_b04cs")]([ExtResource("7_nlv7y")])
+icon = ExtResource("28_t48us")
 metadata/_edit_group_ = true
 
 [node name="WolfAnim" parent="Battlers/Wolf" index="0" instance=ExtResource("28_iynrj")]
-scale = Vector2(-1, 1)
-direction = 0
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." index="11"]
 stream = ExtResource("25_phs11")

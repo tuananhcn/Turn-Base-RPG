@@ -12,5 +12,12 @@ libraries = {
 }
 
 [node name="Sprite2D" type="Sprite2D" parent="Pivot" index="1"]
+scale = Vector2(-1, 1)
 texture = ExtResource("2_nnyj7")
 offset = Vector2(0, -235)
+
+[node name="StatusIconContainer" parent="." index="3"]
+offset_left = -20.0
+offset_top = -463.0
+offset_right = 20.0
+offset_bottom = -423.0

@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="AttackEnemyAction" load_steps=2 format=3 uid="uid://bb80jfll3rmbm"]
+
+[ext_resource type="Script" path="res://src/combat/actions/enemies/enemies_action_attack.gd" id="1_15obd"]
+
+[resource]
+script = ExtResource("1_15obd")
+hit_chance = 100.0
+base_damage = 20
+label = "Base combat action"
+description = "A combat action."
+energy_cost = 1
+element = 0
+targets_self = false
+targets_all = false
+readiness_saved = 0.0
