@@ -1,4 +1,4 @@
-name: Build Godot
+name: Build and Release Godot
 
 on:
   push:
@@ -15,9 +15,22 @@ jobs:
       - name: Build Godot
         uses: yeslayla/build-godot-action@v1.4.1
         with:
-          name: "MyGame" # Replace with your exported binary name
+          name: "RPG TURN BASE" # Replace with your exported binary name
           preset: "HTML5" # Replace with your desired export preset
           subdirectory: "build" # Optional: Specify a subdirectory for the exported project
-          package: true # Set true to output an artifact zip file
-          projectDir: "./game" # Location of your Godot project in the repository
-          debugMode: false # Set true if exporting in debug mode
+          package: true # Exported build will be zipped
+          projectDir: "." # Location of your Godot project in the repository
+          debugMode: false # Export release build
+
+      - name: Upload Build Artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: Godot-Build
+          path: build/ # Replace with the actual path of your build output
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: build/* # Add all build files to the release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
