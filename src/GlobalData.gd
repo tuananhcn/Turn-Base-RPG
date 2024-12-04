@@ -1,6 +1,6 @@
 extends Node
 
-const SAVE_FILE_PATH = "user://savegame.save"
+
 # Player data for Knight and Mage
 var is_in_combat = false
 var knight_data: Dictionary = {
