@@ -46,6 +46,13 @@ jobs:
           name: Godot-Build
           path: build/
 
+      - name: Create Git Tag
+        run: |
+          TAG_NAME="v$(date +'%Y%m%d%H%M%S')"
+          echo "Creating tag $TAG_NAME"
+          git tag $TAG_NAME
+          git push origin $TAG_NAME
+
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v1
         with:
