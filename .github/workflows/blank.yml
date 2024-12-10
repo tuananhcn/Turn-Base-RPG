@@ -19,9 +19,10 @@ jobs:
           mkdir -p ~/.local/share/godot/export_templates
           unzip Godot_v4.3-rc3_export_templates.tpz -d ~/.local/share/godot/export_templates
       - name: Ensure Write Permissions
-        run: |
-          mkdir -p ~/.godot/editor
-          chmod -R 777 ~/.godot
+        run: chmod -R 777 .
+
+      - name: Debug Workspace
+        run: pwd && ls -la
 
       - name: Export HTML5 Build
         run: |
