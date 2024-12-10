@@ -14,41 +14,45 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Install Godot 4.3 RC3
+      - name: Install Godot 4.3 RC3 and Export Templates
         run: |
+          # Install Godot
           wget https://github.com/godotengine/godot-builds/releases/download/4.3-rc3/Godot_v4.3-rc3_linux.x86_64.zip
           unzip Godot_v4.3-rc3_linux.x86_64.zip -d godot
           sudo mv godot/Godot_v4.3-rc3_linux.x86_64 /usr/local/bin/godot
           chmod +x /usr/local/bin/godot
+
+          # Install Export Templates
           wget https://github.com/godotengine/godot-builds/releases/download/4.3-rc3/Godot_v4.3-rc3_export_templates.tpz
           mkdir -p ~/.local/share/godot/export_templates/4.3.rc3
           unzip -o Godot_v4.3-rc3_export_templates.tpz -d ~/.local/share/godot/export_templates/4.3.rc3
           mv ~/.local/share/godot/export_templates/4.3.rc3/templates/* ~/.local/share/godot/export_templates/4.3.rc3/
-          rmdir ~/.local/share/godot/export_templates/4.3.rc3/templates
 
       - name: Debug Export Templates
         run: |
           echo "Verifying export templates:"
-          ls -la /home/runner/.local/share/godot/export_templates/4.3.rc3/
-      # Create build directory
+          ls -la ~/.local/share/godot/export_templates/4.3.rc3/
+
       - name: Create Build Directory
         run: mkdir -p build
 
-      # Export the Windows Build
       - name: Export Windows Build
         run: |
           godot --headless --export-release "Windows Desktop" build/game.exe
         env:
           GODOT_PASSWORD: ${{ secrets.GODOT_PASSWORD }}
 
-      # Upload the Build Artifact
+      - name: Debug Build Directory
+        run: |
+          echo "Contents of the build directory:"
+          ls -la build/
+
       - name: Upload Build Artifact
         uses: actions/upload-artifact@v3
         with:
           name: Godot-Windows-Build
           path: build/game.exe
 
-      # Create Git Tag
       - name: Create Git Tag
         id: create_tag
         env:
@@ -62,7 +66,6 @@ jobs:
           git push https://x-access-token:${GITHUB_TOKEN}@github.com/${{ github.repository }} $TAG_NAME
           echo "tag_name=$TAG_NAME" >> $GITHUB_ENV
 
-      # Create a GitHub Release
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v1
         with:
