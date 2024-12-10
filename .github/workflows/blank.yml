@@ -18,6 +18,10 @@ jobs:
           wget https://github.com/godotengine/godot-builds/releases/download/4.3-rc3/Godot_v4.3-rc3_export_templates.tpz
           mkdir -p ~/.local/share/godot/export_templates
           unzip Godot_v4.3-rc3_export_templates.tpz -d ~/.local/share/godot/export_templates
+      - name: Ensure Write Permissions
+        run: |
+          mkdir -p ~/.godot/editor
+          chmod -R 777 ~/.godot
 
       - name: Export HTML5 Build
         run: |
