@@ -11,6 +11,8 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
 
       - name: Install Godot 4.3 RC3
         run: |
@@ -23,6 +25,11 @@ jobs:
           unzip -o Godot_v4.3-rc3_export_templates.tpz -d ~/.local/share/godot/export_templates/4.3.rc3
           mv ~/.local/share/godot/export_templates/4.3.rc3/templates/* ~/.local/share/godot/export_templates/4.3.rc3/
           rmdir ~/.local/share/godot/export_templates/4.3.rc3/templates
+
+      - name: Debug Export Templates
+        run: |
+          echo "Verifying export templates:"
+          ls -la /home/runner/.local/share/godot/export_templates/4.3.rc3/
       # Create build directory
       - name: Create Build Directory
         run: mkdir -p build
@@ -34,17 +41,12 @@ jobs:
         env:
           GODOT_PASSWORD: ${{ secrets.GODOT_PASSWORD }}
 
-      # Create a Zip Archive for the Build
-      - name: Create Zip Archive
-        run: |
-          zip -r build/game.zip build/
-
       # Upload the Build Artifact
       - name: Upload Build Artifact
         uses: actions/upload-artifact@v3
         with:
           name: Godot-Windows-Build
-          path: build/game.zip
+          path: build/game.exe
 
       # Create Git Tag
       - name: Create Git Tag
@@ -64,7 +66,7 @@ jobs:
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v1
         with:
-          files: build/game.zip
+          files: build/game.exe
           tag_name: ${{ env.tag_name }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
