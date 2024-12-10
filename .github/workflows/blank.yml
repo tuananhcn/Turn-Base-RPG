@@ -21,24 +21,17 @@ jobs:
           sudo mv godot/Godot_v4.3-rc3_linux.x86_64 /usr/local/bin/godot
           chmod +x /usr/local/bin/godot
           wget https://github.com/godotengine/godot-builds/releases/download/4.3-rc3/Godot_v4.3-rc3_export_templates.tpz
-          mkdir -p ~/.local/share/godot/export_templates
-          unzip Godot_v4.3-rc3_export_templates.tpz -d ~/.local/share/godot/export_templates
+          mkdir -p ~/.local/share/godot/export_templates/4.3.rc3
+          unzip -o Godot_v4.3-rc3_export_templates.tpz -d ~/.local/share/godot/export_templates/4.3.rc3
 
-      - name: Debug Workspace
+      - name: Debug Export Templates
         run: |
-          pwd
-          ls -la
+          echo "Verifying export templates:"
+          ls -la ~/.local/share/godot/export_templates/4.3.rc3/
 
-      - name: List All Files
-        run: find . -type f
-
-      - name: Ensure Write Permissions
-        run: chmod -R 777 .
-
-      - name: Export HTML5 Build
+      - name: Export Web Build
         run: |
           godot --headless --export-release "Web" build/index.html
-
         env:
           GODOT_PASSWORD: ${{ secrets.GODOT_PASSWORD }}
 
