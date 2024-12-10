@@ -22,8 +22,9 @@ jobs:
           chmod +x /usr/local/bin/godot
           wget https://github.com/godotengine/godot-builds/releases/download/4.3-rc3/Godot_v4.3-rc3_export_templates.tpz
           mkdir -p ~/.local/share/godot/export_templates/4.3.rc3
-          unzip -o Godot_v4.3-rc3_export_templates.tpz -d ~/.local/share/godot/export_templates/4.3.rc3/templates
-          mv ~/.local/share/godot/export_templates/4.3.rc3/templates/* ~/.local/share/godot/export_templates/4.3.rc3/
+          unzip -o Godot_v4.3-rc3_export_templates.tpz -d ~/.local/share/godot/export_templates/4.3.rc3
+          mv ~/.local/share/godot/export_templates/4.3.rc3/templates/templates/* ~/.local/share/godot/export_templates/4.3.rc3/
+          rmdir ~/.local/share/godot/export_templates/4.3.rc3/templates/templates
           rmdir ~/.local/share/godot/export_templates/4.3.rc3/templates
 
       - name: Debug Export Templates
