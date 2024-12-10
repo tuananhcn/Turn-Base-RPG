@@ -37,7 +37,8 @@ jobs:
 
       - name: Export HTML5 Build
         run: |
-          godot --headless --path . --export-release "HTML5" build/index.html
+          godot --headless --export-release "Web" build/index.html
+
         env:
           GODOT_PASSWORD: ${{ secrets.GODOT_PASSWORD }}
 
