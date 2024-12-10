@@ -46,12 +46,19 @@ jobs:
           name: Godot-Build
           path: build/
 
+      - name: Configure Git
+        run: |
+          git config --global user.name "GitHub Actions"
+          git config --global user.email "actions@github.com"
+
       - name: Create Git Tag
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           TAG_NAME="v$(date +'%Y%m%d%H%M%S')"
           echo "Creating tag $TAG_NAME"
           git tag $TAG_NAME
-          git push origin $TAG_NAME
+          git push https://x-access-token:${GITHUB_TOKEN}@github.com/${{ github.repository }} $TAG_NAME
 
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v1
