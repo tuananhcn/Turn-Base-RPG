@@ -9,6 +9,11 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
       - name: Install Godot 4.3 RC3
         run: |
           wget https://github.com/godotengine/godot-builds/releases/download/4.3-rc3/Godot_v4.3-rc3_linux.x86_64.zip
@@ -18,15 +23,21 @@ jobs:
           wget https://github.com/godotengine/godot-builds/releases/download/4.3-rc3/Godot_v4.3-rc3_export_templates.tpz
           mkdir -p ~/.local/share/godot/export_templates
           unzip Godot_v4.3-rc3_export_templates.tpz -d ~/.local/share/godot/export_templates
+
+      - name: Debug Workspace
+        run: |
+          pwd
+          ls -la
+
+      - name: List All Files
+        run: find . -type f
+
       - name: Ensure Write Permissions
         run: chmod -R 777 .
 
-      - name: Debug Workspace
-        run: pwd && ls -la
-
       - name: Export HTML5 Build
         run: |
-          godot --headless --export-release "HTML5" build/index.html
+          godot --headless --path . --export-release "HTML5" build/index.html
         env:
           GODOT_PASSWORD: ${{ secrets.GODOT_PASSWORD }}
 
@@ -34,7 +45,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: Godot-Build
-          path: build/ # Ensure this matches the output path of your exported build
+          path: build/
 
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v1
