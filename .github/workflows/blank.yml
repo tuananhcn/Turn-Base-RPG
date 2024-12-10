@@ -9,14 +9,15 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
-
       - name: Install Godot 4.3 RC3
-        uses: yeslayla/build-godot-action@v1.4.1
-        with:
-          godot-version: '4.3-rc3' # Use the specific version you are working with
-          export-templates: true
+        run: |
+          wget https://downloads.tuxfamily.org/godotengine/4.3/rc3/Godot_v4.3-rc3_linux_headless.64.zip
+          unzip Godot_v4.3-rc3_linux_headless.64.zip -d godot
+          sudo mv godot/Godot_v4.3-rc3_linux_headless.64 /usr/local/bin/godot
+          chmod +x /usr/local/bin/godot
+          wget https://github.com/godotengine/godot-builds/releases/download/4.3-rc3/Godot_v4.3-rc3_export_templates.tpz
+          mkdir -p ~/.local/share/godot/export_templates
+          unzip Godot_v4.3-rc3_export_templates.tpz -d ~/.local/share/godot/export_templates
 
       - name: Export HTML5 Build
         run: |
@@ -33,6 +34,6 @@ jobs:
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v1
         with:
-          files: build/* # Add all build files to the release
+          files: build/*
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
