@@ -40,11 +40,15 @@ jobs:
         env:
           GODOT_PASSWORD: ${{ secrets.GODOT_PASSWORD }}
 
+      - name: Create Zip Archive
+        run: |
+          zip -r build/game.zip build/
+
       - name: Upload Build Artifact
         uses: actions/upload-artifact@v3
         with:
           name: Godot-Build
-          path: build/
+          path: build/game.zip
 
       - name: Create Git Tag
         id: create_tag
@@ -62,7 +66,7 @@ jobs:
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v1
         with:
-          files: build/*
+          files: build/game.zip
           tag_name: ${{ env.tag_name }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
