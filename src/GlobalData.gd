@@ -1,5 +1,5 @@
 extends Node
-
+var SAVE_FILE_PATH = "test"
 
 # Player data for Knight and Mage
 var is_in_combat = false
