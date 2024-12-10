@@ -2,10 +2,10 @@ extends CanvasLayer
 
 @export var items = [
 	{
-		"name": "RedWand",
+		"name": "BlueWand",
 		"price": 1,
-		"texture": preload("res://assets/items/wand_red.atlastex"),
-		"item_type": Inventory.ItemTypes.RED_WAND
+		"texture": preload("res://assets/items/wand_blue.atlastex"),
+		"item_type": Inventory.ItemTypes.BLUE_WAND
 	},
 	{
 		"name": "WAND1",
@@ -54,6 +54,18 @@ extends CanvasLayer
 		"price": 1,
 		"texture": preload("res://assets/items/shield2.atlastex"),
 		"item_type": Inventory.ItemTypes.SHIELD2
+	},
+	{
+		"name": "Hp Potion",
+		"price": 1,
+		"texture": preload("res://assets/items/HpPotion.atlastex"),
+		"item_type": Inventory.ItemTypes.HP
+	},
+	{
+		"name": "Energy Potion",
+		"price": 1,
+		"texture": preload("res://assets/items/EnergyPotion.atlastex"),
+		"item_type": Inventory.ItemTypes.EP
 	}
 ]
 

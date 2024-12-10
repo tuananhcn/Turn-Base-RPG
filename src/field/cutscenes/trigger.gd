@@ -95,7 +95,6 @@ func _on_area_entered(area: Area2D) -> void:
 		await get_tree().process_frame
 		_is_cutscene_in_progress = true
 
-
 func _on_area_exited(area: Area2D) -> void:
 	var gamepiece: = area.owner as Gamepiece
 	if gamepiece:
