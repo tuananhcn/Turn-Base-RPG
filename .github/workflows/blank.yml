@@ -11,19 +11,27 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
 
-      - name: Install Godot 4.3 RC3
+      - name: Install Godot 4.3 RC3 and Export Templates
         run: |
+          # Install Godot
           wget https://github.com/godotengine/godot-builds/releases/download/4.3-rc3/Godot_v4.3-rc3_linux.x86_64.zip
           unzip Godot_v4.3-rc3_linux.x86_64.zip -d godot
           sudo mv godot/Godot_v4.3-rc3_linux.x86_64 /usr/local/bin/godot
           chmod +x /usr/local/bin/godot
 
-      - name: Install Export Templates
-        run: |
-          mkdir -p ~/.local/share/godot/export_templates/4.3.rc3
+          # Install Export Templates
           wget https://github.com/godotengine/godot-builds/releases/download/4.3-rc3/Godot_v4.3-rc3_export_templates.tpz
+          mkdir -p ~/.local/share/godot/export_templates/4.3.rc3
           unzip -o Godot_v4.3-rc3_export_templates.tpz -d ~/.local/share/godot/export_templates/4.3.rc3
+          mv ~/.local/share/godot/export_templates/4.3.rc3/templates/* ~/.local/share/godot/export_templates/4.3.rc3/
+
+      - name: Debug Export Templates
+        run: |
+          echo "Verifying export templates:"
+          ls -la ~/.local/share/godot/export_templates/4.3.rc3/
 
       - name: Create Build Directory
         run: mkdir -p build
@@ -34,12 +42,34 @@ jobs:
         env:
           GODOT_PASSWORD: ${{ secrets.GODOT_PASSWORD }}
 
-      - name: Create Zip Archive
+      - name: Debug Build Directory
         run: |
-          zip -r build/game.zip build/
+          echo "Contents of the build directory:"
+          ls -la build/
 
       - name: Upload Build Artifact
         uses: actions/upload-artifact@v3
         with:
           name: Godot-Windows-Build
-          path: build/game.zip
+          path: build/game.exe
+
+      - name: Create Git Tag
+        id: create_tag
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          TAG_NAME="v$(date +'%Y%m%d%H%M%S')"
+          echo "Creating tag $TAG_NAME"
+          git config --global user.name "GitHub Actions"
+          git config --global user.email "actions@github.com"
+          git tag $TAG_NAME
+          git push https://x-access-token:${GITHUB_TOKEN}@github.com/${{ github.repository }} $TAG_NAME
+          echo "tag_name=$TAG_NAME" >> $GITHUB_ENV
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: build/game.exe
+          tag_name: ${{ env.tag_name }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
