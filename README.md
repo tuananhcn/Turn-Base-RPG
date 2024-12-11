@@ -33,5 +33,6 @@ Ensure that no errors appear in the output. If there are issues, ensure you foll
 3. Choose your platform and configure export settings.
 4. Click on the Export Project button.
 ## Contributing Guidelines
-
 All contributors are welcome.
+
+You can try the game by downloading at released!
